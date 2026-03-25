@@ -1,15 +1,22 @@
-import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import tailwindcss from '@tailwindcss/vite';
+import { devtools } from '@tanstack/devtools-vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
+        devtools(),
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx'],
-            ssr: 'resources/js/ssr.tsx',
+            input: 'resources/js/app.tsx',
             refresh: true,
+        }),
+        tanstackRouter({
+            target: 'react',
+            autoCodeSplitting: true,
+            routesDirectory: './resources/js/routes',
+            generatedRouteTree: './resources/js/routeTree.gen.ts',
         }),
         react({
             babel: {
@@ -17,8 +24,5 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        wayfinder({
-            formVariants: true,
-        }),
     ],
 });

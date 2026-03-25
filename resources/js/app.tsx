@@ -1,35 +1,31 @@
-import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import '../css/app.css';
-import { initializeTheme } from '@/hooks/use-appearance';
+import { StrictMode } from "react"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import ReactDOM from "react-dom/client"
+import { RouterProvider, createRouter } from "@tanstack/react-router"
+import { routeTree } from "./routeTree.gen"
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const router = createRouter({
+  routeTree,
+  defaultPreload: "intent",
+  scrollRestoration: true,
+})
 
-createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name) =>
-        resolvePageComponent(
-            `./pages/${name}.tsx`,
-            import.meta.glob('./pages/**/*.tsx'),
-        ),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router
+  }
+}
 
-        root.render(
-            <StrictMode>
-                <TooltipProvider delayDuration={0}>
-                    <App {...props} />
-                </TooltipProvider>
-            </StrictMode>,
-        );
-    },
-    progress: {
-        color: '#4B5563',
-    },
-});
+const rootElement = document.getElementById("app")!
 
-// This will set light / dark mode on load...
-initializeTheme();
+if (!rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement)
+
+  root.render(
+    <StrictMode>
+      <TooltipProvider delayDuration={0}>
+        <RouterProvider router={router} />
+      </TooltipProvider>
+    </StrictMode>
+  )
+}

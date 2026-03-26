@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Models\Getters;
+
+use Illuminate\Database\Eloquent\Model;
+
+class GetAnggaranSkpd extends Model
+{
+    protected $table = 'get_anggaran_skpd';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        "tahun",
+        "id_daerah",
+        "id_skpd",
+        "id_unit",
+        "kode_skpd",
+        "nama_skpd",
+        "set_pagu_skpd",
+        "set_pagu_giat",
+        "pagu_murni",
+        "rinci_giat",
+        "total_giat",
+        "belanja_terbuka",
+        "rincian_terbuka",
+        "status_getter",
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'status_getter' => 'boolean',            
+        ];
+    }
+}

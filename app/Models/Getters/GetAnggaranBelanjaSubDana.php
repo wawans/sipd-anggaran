@@ -6,5 +6,45 @@ use Illuminate\Database\Eloquent\Model;
 
 class GetAnggaranBelanjaSubDana extends Model
 {
-    //
+    protected $table = 'get_anggaran_belanja_sub_dana';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'id_dana_sub_bl',
+        'tahun',
+        'id_daerah',
+        'id_unit',
+        'id_bl',
+        'id_sub_bl',
+        'id_dana',
+        'id_skpd',
+        'id_sub_skpd',
+        'id_program',
+        'id_giat',
+        'id_sub_giat',
+        'kode_dana',
+        'nama_dana',
+        'pagu_dana',
+        'nama_daerah',
+        'nama_unit',
+        'nama_bl',
+        'nama_sub_bl',
+        'nama_skpd',
+        'nama_sub_skpd',
+        'nama_program',
+        'nama_giat',
+        'nama_sub_giat',
+        'kode_unit',
+        'kode_sub_skpd',
+        'kode_program',
+        'kode_giat',
+        'kode_sub_giat',
+        'id_jadwal',
+        'is_locked',
+
+    ];
 }

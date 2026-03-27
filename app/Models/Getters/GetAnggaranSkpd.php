@@ -14,20 +14,20 @@ class GetAnggaranSkpd extends Model
      * @var list<string>
      */
     protected $fillable = [
-        "tahun",
-        "id_daerah",
-        "id_skpd",
-        "id_unit",
-        "kode_skpd",
-        "nama_skpd",
-        "set_pagu_skpd",
-        "set_pagu_giat",
-        "pagu_murni",
-        "rinci_giat",
-        "total_giat",
-        "belanja_terbuka",
-        "rincian_terbuka",
-        "status_getter",
+        'tahun',
+        'id_daerah',
+        'id_skpd',
+        'id_unit',
+        'kode_skpd',
+        'nama_skpd',
+        'set_pagu_skpd',
+        'set_pagu_giat',
+        'pagu_murni',
+        'rinci_giat',
+        'total_giat',
+        'belanja_terbuka',
+        'rincian_terbuka',
+        'status_getter',
     ];
 
     /**
@@ -38,7 +38,7 @@ class GetAnggaranSkpd extends Model
     protected function casts(): array
     {
         return [
-            'status_getter' => 'boolean',            
+            'status_getter' => 'boolean',
         ];
     }
 }

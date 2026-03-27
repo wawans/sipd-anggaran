@@ -13,6 +13,23 @@ return new class extends Migration
     {
         Schema::create('get_anggaran_belanja_sub_sub', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_subs_sub_bl')->nullable()->index();
+            $table->unsignedBigInteger('id_bl')->nullable()->index();
+            $table->unsignedBigInteger('id_sub_bl')->nullable()->index();
+            $table->unsignedInteger('tahun')->nullable()->index();
+            $table->unsignedBigInteger('id_daerah')->nullable()->index();
+            $table->unsignedBigInteger('id_unit')->nullable()->index();
+            $table->text('subs_bl_teks')->nullable();
+            $table->string('is_paket')->nullable();
+            $table->unsignedBigInteger('id_jenis_barjas')->nullable()->index();
+            $table->unsignedBigInteger('id_metode_barjas')->nullable()->index();
+            $table->unsignedBigInteger('id_skpd')->nullable()->index();
+            $table->unsignedBigInteger('id_sub_skpd')->nullable()->index();
+            $table->unsignedBigInteger('id_program')->nullable()->index();
+            $table->unsignedBigInteger('id_giat')->nullable()->index();
+            $table->unsignedBigInteger('id_sub_giat')->nullable()->index();
+            $table->text('nama_bl')->nullable();
+            $table->text('nama_sub_bl')->nullable();
             $table->timestamps();
         });
     }

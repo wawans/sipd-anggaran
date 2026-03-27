@@ -13,24 +13,24 @@ return new class extends Migration
     {
         Schema::create('get_anggaran_skpd', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("tahun")->nullable();
-            $table->unsignedBigInteger("id_daerah")->nullable();
-            $table->unsignedBigInteger("id_skpd")->nullable();
-            $table->unsignedBigInteger("id_unit")->nullable();
+            $table->unsignedInteger('tahun')->nullable()->index();
+            $table->unsignedBigInteger('id_daerah')->nullable()->index();
+            $table->unsignedBigInteger('id_skpd')->nullable()->index();
+            $table->unsignedBigInteger('id_unit')->nullable()->index();
 
-            $table->string("kode_skpd")->nullable();
-            $table->text("nama_skpd")->nullable();
-            
-            $table->decimal("set_pagu_skpd", 22)->nullable();
-            $table->decimal("set_pagu_giat", 22)->nullable();
-            $table->decimal("pagu_murni", 22)->nullable();
-            $table->decimal("rinci_giat", 22)->nullable();
-            
-            $table->unsignedInteger("total_giat")->nullable();
-            $table->unsignedInteger("belanja_terbuka")->nullable();
-            $table->unsignedInteger("rincian_terbuka")->nullable();
-            
-            $table->boolean("status_getter")->default(true);
+            $table->string('kode_skpd')->nullable();
+            $table->text('nama_skpd')->nullable();
+
+            $table->decimal('set_pagu_skpd', 22)->nullable();
+            $table->decimal('set_pagu_giat', 22)->nullable();
+            $table->decimal('pagu_murni', 22)->nullable();
+            $table->decimal('rinci_giat', 22)->nullable();
+
+            $table->unsignedInteger('total_giat')->nullable();
+            $table->unsignedInteger('belanja_terbuka')->nullable();
+            $table->unsignedInteger('rincian_terbuka')->nullable();
+
+            $table->boolean('status_getter')->default(true);
             $table->timestamps();
         });
     }

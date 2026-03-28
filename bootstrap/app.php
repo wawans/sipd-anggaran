@@ -16,9 +16,15 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->statefulApi();
         $middleware->authenticateSessions();
+        // $middleware->throttleApi();
+        // $middleware->preventRequestForgery(allowSameSite: true);
 
+        // $middleware->api(append: [
+        //     \App\Http\Middleware\JsonMiddleware::class,
+        // ]);
         $middleware->web(append: [
             AddLinkHeadersForPreloadedAssets::class,
+            // \App\Http\Middleware\JsonMiddleware::class,
         ]);
 
         $middleware->trustProxies(at: '*');
@@ -31,5 +37,11 @@ return Application::configure(basePath: dirname(__DIR__))
         );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->shouldRenderJsonWhen(function (Illuminate\Http\Request $request, Throwable $exception) {
+            if (! $request->isMethod('GET') || $request->is('api/*')) {
+                return true;
+            }
+
+            return $request->expectsJson();
+        });
     })->create();

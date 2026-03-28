@@ -1,10 +1,13 @@
 {
-    "endOfLine": "lf",
+    "arrowParens": "always",
     "semi": false,
-    "singleQuote": false,
     "tabWidth": 2,
-    "trailingComma": "es5",
     "printWidth": 80,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
     "singleAttributePerLine": false,
     "htmlWhitespaceSensitivity": "css",
     "plugins": [
@@ -15,5 +18,5 @@
         "cn",
         "cva"
     ],
-    "tailwindStylesheet": "resources/css/app.css"
+    "tailwindStylesheet": "resources/js/styles/index.css"
 }

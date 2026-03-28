@@ -9,7 +9,7 @@ use App\Http\Controllers\Getters\AnggaranSkpdController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+Route::get('/auth/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 

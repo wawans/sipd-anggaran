@@ -7,11 +7,12 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
-        devtools(),
-        laravel({
-            input: 'resources/js/app.tsx',
-            refresh: true,
+        devtools({
+            consolePiping: {
+                enabled: false,
+            }
         }),
+        tailwindcss(),
         tanstackRouter({
             target: 'react',
             autoCodeSplitting: true,
@@ -23,6 +24,9 @@ export default defineConfig({
                 plugins: ['babel-plugin-react-compiler'],
             },
         }),
-        tailwindcss(),
+        laravel({
+            input: 'resources/js/app.tsx',
+            refresh: true,
+        }),
     ],
 });

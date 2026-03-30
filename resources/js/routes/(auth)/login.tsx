@@ -7,6 +7,11 @@ const searchSchema = z.object({
 })
 
 export const Route = createFileRoute('/(auth)/login')({
+  beforeLoad: async ({ context }) => {
+    if (context.auth.isAuthenticated) {
+      context.auth.reset()
+    }
+  },
   component: SignIn,
   validateSearch: searchSchema,
 })

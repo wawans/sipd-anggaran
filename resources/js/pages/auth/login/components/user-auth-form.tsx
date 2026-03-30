@@ -18,6 +18,8 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/context/auth-provider'
 import { sleep, cn } from '@/lib/utils'
+import { AxiosError } from 'axios'
+import { LaravelValidationError, User } from '@/types'
 
 const formSchema = z.object({
   email: z.email({
@@ -58,24 +60,33 @@ export function UserAuthForm({
       loading: 'Signing in...',
       success: (response) => {
         if (!response.data) {
-          throw new Error('Login Failed')
+          throw new AxiosError('Login Failed')
         }
 
         router.invalidate()
-
-        // Set authenticated user
-        // setUser(user)
 
         // Redirect to the stored location or default to dashboard
         const targetPath = redirectTo || '/'
         navigate({ to: targetPath, replace: true })
 
-        return `Welcome back, ${data.email}!`
+        return `Welcome back, ${response.data.name || data.email}!`
       },
-      error: (e) => {
-        console.error(e)
-
-        return e.message || 'Error'
+      error: ({ response }: AxiosError<LaravelValidationError>) => {
+        if (response?.status === 422) {
+          if (response?.data?.errors) {
+            for (const [key, value] of Object.entries(response.data.errors)) {
+              form.setError(key as keyof z.infer<typeof formSchema>, {
+                type: 'server',
+                message: value[0] || 'Invalid',
+              })
+            }
+          }
+          if (response?.data?.message) {
+            return 'Error! ' + response?.data?.message || 'Something went wrong.'
+          }
+        } else {
+          return 'Login Failed! Something went wrong.'
+        }
       },
       finally: () => setIsLoading(false),
     })
@@ -124,6 +135,18 @@ export function UserAuthForm({
           {isLoading ? <Loader2 className='animate-spin' /> : <LogIn />}
           Sign in
         </Button>
+
+        <div className='relative my-2'>
+          <p className='px-8 text-center text-sm text-muted-foreground'>
+            Don't have an account?{' '}
+            <Link
+              to='/register'
+              className='underline underline-offset-4 hover:text-primary'
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
 
         <div className='relative my-2'>
           <div className='absolute inset-0 flex items-center'>

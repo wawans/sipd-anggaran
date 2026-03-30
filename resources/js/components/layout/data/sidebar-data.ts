@@ -58,103 +58,48 @@ export const sidebarData: SidebarData = {
           icon: LayoutDashboard,
         },
         {
-          title: 'Tasks',
-          url: '/tasks',
-          icon: ListTodo,
-        },
-        {
-          title: 'Apps',
-          url: '/apps',
-          icon: Package,
-        },
-        {
-          title: 'Chats',
-          url: '/chats',
-          badge: '3',
-          icon: MessagesSquare,
-        },
-        {
           title: 'Users',
           url: '/users',
           icon: Users,
         },
         {
-          title: 'Secured by Clerk',
-          icon: ClerkLogo,
+          title: 'Penganggaran',
+          icon: ListTodo,
           items: [
             {
-              title: 'Sign In',
-              url: '/clerk/sign-in',
+              title: 'Get SKPD',
+              url: '/anggaran/skpd',
             },
             {
-              title: 'Sign Up',
-              url: '/clerk/sign-up',
+              title: 'Get Sub Kegiatan',
+              url: '/anggaran/belanja-sub',
             },
             {
-              title: 'User Management',
-              url: '/clerk/user-management',
+              title: 'Get Rinci Sub Kegiatan',
+              url: '/anggaran/belanja-sub-rinci',
             },
           ],
         },
       ],
     },
     {
-      title: 'Pages',
+      title: 'Worker',
       items: [
         {
-          title: 'Auth',
-          icon: ShieldCheck,
+          title: 'Penganggaran',
+          icon: ListTodo,
           items: [
             {
-              title: 'Sign In',
-              url: '/sign-in',
+              title: 'Get SKPD',
+              url: '/worker/anggaran/skpd',
             },
             {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
+              title: 'Get Sub Kegiatan',
+              url: '/worker/anggaran/belanja-sub',
             },
             {
-              title: 'Sign Up',
-              url: '/sign-up',
-            },
-            {
-              title: 'Forgot Password',
-              url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
-            },
-          ],
-        },
-        {
-          title: 'Errors',
-          icon: Bug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: Lock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/errors/forbidden',
-              icon: UserX,
-            },
-            {
-              title: 'Not Found',
-              url: '/errors/not-found',
-              icon: FileX,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: ServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: Construction,
+              title: 'Get Rinci Sub Kegiatan',
+              url: '/worker/anggaran/belanja-sub-rinci',
             },
           ],
         },

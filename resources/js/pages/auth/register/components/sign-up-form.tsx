@@ -18,6 +18,8 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/context/auth-provider'
 import { cn } from '@/lib/utils'
+import { AxiosError } from 'axios'
+import { LaravelValidationError } from '@/types'
 
 const formSchema = z
   .object({
@@ -66,26 +68,33 @@ export function SignUpForm({
     // Use the auth context register method which handles session-based auth
     register(data.name, data.email, data.password, data.confirmPassword)
       .then((response) => {
-        router.invalidate()
+        if (!response.data) {
+          throw new AxiosError('Sign Up Failed')
+        }
 
-        // Set authenticated user
-        // setUser(response.data)
+        router.invalidate()
 
         // Success - navigate to dashboard
         navigate({ to: '/', replace: true })
       })
-      .catch((error: any) => {
-        if (error.errors) {
-          for (const [key, value] of Object.entries(error.errors)) {
-            form.setError(key as keyof z.infer<typeof formSchema>, {
-              type: 'server',
-              message: value as string,
+      .catch(({ response }: AxiosError<LaravelValidationError>) => {
+        if (response?.status === 422) {
+          if (response?.data?.errors) {
+            for (const [key, value] of Object.entries(response.data.errors)) {
+              form.setError(key as keyof z.infer<typeof formSchema>, {
+                type: 'server',
+                message: value[0] || 'Invalid',
+              })
+            }
+          }
+
+          if (response?.data?.message) {
+            toast.error('Error!', {
+              description: response?.data?.message || 'Something went wrong.',
             })
           }
         } else {
-          toast.error('Error!', {
-            description: error.message || 'Something went wrong.',
-          })
+          toast.error('Error!', { description: 'Something went wrong' })
         }
       })
       .finally(() => {
@@ -153,6 +162,7 @@ export function SignUpForm({
           )}
         />
         <Button className='mt-2' disabled={isLoading}>
+          {isLoading ? <Loader2 className='animate-spin' /> : <LogIn />}
           Create Account
         </Button>
 

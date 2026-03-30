@@ -8,13 +8,14 @@ export interface AuthContextType {
   isAuthenticated: boolean
   getUser: () => Promise<User | null>
   logout: () => Promise<void>
-  login: (email: string, password: string) => Promise<void>
+  login: (email: string, password: string) => Promise<{ data: User }>
   register: (
     name: string,
     email: string,
     password: string,
     passwordConfirmation: string
-  ) => Promise<void>
+  ) => Promise<{ data: User }>
+  reset: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -107,6 +108,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     [getCsrfToken, setUser]
   )
 
+  const reset = useCallback(() => {
+    setUser(null)
+  }, [setUser])
+
   const value = {
     user: user,
     isAuthenticated: !!user,
@@ -114,6 +119,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     login,
     logout,
     register,
+    reset,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

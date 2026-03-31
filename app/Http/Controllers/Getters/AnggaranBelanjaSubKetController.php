@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Getters;
 
+use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Getters\AnggaranBelanjaSubKetJob;
 use App\Models\Getters\GetAnggaranBelanjaSubKet;
+use App\Repositories\Getters\GetAnggaranBelanjaSubKetRepository;
 use Illuminate\Http\Request;
 
 class AnggaranBelanjaSubKetController extends Controller
 {
+    use WithExportImport;
+
+    public function __construct(protected GetAnggaranBelanjaSubKetRepository $repository) {}
+
     /**
      * Display a listing of the resource.
      */
@@ -25,9 +31,16 @@ class AnggaranBelanjaSubKetController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate(['data' => ['required', 'array']]);
+        $validated = $request->validate(['data' => ['sometimes', 'nullable', 'array']]);
 
-        dispatch(new AnggaranBelanjaSubKetJob($validated['data']));
+        defer(fn () => dispatch(new AnggaranBelanjaSubKetJob($validated['data'] ?? [])));
+
+        return response()->json(['status' => true]);
+    }
+
+    public function truncate()
+    {
+        $this->repository->truncate();
 
         return response()->json(['status' => true]);
     }

@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Getters;
 
+use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Getters\AnggaranSkpdJob;
 use App\Models\Getters\GetAnggaranSkpd;
+use App\Repositories\Getters\GetAnggaranSkpdRepository;
 use Illuminate\Http\Request;
 
 class AnggaranSkpdController extends Controller
 {
+    use WithExportImport;
+
+    public function __construct(protected GetAnggaranSkpdRepository $repository) {}
+
     /**
      * Display a listing of the resource.
      */

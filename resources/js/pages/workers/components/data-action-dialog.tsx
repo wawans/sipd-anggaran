@@ -1,14 +1,12 @@
 'use client'
 
-import { z } from 'zod'
-import type { AxiosError } from 'axios'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
-import type { LaravelValidationError, Model } from '@/types'
+import type { AxiosError } from 'axios'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { stringToSlug } from '@/lib/stringToSlug.ts'
+import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -27,9 +25,10 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { LoadingSpinner } from '@/components/ui/loading-spinner.tsx'
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
+import { stringToSlug } from '@/lib/stringToSlug.ts'
+import type { LaravelValidationError, Model } from '@/types'
 
-import { create, allQueryOptions, update } from './api'
 import { useDataTable } from './data-table-provider'
 
 const formSchema = z.object({
@@ -49,7 +48,7 @@ export function DataActionDialog({
   open,
   onOpenChange,
 }: DataActionDialogProps) {
-  const { entity } = useDataTable()
+  const { entity, create, update, queryOptions } = useDataTable()
 
   const isEdit = !!currentRow
   const form = useForm<DataActionForm>({
@@ -90,7 +89,7 @@ export function DataActionDialog({
     },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: allQueryOptions.queryKey,
+        queryKey: queryOptions.queryKey,
         refetchType: 'all',
       })
       router.invalidate()

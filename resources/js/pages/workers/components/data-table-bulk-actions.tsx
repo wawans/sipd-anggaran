@@ -1,16 +1,16 @@
-import { useState } from 'react'
 import type { Table } from '@tanstack/react-table'
-import type { Model } from '@/types'
-import { Trash2 } from 'lucide-react'
+import { Trash2, CheckCircle, CircleOff } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
-import { sleep } from '@/lib/utils'
+import { DataTableBulkActions as BulkActionsToolbar } from '@/components/data-table'
 import { Button } from '@/components/ui/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { DataTableBulkActions as BulkActionsToolbar } from '@/components/data-table'
+import { sleep } from '@/lib/utils'
+import type { Model } from '@/types'
 
 import { DataTableMultiDeleteDialog } from './data-table-multi-delete-dialog'
 import { useDataTable } from './data-table-provider'
@@ -26,7 +26,7 @@ export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
   const selectedRows = table.getFilteredSelectedRowModel().rows
 
   // @ts-expect-error @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const handleBulkStatusChange = (status: 'active' | 'inactive') => {
     const selectedEntries = selectedRows.map((row) => row.original)
     toast.promise(sleep(2000), {
@@ -60,6 +60,44 @@ export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
   return (
     <>
       <BulkActionsToolbar table={table} entityName='item'>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant='outline'
+              size='icon'
+              onClick={() => handleBulkStatusChange('active')}
+              className='size-8'
+              aria-label='Enable workers'
+              title='Enable workers'
+            >
+              <CheckCircle />
+              <span className='sr-only'>Enable workers</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Enable workers</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant='outline'
+              size='icon'
+              onClick={() => handleBulkStatusChange('inactive')}
+              className='size-8'
+              aria-label='Disable workers'
+              title='Disable workers'
+            >
+              <CircleOff />
+              <span className='sr-only'>Disable workers</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Disable workers</p>
+          </TooltipContent>
+        </Tooltip>
+
         <Tooltip>
           <TooltipTrigger asChild>
             <Button

@@ -1,10 +1,10 @@
 import type { ColumnDef } from '@tanstack/react-table'
-import type { Model } from '@/types'
-import { Checkbox } from '@/components/ui/checkbox'
 import { DataTableColumnHeader } from '@/components/data-table'
-
-import { DataTableRowActions } from './data-table-row-actions'
+import { Checkbox } from '@/components/ui/checkbox'
 import { DataTableStatusActions } from '@/pages/workers/components/data-table-status-actions'
+import type { Model } from '@/types'
+
+import { DataTableRowActions } from '../components/data-table-row-actions'
 
 export const columns: ColumnDef<Model>[] = [
   {
@@ -37,7 +37,7 @@ export const columns: ColumnDef<Model>[] = [
       <DataTableColumnHeader column={column} title='ID' />
     ),
     cell: ({ row }) => <div className='w-[80px]'>{row.getValue('id')}</div>,
-    meta: { className: 'ps-1', tdClassName: 'ps-3' },
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
   },
   {
     accessorKey: 'nama_sub_skpd',
@@ -45,11 +45,13 @@ export const columns: ColumnDef<Model>[] = [
       <DataTableColumnHeader column={column} title='Nama SKPD' />
     ),
     cell: ({ getValue }) => (
-      <div className='whitespace-normal wrap-break-word'>{getValue() as string}</div>
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
     ),
     meta: {
-      className: 'ps-1 w-fit',
-      tdClassName: 'ps-3',
+      className: 'ps-0',
+      tdClassName: 'ps-2',
     },
   },
   {
@@ -58,11 +60,13 @@ export const columns: ColumnDef<Model>[] = [
       <DataTableColumnHeader column={column} title='Nama Sub Kegiatan' />
     ),
     cell: ({ getValue }) => (
-      <div className='whitespace-normal wrap-break-word'>{getValue() as string}</div>
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
     ),
     meta: {
-      className: 'ps-1 w-fit',
-      tdClassName: 'ps-3',
+      className: 'ps-0',
+      tdClassName: 'ps-2',
     },
   },
   {
@@ -71,7 +75,7 @@ export const columns: ColumnDef<Model>[] = [
       <DataTableColumnHeader column={column} title='Active ?' />
     ),
     cell: ({ row }) => <DataTableStatusActions row={row} />,
-    meta: { className: 'ps-1', tdClassName: 'ps-3' },
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
   },
   {
     id: 'actions',

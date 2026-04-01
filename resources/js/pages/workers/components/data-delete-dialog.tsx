@@ -1,15 +1,14 @@
 'use client'
 
-import { useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
-import type { Model } from '@/types'
 import { AlertTriangle } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { ConfirmDialog } from '@/components/confirm-dialog'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import type { Model } from '@/types'
 
-import { destroy, allQueryOptions } from './api'
 import { useDataTable } from './data-table-provider'
 
 type DataDeleteDialogProps = {
@@ -23,7 +22,7 @@ export function DatasDeleteDialog({
   onOpenChange,
   currentRow,
 }: DataDeleteDialogProps) {
-  const { entity } = useDataTable()
+  const { destroy, entity, queryOptions } = useDataTable()
 
   const router = useRouter()
   const queryClient = useQueryClient()
@@ -43,7 +42,7 @@ export function DatasDeleteDialog({
         setValue('')
 
         queryClient.invalidateQueries({
-          queryKey: allQueryOptions.queryKey,
+          queryKey: queryOptions.queryKey,
           refetchType: 'all',
         })
         router.invalidate()

@@ -6,9 +6,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { APP_NAME } from '@/config/app'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
-import { APP_NAME } from '@/config/app'
 
 export function AppTitle() {
   const { setOpenMobile } = useSidebar()

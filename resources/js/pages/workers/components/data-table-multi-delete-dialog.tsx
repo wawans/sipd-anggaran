@@ -1,18 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
 import type { Table } from '@tanstack/react-table'
-import type { Model } from '@/types'
 import { AlertTriangle } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
+import { ConfirmDialog } from '@/components/confirm-dialog'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { ConfirmDialog } from '@/components/confirm-dialog'
+import type { Model } from '@/types'
 
-import { destroys, allQueryOptions } from './api'
 import { useDataTable } from './data-table-provider'
 
 type DataTableMultiDeleteDialogProps = {
@@ -28,7 +27,7 @@ export function DataTableMultiDeleteDialog({
   onOpenChange,
   table,
 }: DataTableMultiDeleteDialogProps) {
-  const { entity } = useDataTable()
+  const { entity, destroys, queryOptions } = useDataTable()
   const router = useRouter()
   const queryClient = useQueryClient()
   const [value, setValue] = useState('')
@@ -52,7 +51,7 @@ export function DataTableMultiDeleteDialog({
         table.resetRowSelection()
 
         queryClient.invalidateQueries({
-          queryKey: allQueryOptions.queryKey,
+          queryKey: queryOptions.queryKey,
           refetchType: 'all',
         })
         router.invalidate()

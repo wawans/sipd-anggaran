@@ -1,7 +1,7 @@
-"use no memo";
+'use no memo'
 
-import { useState } from 'react'
 import type {
+  ColumnDef,
   ColumnFiltersState,
   PaginationState,
   SortingState,
@@ -17,9 +17,8 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import type { Model } from '@/types'
-import { cn } from '@/lib/utils'
-import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { useState } from 'react'
+import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
 import {
   Table,
   TableBody,
@@ -28,23 +27,41 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
+import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
+import type { Model } from '@/types'
 
 import { DataTableBulkActions } from './data-table-bulk-actions'
-import { columns } from './data-table-columns'
 
 // import { useTableUrlState } from '@/hooks/use-table-url-state'
 
+export type filter = {
+  columnId: string
+  title: string
+  options: {
+    label: string
+    value: string
+    icon?: React.ComponentType<{ className?: string }>
+  }[]
+}
+
 type DataTableProps = {
   data: Model[]
+  columns: ColumnDef<Model>[]
+  filters?: filter[]
   search?: Record<string, unknown>
   navigate?: NavigateFn
 }
 
 // @ts-expect-error @typescript-eslint/no-unused-vars
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function DataTable({ data, search, navigate }: DataTableProps) {
 
+export function DataTable({
+  data,
+  columns,
+  filters = [],
+  search,
+  navigate,
+}: DataTableProps) {
   // Local UI-only states
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
@@ -129,6 +146,7 @@ export function DataTable({ data, search, navigate }: DataTableProps) {
       <DataTableToolbar
         table={table}
         searchPlaceholder='Search ...'
+        filters={filters}
         // filters={[
         //   {
         //     columnId: 'status',

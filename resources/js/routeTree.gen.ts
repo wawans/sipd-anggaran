@@ -20,6 +20,7 @@ import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as authRegisterRouteImport } from './routes/(auth)/register'
 import { Route as authLoginRouteImport } from './routes/(auth)/login'
 import { Route as AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport } from './routes/_authenticated/worker/anggaran/belanja-sub-rinci'
+import { Route as AuthenticatedWorkerAnggaranBelanjaSubRouteImport } from './routes/_authenticated/worker/anggaran/belanja-sub'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -76,6 +77,12 @@ const AuthenticatedWorkerAnggaranBelanjaSubRinciRoute =
     path: '/worker/anggaran/belanja-sub-rinci',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedWorkerAnggaranBelanjaSubRoute =
+  AuthenticatedWorkerAnggaranBelanjaSubRouteImport.update({
+    id: '/worker/anggaran/belanja-sub',
+    path: '/worker/anggaran/belanja-sub',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/about': typeof AuthenticatedAboutRoute
+  '/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRoutesByTo {
@@ -99,6 +107,7 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/about': typeof AuthenticatedAboutRoute
   '/': typeof AuthenticatedIndexRoute
+  '/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRoutesById {
@@ -113,6 +122,7 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/about': typeof AuthenticatedAboutRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/_authenticated/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRouteTypes {
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/about'
+    | '/worker/anggaran/belanja-sub'
     | '/worker/anggaran/belanja-sub-rinci'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/about'
     | '/'
+    | '/worker/anggaran/belanja-sub'
     | '/worker/anggaran/belanja-sub-rinci'
   id:
     | '__root__'
@@ -152,6 +164,7 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/about'
     | '/_authenticated/'
+    | '/_authenticated/worker/anggaran/belanja-sub'
     | '/_authenticated/worker/anggaran/belanja-sub-rinci'
   fileRoutesById: FileRoutesById
 }
@@ -245,18 +258,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/worker/anggaran/belanja-sub': {
+      id: '/_authenticated/worker/anggaran/belanja-sub'
+      path: '/worker/anggaran/belanja-sub'
+      fullPath: '/worker/anggaran/belanja-sub'
+      preLoaderRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAboutRoute: typeof AuthenticatedAboutRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedWorkerAnggaranBelanjaSubRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   AuthenticatedWorkerAnggaranBelanjaSubRinciRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAboutRoute: AuthenticatedAboutRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedWorkerAnggaranBelanjaSubRoute:
+    AuthenticatedWorkerAnggaranBelanjaSubRoute,
   AuthenticatedWorkerAnggaranBelanjaSubRinciRoute:
     AuthenticatedWorkerAnggaranBelanjaSubRinciRoute,
 }

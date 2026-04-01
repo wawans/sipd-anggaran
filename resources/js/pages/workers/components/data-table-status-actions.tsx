@@ -1,20 +1,10 @@
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import type { Row } from '@tanstack/react-table'
-import type { Model } from '@/types'
-import { Trash2, UserPen } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+
+import { useState } from 'react'
 import { Switch } from '@/components/ui/switch'
+import type { Model } from '@/types'
 
 import { useDataTable } from './data-table-provider'
-import { useState } from 'react'
 
 type DataTableRowActionsProps = {
   row: Row<Model>
@@ -32,10 +22,7 @@ export function DataTableStatusActions({ row }: DataTableRowActionsProps) {
 
   return (
     <>
-      <Switch
-        checked={value}
-        onCheckedChange={onChange}
-      />
+      <Switch checked={value} onCheckedChange={onChange} />
     </>
   )
 }

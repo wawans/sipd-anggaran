@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import z from 'zod'
 import axios from '@/lib/api'
-import { columns } from '@/pages/workers/columns/anggaran-belanja-sub-rinci-columns'
+import { columns } from '@/pages/workers/columns/anggaran-belanja-sub-columns'
 import Page from '@/pages/workers/index'
 
 const searchSchema = z.object({
@@ -10,7 +10,7 @@ const searchSchema = z.object({
   pageSize: z.number().optional().catch(10),
 })
 
-const URL: string = '/api/getter/anggaran/belanja/sub'
+const URL: string = '/api/getter/anggaran/skpd'
 
 const allQueryOptions = queryOptions({
   queryKey: ['workers', { url: URL }],
@@ -18,7 +18,7 @@ const allQueryOptions = queryOptions({
 })
 
 export const Route = createFileRoute(
-  '/_authenticated/worker/anggaran/belanja-sub-rinci'
+  '/_authenticated/worker/anggaran/belanja-sub'
 )({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
@@ -38,7 +38,7 @@ function RouteComponent() {
   return (
     <Page
       url={URL}
-      entity='Get Rinci Sub Kegiatan'
+      entity='Get Sub Kegiatan'
       columns={columns}
       queryOptions={data.queryOptions}
     />

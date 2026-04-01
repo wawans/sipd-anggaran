@@ -14,8 +14,6 @@ export function DataTableDialogs() {
         onOpenChange={() => setOpen('create')}
       />
 
-
-
       {currentRow && (
         <>
           <DataActionDialog

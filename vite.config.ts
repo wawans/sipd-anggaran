@@ -19,11 +19,7 @@ export default defineConfig({
             routesDirectory: './resources/js/routes',
             generatedRouteTree: './resources/js/routeTree.gen.ts',
         }),
-        react({
-            babel: {
-                plugins: ['babel-plugin-react-compiler'],
-            },
-        }),
+        react(),
         laravel({
             input: 'resources/js/app.tsx',
             refresh: true,

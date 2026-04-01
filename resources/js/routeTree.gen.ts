@@ -19,6 +19,7 @@ import { Route as errors403RouteImport } from './routes/(errors)/403'
 import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as authRegisterRouteImport } from './routes/(auth)/register'
 import { Route as authLoginRouteImport } from './routes/(auth)/login'
+import { Route as AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport } from './routes/_authenticated/worker/anggaran/belanja-sub-rinci'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -69,6 +70,12 @@ const authLoginRoute = authLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedWorkerAnggaranBelanjaSubRinciRoute =
+  AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport.update({
+    id: '/worker/anggaran/belanja-sub-rinci',
+    path: '/worker/anggaran/belanja-sub-rinci',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/about': typeof AuthenticatedAboutRoute
+  '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof authLoginRoute
@@ -91,6 +99,7 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/about': typeof AuthenticatedAboutRoute
   '/': typeof AuthenticatedIndexRoute
+  '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -104,6 +113,7 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/about': typeof AuthenticatedAboutRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/about'
+    | '/worker/anggaran/belanja-sub-rinci'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/about'
     | '/'
+    | '/worker/anggaran/belanja-sub-rinci'
   id:
     | '__root__'
     | '/_authenticated'
@@ -140,6 +152,7 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/about'
     | '/_authenticated/'
+    | '/_authenticated/worker/anggaran/belanja-sub-rinci'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -225,17 +238,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/worker/anggaran/belanja-sub-rinci': {
+      id: '/_authenticated/worker/anggaran/belanja-sub-rinci'
+      path: '/worker/anggaran/belanja-sub-rinci'
+      fullPath: '/worker/anggaran/belanja-sub-rinci'
+      preLoaderRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAboutRoute: typeof AuthenticatedAboutRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedWorkerAnggaranBelanjaSubRinciRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAboutRoute: AuthenticatedAboutRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedWorkerAnggaranBelanjaSubRinciRoute:
+    AuthenticatedWorkerAnggaranBelanjaSubRinciRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

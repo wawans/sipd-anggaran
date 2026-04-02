@@ -49,6 +49,7 @@ type DataTableProps = {
   data: Model[]
   columns: ColumnDef<Model>[]
   filters?: filter[]
+  toolbar?: React.ReactNode
   search?: Record<string, unknown>
   navigate?: NavigateFn
 }
@@ -59,6 +60,7 @@ export function DataTable({
   data,
   columns,
   filters = [],
+  toolbar,
   search,
   navigate,
 }: DataTableProps) {
@@ -159,7 +161,9 @@ export function DataTable({
         //     options: priorities,
         //   },
         // ]}
-      />
+      >
+        {toolbar}
+      </DataTableToolbar>
       <div className='overflow-hidden rounded-md border'>
         <Table className='min-w-xl'>
           <TableHeader>

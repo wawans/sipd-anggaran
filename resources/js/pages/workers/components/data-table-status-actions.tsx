@@ -1,6 +1,8 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRouter } from '@tanstack/react-router'
 import type { Row } from '@tanstack/react-table'
 
-import { useState } from 'react'
+import { toast } from 'sonner'
 import { Switch } from '@/components/ui/switch'
 import type { Model } from '@/types'
 
@@ -11,18 +13,76 @@ type DataTableRowActionsProps = {
 }
 
 export function DataTableStatusActions({ row }: DataTableRowActionsProps) {
-  const { setOpen, setCurrentRow } = useDataTable()
+  const { setOpen, setCurrentRow, update, queryOptions } = useDataTable()
   const model = row.original
 
-  const [value, setValue] = useState<boolean>(model.status_getter || false)
+  const router = useRouter()
+  const queryClient = useQueryClient()
+  const { mutateAsync } = useMutation({
+    mutationFn: (data: any) => update(model.id, data),
+    // onMutate: async (data) => {
+    //   // Cancel outgoing queries
+    //   await queryClient.cancelQueries(queryOptions.queryKey);
+
+    //   // Snapshot current state
+    //   const previous = queryClient.getQueryData(queryOptions.queryKey);
+
+    //   // Optimistically update
+    //   queryClient.setQueryData(queryOptions.queryKey, (old) =>
+    //     old.filter((e) => e.id !== model.id)
+    //   );
+
+    //   return { previous };
+    // },
+    // onError: (err, id, context) => {
+    //   // Rollback on error
+    //   queryClient.setQueryData(queryOptions.queryKey, context?.previous);
+    // },
+    onMutate: async () => {
+      // Cancel outgoing queries
+      await queryClient.cancelQueries(queryOptions.queryKey)
+
+      // Optimistically update
+      queryClient.setQueryData(
+        queryOptions.queryKey,
+        (queryResponse: { data: Model[] }) => {
+          // console.log(prevItems)
+          const prevItems: Model[] = queryResponse.data
+
+          return {
+            ...queryResponse,
+            data: prevItems?.map((item: Model) =>
+              item.id === model.id
+                ? // ? { ...item, { ...model, status_getter: !model.status_getter } }
+                  // ? { ...item, ...model }
+                  { ...item, status_getter: !item.status_getter }
+                : item
+            ),
+          }
+        }
+      )
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryOptions.queryKey,
+        // refetchType: 'all',
+      })
+      // router.invalidate()
+    },
+  })
 
   const onChange = () => {
-    setValue((prevState) => !prevState)
+    toast.promise(mutateAsync({ status_getter: !model.status_getter }), {
+      loading: 'Updating Status...',
+    })
   }
 
   return (
     <>
-      <Switch checked={value} onCheckedChange={onChange} />
+      <Switch
+        checked={model.status_getter as boolean}
+        onCheckedChange={onChange}
+      />
     </>
   )
 }

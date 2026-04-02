@@ -42,9 +42,21 @@ class GetAnggaranSkpdRepository extends Repository
      * @param  array  $attributes
      * @return GetAnggaranSkpd
      */
-    public function edit($attributes, GetAnggaranSkpd $getAnggaranSkpd)
+    public function edit($attributes, GetAnggaranSkpd|int $getAnggaranSkpd)
     {
         return $this->update($attributes, $getAnggaranSkpd);
+    }
+
+    /**
+     * Bulk Update the model in the database.
+     *
+     * @param  array  $attributes
+     * @param  list<GetAnggaranSkpd | int>  $ids
+     * @return void
+     */
+    public function edits($attributes, array $ids)
+    {
+        return $this->query()->whereIn('id', $ids)->update($attributes);
     }
 
     /**

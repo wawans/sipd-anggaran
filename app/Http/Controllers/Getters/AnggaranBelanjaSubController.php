@@ -18,10 +18,14 @@ class AnggaranBelanjaSubController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $result = GetAnggaranBelanjaSub::query()->where('status_getter', true)
-            ->orderBy('id')->get();
+        $result = GetAnggaranBelanjaSub::query()
+            ->when($request->has('status'), function ($query) use ($request) {
+                $query->where('status_getter', $request->input('status'));
+            })
+            ->orderBy('id')
+            ->get();
 
         return response()->json(['status' => true, 'data' => $result]);
     }
@@ -34,6 +38,27 @@ class AnggaranBelanjaSubController extends Controller
         $validated = $request->validate(['data' => ['required', 'array']]);
 
         dispatch(new AnggaranBelanjaSubJob($validated['data']));
+
+        return response()->json(['status' => true]);
+    }
+
+    public function update(Request $request, GetAnggaranBelanjaSub $id)
+    {
+        $validated = $request->validate(['status_getter' => ['required', 'boolean']]);
+
+        $model = $this->repository->edit($validated, $id);
+
+        return response()->json(['status' => true, 'data' => $model]);
+    }
+
+    public function updates(Request $request)
+    {
+        $validated = $request->validate([
+            'status_getter' => ['required', 'boolean'],
+            'ids' => ['required', 'array'],
+        ]);
+
+        $this->repository->edits(collect($validated)->except('ids')->toArray(), $validated['ids']);
 
         return response()->json(['status' => true]);
     }

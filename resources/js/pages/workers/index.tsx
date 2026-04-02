@@ -1,15 +1,28 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 // import { getRouteApi } from '@tanstack/react-router'
 import type { ColumnDef } from '@tanstack/react-table'
+import { CheckCircle, CircleOff } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { Page } from '@/components/layout/page'
-
 import type { Model } from '@/types'
 import { DataTable } from './components/data-table'
 import type { filter } from './components/data-table'
 import { DataTableDialogs } from './components/data-table-dialogs'
 import { DataTablePrimaryButtons } from './components/data-table-primary-buttons'
 import { DataTableProvider } from './components/data-table-provider'
+
+export const statuses = [
+  {
+    label: 'Active',
+    value: '1' as const,
+    icon: CheckCircle,
+  },
+  {
+    label: 'Inactive',
+    value: '0' as const,
+    icon: CircleOff,
+  },
+]
 
 export default function IndexPage({
   entity,
@@ -43,7 +56,17 @@ export default function IndexPage({
             </div>
             <DataTablePrimaryButtons />
           </div>
-          <DataTable data={rows} columns={columns} filters={filters} />
+          <DataTable
+            data={rows}
+            columns={columns}
+            filters={[
+              {
+                columnId: 'status_getter',
+                title: 'Status',
+                options: statuses,
+              },
+            ]}
+          />
         </Main>
 
         <DataTableDialogs />

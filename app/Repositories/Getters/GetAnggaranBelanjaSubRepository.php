@@ -42,9 +42,21 @@ class GetAnggaranBelanjaSubRepository extends Repository
      * @param  array  $attributes
      * @return GetAnggaranBelanjaSub
      */
-    public function edit($attributes, GetAnggaranBelanjaSub $getAnggaranBelanjaSub)
+    public function edit($attributes, GetAnggaranBelanjaSub|int $getAnggaranBelanjaSub)
     {
         return $this->update($attributes, $getAnggaranBelanjaSub);
+    }
+
+    /**
+     * Bulk Update the model in the database.
+     *
+     * @param  array  $attributes
+     * @param  list<GetAnggaranBelanjaSub | int>  $ids
+     * @return void
+     */
+    public function edits($attributes, array $ids)
+    {
+        return $this->query()->whereIn('id', $ids)->update($attributes);
     }
 
     /**

@@ -38,6 +38,10 @@ class GetAnggaranSkpd extends Model
     protected function casts(): array
     {
         return [
+            'set_pagu_skpd' => 'float',
+            'set_pagu_giat' => 'float',
+            'pagu_murni' => 'float',
+            'rinci_giat' => 'float',
             'status_getter' => 'boolean',
         ];
     }

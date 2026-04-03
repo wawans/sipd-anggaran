@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FileSpreadsheet } from 'lucide-react'
+import { FileSpreadsheet, Trash } from 'lucide-react'
 import { useCallback } from 'react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -60,6 +60,14 @@ export function DataTablePrimaryButtons() {
         onClick={() => onExport()}
       >
         <span>Export</span> <FileSpreadsheet size={18} />
+      </Button>
+
+      <Button
+        variant='destructive'
+        className='space-x-1'
+        onClick={() => onTruncate()}
+      >
+        <span>Truncate</span> <Trash size={18} />
       </Button>
     </div>
   )

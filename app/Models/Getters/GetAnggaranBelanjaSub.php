@@ -61,6 +61,12 @@ class GetAnggaranBelanjaSub extends Model
     protected function casts(): array
     {
         return [
+            'pagu_murni' => 'float',
+            'pagu' => 'float',
+            'pagu_indikatif' => 'float',
+            'pagu_giat' => 'float',
+            'rinci_giat' => 'float',
+            'rincian' => 'float',
             'kunci_bl' => 'boolean',
             'kunci_bl_rinci' => 'boolean',
             'is_locked' => 'boolean',

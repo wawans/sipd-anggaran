@@ -22,7 +22,7 @@ export const Route = createFileRoute(
 )({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
-    queryClient.ensureQueryData(allQueryOptions)
+    queryClient.prefetchQuery(allQueryOptions)
 
     return {
       url: URL,

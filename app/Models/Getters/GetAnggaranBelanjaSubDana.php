@@ -47,4 +47,16 @@ class GetAnggaranBelanjaSubDana extends Model
         'is_locked',
 
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'pagu_dana' => 'float',
+        ];
+    }
 }

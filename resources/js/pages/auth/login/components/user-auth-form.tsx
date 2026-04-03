@@ -1,6 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
 import { Link, useNavigate, useRouter } from '@tanstack/react-router'
-import { Loader2, LogIn, Gift, ScanFace } from 'lucide-react'
+import { AxiosError } from 'axios'
+import { Loader2, LogIn } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -17,9 +19,8 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/context/auth-provider'
-import { sleep, cn } from '@/lib/utils'
-import { AxiosError } from 'axios'
-import { LaravelValidationError, User } from '@/types'
+import { cn } from '@/lib/utils'
+import type { LaravelValidationError } from '@/types'
 
 const formSchema = z.object({
   email: z.email({
@@ -81,8 +82,11 @@ export function UserAuthForm({
               })
             }
           }
+
           if (response?.data?.message) {
-            return 'Error! ' + response?.data?.message || 'Something went wrong.'
+            return (
+              'Error! ' + response?.data?.message || 'Something went wrong.'
+            )
           }
         } else {
           return 'Login Failed! Something went wrong.'
@@ -161,10 +165,10 @@ export function UserAuthForm({
 
         <div className='grid grid-cols-2 gap-2'>
           <Button variant='outline' type='button' disabled={isLoading}>
-            <Gift className='h-4 w-4' /> GitHub
+            <GitHubLogoIcon className='h-4 w-4' /> GitHub
           </Button>
           <Button variant='outline' type='button' disabled={isLoading}>
-            <ScanFace className='h-4 w-4' /> Facebook
+            <TwitterLogoIcon className='h-4 w-4' /> Twitter
           </Button>
         </div>
       </form>

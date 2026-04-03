@@ -1,6 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
 import { useNavigate, useRouter } from '@tanstack/react-router'
-import { Loader2, LogIn, Gift, ScanFace } from 'lucide-react'
+import { AxiosError } from 'axios'
+import { Loader2, LogIn } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -18,8 +20,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/context/auth-provider'
 import { cn } from '@/lib/utils'
-import { AxiosError } from 'axios'
-import { LaravelValidationError } from '@/types'
+import type { LaravelValidationError } from '@/types'
 
 const formSchema = z
   .object({
@@ -184,7 +185,7 @@ export function SignUpForm({
             type='button'
             disabled={isLoading}
           >
-            <Gift className='h-4 w-4' /> GitHub
+            <GitHubLogoIcon className='h-4 w-4' /> GitHub
           </Button>
           <Button
             variant='outline'
@@ -192,7 +193,7 @@ export function SignUpForm({
             type='button'
             disabled={isLoading}
           >
-            <ScanFace className='h-4 w-4' /> Facebook
+            <TwitterLogoIcon className='h-4 w-4' /> Twitter
           </Button>
         </div>
       </form>

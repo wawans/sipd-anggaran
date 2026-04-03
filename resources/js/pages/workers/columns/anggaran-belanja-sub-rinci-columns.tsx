@@ -1,10 +1,10 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
-import { DataTableStatusActions } from '@/pages/workers/components/data-table-status-actions'
 import type { Model } from '@/types'
 
 import { DataTableRowActions } from '../components/data-table-row-actions'
+import { DataTableStatusActions } from '../components/data-table-status-actions'
 
 export const columns: ColumnDef<Model>[] = [
   {

@@ -1,12 +1,13 @@
 import { Link } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
+import { Logo } from '@/assets/logo'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
-import { APP_NAME } from '@/config/app'
+import { APP_TITLE, APP_SUBTITLE } from '@/config/app'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
 
@@ -25,10 +26,13 @@ export function AppTitle() {
             <Link
               to='/'
               onClick={() => setOpenMobile(false)}
-              className='grid flex-1 text-start text-sm leading-tight'
+              className='flex flex-1 flex-row items-center gap-2'
             >
-              <span className='truncate text-xl font-bold'>{APP_NAME}</span>
-              {/* <span className='truncate text-xs'>Vite + ShadcnUI</span> */}
+              <Logo className='size-8' />
+              <div className='grid flex-1 text-start text-sm leading-tight'>
+                <span className='truncate font-bold'>{APP_TITLE}</span>
+                <span className='truncate text-xs'>{APP_SUBTITLE}</span>
+              </div>
             </Link>
             <ToggleSidebar />
           </div>

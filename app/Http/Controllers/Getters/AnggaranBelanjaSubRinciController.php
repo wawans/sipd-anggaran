@@ -20,8 +20,9 @@ class AnggaranBelanjaSubRinciController extends Controller
      */
     public function index()
     {
-        $result = GetAnggaranBelanjaSubRinci::query()->where('status_getter', true)
-            ->orderBy('id')->get();
+        $result = GetAnggaranBelanjaSubRinci::query()
+            ->orderBy('id')
+            ->get();
 
         return response()->json(['status' => true, 'data' => $result]);
     }

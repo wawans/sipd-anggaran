@@ -1,10 +1,8 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
-import type { Model } from '@/types'
 
-import { DataTableRowActions } from '../components/data-table-row-actions'
-import { DataTableStatusActions } from '../components/data-table-status-actions'
+import type { Model } from '@/types'
 
 export const columns: ColumnDef<Model>[] = [
   {
@@ -40,22 +38,7 @@ export const columns: ColumnDef<Model>[] = [
     meta: { className: 'ps-0', tdClassName: 'ps-2' },
   },
   {
-    accessorKey: 'kode_skpd',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Kode SKPD' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'nama_skpd',
+    accessorKey: 'nama_sub_skpd',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama SKPD' />
     ),
@@ -70,9 +53,9 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'total_giat',
+    accessorKey: 'nama_sub_giat',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Total' />
+      <DataTableColumnHeader column={column} title='Nama Sub Kegiatan' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
@@ -82,22 +65,6 @@ export const columns: ColumnDef<Model>[] = [
     meta: {
       className: 'ps-0',
       tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'status_getter',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Active ?' />
-    ),
-    cell: ({ row }) => <DataTableStatusActions row={row} />,
-    meta: { className: 'ps-0', tdClassName: 'ps-2' },
-    filterFn: 'weakEquals',
-  },
-  {
-    id: 'actions',
-    cell: ({ row }) => <DataTableRowActions row={row} />,
-    meta: {
-      thClassName: 'w-14',
     },
   },
 ]

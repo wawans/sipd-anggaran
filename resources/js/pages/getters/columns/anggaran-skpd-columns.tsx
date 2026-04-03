@@ -1,10 +1,8 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
-import type { Model } from '@/types'
 
-import { DataTableRowActions } from '../components/data-table-row-actions'
-import { DataTableStatusActions } from '../components/data-table-status-actions'
+import type { Model } from '@/types'
 
 export const columns: ColumnDef<Model>[] = [
   {
@@ -82,22 +80,8 @@ export const columns: ColumnDef<Model>[] = [
     meta: {
       className: 'ps-0',
       tdClassName: 'ps-2',
+      filterColumn: 'numberRange',
     },
-  },
-  {
-    accessorKey: 'status_getter',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Active ?' />
-    ),
-    cell: ({ row }) => <DataTableStatusActions row={row} />,
-    meta: { className: 'ps-0', tdClassName: 'ps-2' },
-    filterFn: 'weakEquals',
-  },
-  {
-    id: 'actions',
-    cell: ({ row }) => <DataTableRowActions row={row} />,
-    meta: {
-      thClassName: 'w-14',
-    },
+    filterFn: 'inNumberRange',
   },
 ]

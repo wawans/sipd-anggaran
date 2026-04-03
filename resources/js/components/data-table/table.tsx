@@ -10,6 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
+import { ColumnFilter } from './column-filter'
 
 type DataTableTableProps<TData> = {
   table: ReactTable<TData>
@@ -53,6 +54,16 @@ export function DataTableTable<TData>({
                           header.column.columnDef.header,
                           header.getContext()
                         )}
+                    {header.column.getCanFilter() ? (
+                      <div
+                        className={cn(
+                          header.column.getCanSort() ? 'px-2.5' : 'px-3',
+                          'pb-1'
+                        )}
+                      >
+                        <ColumnFilter column={header.column} />
+                      </div>
+                    ) : null}
                   </TableHead>
                 )
               })}

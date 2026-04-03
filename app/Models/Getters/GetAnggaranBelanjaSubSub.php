@@ -33,4 +33,16 @@ class GetAnggaranBelanjaSubSub extends Model
         'nama_sub_bl',
 
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+
+        ];
+    }
 }

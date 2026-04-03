@@ -54,4 +54,19 @@ class GetAnggaranBelanjaSubRinci extends Model
         'total_harga_murni',
 
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'harga_satuan' => 'float',
+            'total_harga' => 'float',
+            'harga_satuan_murni' => 'float',
+            'total_harga_murni' => 'float',
+        ];
+    }
 }

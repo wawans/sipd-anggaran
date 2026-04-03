@@ -20,8 +20,9 @@ class AnggaranBelanjaSubDanaController extends Controller
      */
     public function index()
     {
-        $result = GetAnggaranBelanjaSubDana::query()->where('status_getter', true)
-            ->orderBy('id')->get();
+        $result = GetAnggaranBelanjaSubDana::query()
+            ->orderBy('id')
+            ->get();
 
         return response()->json(['status' => true, 'data' => $result]);
     }

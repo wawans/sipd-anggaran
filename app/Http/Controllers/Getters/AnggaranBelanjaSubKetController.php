@@ -20,8 +20,9 @@ class AnggaranBelanjaSubKetController extends Controller
      */
     public function index()
     {
-        $result = GetAnggaranBelanjaSubKet::query()->where('status_getter', true)
-            ->orderBy('id')->get();
+        $result = GetAnggaranBelanjaSubKet::query()
+            ->orderBy('id')
+            ->get();
 
         return response()->json(['status' => true, 'data' => $result]);
     }

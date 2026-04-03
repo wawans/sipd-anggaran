@@ -1,5 +1,6 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import type { Table } from '@tanstack/react-table'
+import { useState, useDeferredValue, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { DataTableFacetedFilter } from './faceted-filter'
@@ -28,8 +29,17 @@ export function DataTableToolbar<TData>({
   filters = [],
   children,
 }: DataTableToolbarProps<TData>) {
+  const [globalFilterValue, setGlobalFilterValue] = useState<any>(
+    table.getState().globalFilter as any
+  )
+  const deferredGlobalFilterValue = useDeferredValue(globalFilterValue)
+
   const isFiltered =
     table.getState().columnFilters.length > 0 || table.getState().globalFilter
+
+  useEffect(() => {
+    table.setGlobalFilter(deferredGlobalFilterValue)
+  }, [deferredGlobalFilterValue])
 
   return (
     <div className='flex items-center justify-between'>
@@ -48,8 +58,8 @@ export function DataTableToolbar<TData>({
         ) : (
           <Input
             placeholder={searchPlaceholder}
-            value={table.getState().globalFilter ?? ''}
-            onChange={(event) => table.setGlobalFilter(event.target.value)}
+            value={(globalFilterValue ?? '') as string}
+            onChange={(event) => setGlobalFilterValue(event.target.value)}
             className='h-8 w-[150px] lg:w-[250px]'
           />
         )}

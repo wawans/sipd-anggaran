@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext } from 'react'
-import { useLocalStorage } from '@/hooks/use-local-storage'
+import { useSessionStorage } from '@/hooks/use-session-storage'
 import axios from '@/lib/api'
 import type { User } from '@/types'
 
@@ -25,7 +25,7 @@ const AuthKey =
   '.auth.user'
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useLocalStorage<User | null>(AuthKey, null)
+  const [user, setUser] = useSessionStorage<User | null>(AuthKey, null)
 
   const getCsrfToken = useCallback(async (): Promise<void> => {
     await axios.get('/sanctum/csrf-cookie', {

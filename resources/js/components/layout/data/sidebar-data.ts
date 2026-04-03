@@ -12,6 +12,7 @@ import {
   AudioWaveform,
   Command,
   GalleryVerticalEnd,
+  Database,
 } from 'lucide-react'
 import type { SidebarData } from '../types'
 
@@ -52,21 +53,43 @@ export const sidebarData: SidebarData = {
           url: '/users',
           icon: Users,
         },
+      ],
+    },
+    {
+      title: 'Database',
+      items: [
         {
           title: 'Penganggaran',
-          icon: ListTodo,
+          icon: Database,
           items: [
             {
               title: 'Get SKPD',
-              url: '/anggaran/skpd',
+              url: '/getter/anggaran/skpd',
             },
             {
-              title: 'Get Sub Kegiatan',
-              url: '/anggaran/belanja-sub',
+              title: 'Get Sub Giat',
+              url: '/getter/anggaran/belanja-sub',
             },
             {
-              title: 'Get Rinci Sub Kegiatan',
-              url: '/anggaran/belanja-sub-rinci',
+              title: 'Get Rinci Sub Giat',
+              items: [
+                {
+                  title: 'Sub Rinci',
+                  url: '/getter/anggaran/belanja-sub-rinci',
+                },
+                {
+                  title: 'Sub Sub',
+                  url: '/getter/anggaran/belanja-sub-sub',
+                },
+                {
+                  title: 'Sub Ket',
+                  url: '/getter/anggaran/belanja-sub-ket',
+                },
+                {
+                  title: 'Sub Dana',
+                  url: '/getter/anggaran/belanja-sub-dana',
+                },
+              ],
             },
           ],
         },
@@ -84,11 +107,11 @@ export const sidebarData: SidebarData = {
               url: '/worker/anggaran/skpd',
             },
             {
-              title: 'Get Sub Kegiatan',
+              title: 'Get Sub Giat',
               url: '/worker/anggaran/belanja-sub',
             },
             {
-              title: 'Get Rinci Sub Kegiatan',
+              title: 'Get Rinci Sub Giat',
               url: '/worker/anggaran/belanja-sub-rinci',
             },
           ],

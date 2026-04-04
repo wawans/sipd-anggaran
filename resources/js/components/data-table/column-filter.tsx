@@ -6,11 +6,13 @@ export function ColumnFilter({ column }: { column: Column<any, unknown> }) {
   const [value, setValue] = useState<any>(column.getFilterValue() as any)
   const deferredValue = useDeferredValue(value)
 
+  // @ts-expect-error @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { filterColumn } = column.columnDef.meta ?? {}
 
   useEffect(() => {
     column.setFilterValue(deferredValue)
-  }, [deferredValue])
+  }, [column, deferredValue])
 
   return (
     <Input

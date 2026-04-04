@@ -39,7 +39,7 @@ export function DataTableToolbar<TData>({
 
   useEffect(() => {
     table.setGlobalFilter(deferredGlobalFilterValue)
-  }, [deferredGlobalFilterValue])
+  }, [deferredGlobalFilterValue, table])
 
   return (
     <div className='flex items-center justify-between'>

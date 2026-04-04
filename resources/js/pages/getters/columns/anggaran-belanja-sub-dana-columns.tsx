@@ -2,6 +2,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
 
+import { numberFormat } from '@/lib/numberFormat'
 import type { Model } from '@/types'
 
 export const columns: ColumnDef<Model>[] = [
@@ -39,12 +40,17 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'nama_sub_skpd',
+    label: 'Nama Sub SKPD',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama SKPD' />
     ),
-    cell: ({ getValue }) => (
+    cell: ({ getValue, row: { original } }) => (
       <div className='wrap-break-word whitespace-normal'>
         {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_sub_skpd as string}
+        </span>
       </div>
     ),
     meta: {
@@ -53,18 +59,50 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'updated_at',
+    accessorKey: 'nama_sub_giat',
+    label: 'Nama Sub Giat',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama Sub Kegiatan' />
     ),
-    cell: ({ getValue }) => (
+    cell: ({ getValue, row: { original } }) => (
       <div className='wrap-break-word whitespace-normal'>
         {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_sub_giat as string}
+        </span>
       </div>
     ),
     meta: {
       className: 'ps-0',
       tdClassName: 'ps-2',
     },
+  },
+  {
+    accessorKey: 'nama_dana',
+    label: 'Nama Dana',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Dana' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='min-w-[150px] wrap-break-word whitespace-normal lg:min-w-[250px]'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_dana as string}
+        </span>
+      </div>
+    ),
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+  },
+  {
+    accessorKey: 'pagu_dana',
+    label: 'Pagu Dana',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Pagu Dana' />
+    ),
+    cell: ({ getValue }) => <>{numberFormat(getValue() as number)}</>,
+    meta: { className: 'pe-0 text-right', tdClassName: 'pe-2' },
+    filterFn: 'inNumberRange',
   },
 ]

@@ -32,6 +32,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'id',
+    label: 'ID',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='ID' />
     ),
@@ -40,6 +41,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'nama_skpd',
+    label: 'Nama SKPD',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama SKPD' />
     ),
@@ -56,6 +58,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'nama_sub_skpd',
+    label: 'Nama Sub SKPD',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama Sub SKPD' />
     ),
@@ -71,7 +74,59 @@ export const columns: ColumnDef<Model>[] = [
     meta: { className: 'ps-0', tdClassName: 'ps-2' },
   },
   {
+    accessorKey: 'nama_urusan',
+    label: 'Nama Urusan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Urusan' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='min-w-[150px] wrap-break-word whitespace-normal lg:min-w-[250px]'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_urusan as string}
+        </span>
+      </div>
+    ),
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+  },
+  {
+    accessorKey: 'nama_bidang_urusan',
+    label: 'Nama Bidang Urusan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Bidang Urusan' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='min-w-[150px] wrap-break-word whitespace-normal lg:min-w-[250px]'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_bidang_urusan as string}
+        </span>
+      </div>
+    ),
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+  },
+  {
+    accessorKey: 'nama_program',
+    label: 'Nama Program',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Program' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='min-w-[150px] wrap-break-word whitespace-normal lg:min-w-[250px]'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_program as string}
+        </span>
+      </div>
+    ),
+    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+  },
+  {
     accessorKey: 'nama_giat',
+    label: 'Nama Giat',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama Giat' />
     ),
@@ -88,6 +143,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'nama_sub_giat',
+    label: 'Nama Sub Giat',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama Sub Giat' />
     ),
@@ -104,6 +160,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'pagu',
+    label: 'Pagu Sub Giat',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Pagu Sub Giat' />
     ),
@@ -113,6 +170,7 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'rincian',
+    label: 'Pagu Rinci',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Pagu Rinci' />
     ),

@@ -27,6 +27,8 @@ export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const selectedRows = table.getFilteredSelectedRowModel().rows
 
+  // @ts-expect-error @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter()
   const queryClient = useQueryClient()
   const { mutateAsync } = useMutation({

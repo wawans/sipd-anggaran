@@ -13,9 +13,11 @@ type DataTableRowActionsProps = {
 }
 
 export function DataTableStatusActions({ row }: DataTableRowActionsProps) {
-  const { setOpen, setCurrentRow, update, queryOptions } = useDataTable()
+  const { update, queryOptions } = useDataTable()
   const model = row.original
 
+  // @ts-expect-error @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter()
   const queryClient = useQueryClient()
   const { mutateAsync } = useMutation({

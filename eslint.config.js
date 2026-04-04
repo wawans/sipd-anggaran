@@ -102,7 +102,7 @@ export default [
                 },
             ],
             // Prevent duplicate imports from the same module
-            'no-duplicate-imports': 'error',
+            'no-duplicate-imports': ['error', { 'allowSeparateTypeImports': true }],
             'import/order': [
                 'error',
                 {

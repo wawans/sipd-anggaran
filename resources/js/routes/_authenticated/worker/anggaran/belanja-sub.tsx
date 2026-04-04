@@ -32,6 +32,7 @@ export const Route = createFileRoute(
   validateSearch: searchSchema,
 })
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   const data = Route.useLoaderData()
 

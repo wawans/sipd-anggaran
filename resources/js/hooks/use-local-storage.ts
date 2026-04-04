@@ -55,6 +55,7 @@ export function useLocalStorage<T>(
       try {
         parsed = JSON.parse(value)
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error parsing JSON:', error)
 
         return defaultValue // Return initialValue if parsing fails
@@ -81,6 +82,7 @@ export function useLocalStorage<T>(
 
       return raw ? deserializer(raw) : initialValueToUse
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(`Error reading localStorage key “${key}”:`, error)
 
       return initialValueToUse
@@ -100,6 +102,7 @@ export function useLocalStorage<T>(
   const setValue: Dispatch<SetStateAction<T>> = useEventCallback((value) => {
     // Prevent build error "window is undefined" but keeps working
     if (IS_SERVER) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Tried setting localStorage key “${key}” even though environment is not a client`
       )
@@ -118,6 +121,7 @@ export function useLocalStorage<T>(
       // We dispatch a custom event so every similar useLocalStorage hook is notified
       window.dispatchEvent(new StorageEvent('local-storage', { key }))
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(`Error setting localStorage key “${key}”:`, error)
     }
   })
@@ -125,6 +129,7 @@ export function useLocalStorage<T>(
   const removeValue = useEventCallback(() => {
     // Prevent build error "window is undefined" but keeps working
     if (IS_SERVER) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Tried removing localStorage key “${key}” even though environment is not a client`
       )

@@ -92,6 +92,7 @@ export const columns: ColumnDef<Model>[] = [
     cell: ({ row }) => <DataTableStatusActions row={row} />,
     meta: { className: 'ps-0', tdClassName: 'ps-2' },
     filterFn: 'weakEquals',
+    enableColumnFilter: false,
   },
   {
     id: 'actions',

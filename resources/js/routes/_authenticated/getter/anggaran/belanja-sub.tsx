@@ -25,7 +25,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='SKPD'
+      entity='Sub Giat'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

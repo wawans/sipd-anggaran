@@ -10,6 +10,7 @@ export function useClipboard(): UseClipboardReturn {
 
   const copy: CopyFn = async (text) => {
     if (!navigator?.clipboard) {
+      // eslint-disable-next-line no-console
       console.warn('Clipboard not supported')
 
       return false
@@ -21,6 +22,7 @@ export function useClipboard(): UseClipboardReturn {
 
       return true
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn('Copy failed', error)
       setCopiedText(null)
 

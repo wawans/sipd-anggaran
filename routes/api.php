@@ -13,7 +13,7 @@ Route::get('/auth/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::prefix('getter')->group(function () {
+Route::middleware('auth:sanctum')->prefix('getter')->group(function () {
     Route::prefix('anggaran')->group(function () {
         Route::prefix('skpd')->controller(AnggaranSkpdController::class)->group(function () {
             Route::put('/', 'updates');

@@ -1,6 +1,4 @@
-// import { getRouteApi } from '@tanstack/react-router'
 import type { ColumnDef } from '@tanstack/react-table'
-import { CheckCircle, CircleOff } from 'lucide-react'
 import { Suspense } from 'react'
 import { Main } from '@/components/layout/main'
 import { Page } from '@/components/layout/page'
@@ -11,23 +9,9 @@ import { DataTablePrimaryButtons } from './components/data-table-primary-buttons
 import { DataTableProvider } from './components/data-table-provider'
 import { DataTableSuspense } from './components/data-table-suspense'
 
-export const statuses = [
-  {
-    label: 'Active',
-    value: '1' as const,
-    icon: CheckCircle,
-  },
-  {
-    label: 'Inactive',
-    value: '0' as const,
-    icon: CircleOff,
-  },
-]
-
 export default function IndexPage({
   entity,
   columns,
-  filters = [],
   queryOptions,
   url,
 }: {

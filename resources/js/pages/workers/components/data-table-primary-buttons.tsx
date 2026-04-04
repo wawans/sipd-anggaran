@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { useDataTable } from './data-table-provider'
 
 export function DataTablePrimaryButtons() {
-  const { setOpen, url } = useDataTable()
+  const { url } = useDataTable()
 
   const onExport = useCallback(() => {
     toast.promise(
@@ -44,12 +44,6 @@ export function DataTablePrimaryButtons() {
         },
       }
     )
-  }, [url])
-
-  const onTruncate = useCallback(() => {
-    toast.promise(() => axios.get(url + '/truncate'), {
-      loading: 'Truncating...',
-    })
   }, [url])
 
   return (

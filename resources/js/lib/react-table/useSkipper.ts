@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react'
 
 export function useSkipper() {
   const shouldSkipRef = useRef<boolean | null>(true)
+  // eslint-disable-next-line react-hooks/refs
   const shouldSkip = shouldSkipRef.current
 
   // Wrap a function with this to skip a pagination reset temporarily

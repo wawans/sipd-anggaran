@@ -154,7 +154,7 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Help Center',
-          url: '/help-center',
+          url: '/about',
           icon: HelpCircle,
         },
       ],

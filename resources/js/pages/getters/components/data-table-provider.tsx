@@ -110,6 +110,7 @@ export const useDataTable = () => {
   }
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const dataTableQueryOptions = (url: string) =>
   queryOptions({
     queryKey: ['getters', { url }],

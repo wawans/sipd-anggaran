@@ -55,6 +55,7 @@ export function useSessionStorage<T>(
       try {
         parsed = JSON.parse(value)
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error parsing JSON:', error)
 
         return defaultValue // Return initialValue if parsing fails
@@ -81,6 +82,7 @@ export function useSessionStorage<T>(
 
       return raw ? deserializer(raw) : initialValueToUse
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(`Error reading sessionStorage key “${key}”:`, error)
 
       return initialValueToUse
@@ -100,6 +102,7 @@ export function useSessionStorage<T>(
   const setValue: Dispatch<SetStateAction<T>> = useEventCallback((value) => {
     // Prevent build error "window is undefined" but keeps working
     if (IS_SERVER) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Tried setting sessionStorage key “${key}” even though environment is not a client`
       )
@@ -118,6 +121,7 @@ export function useSessionStorage<T>(
       // We dispatch a custom event so every similar useSessionStorage hook is notified
       window.dispatchEvent(new StorageEvent('session-storage', { key }))
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(`Error setting sessionStorage key “${key}”:`, error)
     }
   })
@@ -125,6 +129,7 @@ export function useSessionStorage<T>(
   const removeValue = useEventCallback(() => {
     // Prevent build error "window is undefined" but keeps working
     if (IS_SERVER) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Tried removing sessionStorage key “${key}” even though environment is not a client`
       )

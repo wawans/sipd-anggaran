@@ -1,5 +1,7 @@
 <?php
 
+use App\Exceptions\AlreadyAuthenticatedException;
+use App\Http\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,6 +19,18 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->statefulApi();
         $middleware->authenticateSessions();
         // $middleware->throttleApi();
+
+        $middleware->alias([
+            'verified' => EnsureEmailIsVerified::class,
+        ]);
+
+        $middleware->redirectUsersTo(function (Illuminate\Http\Request $request) {
+            if ($request->expectsJson()) {
+                throw new AlreadyAuthenticatedException;
+            }
+
+            return '/';
+        });
 
         $middleware->web(append: [
             AddLinkHeadersForPreloadedAssets::class,

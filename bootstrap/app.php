@@ -17,14 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->statefulApi();
         $middleware->authenticateSessions();
         // $middleware->throttleApi();
-        // $middleware->preventRequestForgery(allowSameSite: true);
 
-        // $middleware->api(append: [
-        //     \App\Http\Middleware\JsonMiddleware::class,
-        // ]);
         $middleware->web(append: [
             AddLinkHeadersForPreloadedAssets::class,
-            // \App\Http\Middleware\JsonMiddleware::class,
         ]);
 
         $middleware->trustProxies(at: '*');

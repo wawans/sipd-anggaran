@@ -13,6 +13,7 @@ import {
   Command,
   GalleryVerticalEnd,
   Database,
+  KeyRound,
 } from 'lucide-react'
 import type { SidebarData } from '../types'
 
@@ -134,6 +135,11 @@ export const sidebarData: SidebarData = {
               title: 'Account',
               url: '/settings/account',
               icon: Wrench,
+            },
+            {
+              title: 'API Keys',
+              url: '/settings/api-keys',
+              icon: KeyRound,
             },
             {
               title: 'Appearance',

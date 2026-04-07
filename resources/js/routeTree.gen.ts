@@ -20,6 +20,7 @@ import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as authRegisterRouteImport } from './routes/(auth)/register'
 import { Route as authLoginRouteImport } from './routes/(auth)/login'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
@@ -90,6 +91,11 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/',
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/users/': typeof AuthenticatedUsersIndexRoute
   '/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
@@ -217,6 +224,7 @@ export interface FileRoutesByTo {
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/users': typeof AuthenticatedUsersIndexRoute
   '/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
@@ -245,6 +253,7 @@ export interface FileRoutesById {
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
   '/_authenticated/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/_authenticated/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/_authenticated/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
@@ -273,6 +282,7 @@ export interface FileRouteTypes {
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/'
+    | '/users/'
     | '/getter/anggaran/belanja-sub'
     | '/getter/anggaran/belanja-sub-dana'
     | '/getter/anggaran/belanja-sub-ket'
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/settings/display'
     | '/settings/notifications'
     | '/settings'
+    | '/users'
     | '/getter/anggaran/belanja-sub'
     | '/getter/anggaran/belanja-sub-dana'
     | '/getter/anggaran/belanja-sub-ket'
@@ -325,6 +336,7 @@ export interface FileRouteTypes {
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
     | '/_authenticated/settings/'
+    | '/_authenticated/users/'
     | '/_authenticated/getter/anggaran/belanja-sub'
     | '/_authenticated/getter/anggaran/belanja-sub-dana'
     | '/_authenticated/getter/anggaran/belanja-sub-ket'
@@ -423,6 +435,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/users/': {
+      id: '/_authenticated/users/'
+      path: '/users'
+      fullPath: '/users/'
+      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings/': {
@@ -555,6 +574,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedAboutRoute: typeof AuthenticatedAboutRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
   AuthenticatedGetterAnggaranBelanjaSubRoute: typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   AuthenticatedGetterAnggaranBelanjaSubDanaRoute: typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   AuthenticatedGetterAnggaranBelanjaSubKetRoute: typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
@@ -569,6 +589,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedAboutRoute: AuthenticatedAboutRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
   AuthenticatedGetterAnggaranBelanjaSubRoute:
     AuthenticatedGetterAnggaranBelanjaSubRoute,
   AuthenticatedGetterAnggaranBelanjaSubDanaRoute:

@@ -1,9 +1,5 @@
 import type { ColumnDef, Table as TTable } from '@tanstack/react-table'
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
+import { getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   TableBody,
@@ -82,22 +78,7 @@ export function DataTableSkeleton<TData>({
                       header.column.columnDef.meta?.thClassName
                     )}
                   >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                    {header.column.getCanFilter() ? (
-                      <div
-                        className={cn(
-                          header.column.getCanSort() ? 'px-2.5' : 'px-3',
-                          'pb-1'
-                        )}
-                      >
-                        <Skeleton className='h-4 flex-1' />
-                      </div>
-                    ) : null}
+                    <Skeleton className='h-6 flex-1' />
                   </TableHead>
                 )
               })}

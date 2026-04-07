@@ -7,6 +7,7 @@ use App\Http\Controllers\Getters\AnggaranBelanjaSubKetController;
 use App\Http\Controllers\Getters\AnggaranBelanjaSubRinciController;
 use App\Http\Controllers\Getters\AnggaranBelanjaSubSubController;
 use App\Http\Controllers\Getters\AnggaranSkpdController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,17 @@ Route::get('/auth/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->prefix('account')->name('account.')->group(function () {
-    Route::apiResource('token', ApiTokenAccountController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::apiResource('token', ApiTokenAccountController::class);
+    });
+    Route::prefix('user')->name('user.')->controller(UserController::class)->group(function () {
+        Route::post('/deletes', 'destroys')->name('destroys');
+        Route::post('/import', 'import')->name('import');
+        Route::get('/export/template', 'template')->name('export.template');
+        Route::get('/export', 'export')->name('export');
+    });
+    Route::apiResource('user', UserController::class)->names('user');
 });
 
 Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(function () {

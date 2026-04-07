@@ -2,6 +2,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
 import { Checkbox } from '@/components/ui/checkbox'
+import { blank } from '@/lib/blank'
 import { cn } from '@/lib/utils'
 import type { User } from '@/types'
 import { DataTableRowActions } from './data-table-row-actions'
@@ -57,6 +58,28 @@ export const columns: ColumnDef<User>[] = [
     ),
     cell: ({ row }) => (
       <div className='w-fit ps-2 text-nowrap'>{row.getValue('email')}</div>
+    ),
+  },
+  {
+    accessorKey: 'email_verified_at',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Verified' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='w-fit ps-2 text-nowrap'>
+        {!blank(getValue()) ? 'Yes' : 'No'}
+      </div>
+    ),
+  },
+  {
+    accessorKey: 'updated_at',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Updated' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='w-fit ps-2 text-nowrap'>
+        {getValue() ? new Date(getValue() as string).toLocaleDateString() : '-'}
+      </div>
     ),
   },
   {

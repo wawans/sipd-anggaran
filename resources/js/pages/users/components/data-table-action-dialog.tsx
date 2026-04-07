@@ -1,7 +1,11 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import type { AxiosError } from 'axios'
+import { Save } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
@@ -22,7 +26,10 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import type { User } from '@/types'
+import { Spinner } from '@/components/ui/spinner'
+import axios from '@/lib/api'
+import type { LaravelValidationError, User } from '@/types'
+import { dataTableQueryOptions } from './data-table-provider'
 // import { showSubmittedData } from '@/lib/show-submitted-data'
 
 const formSchema = z
@@ -32,7 +39,7 @@ const formSchema = z
       error: (iss) => (iss.input === '' ? 'Email is required.' : undefined),
     }),
     password: z.string().transform((pwd) => pwd.trim()),
-    confirmPassword: z.string().transform((pwd) => pwd.trim()),
+    password_confirmation: z.string().transform((pwd) => pwd.trim()),
     isEdit: z.boolean(),
   })
   .refine(
@@ -88,16 +95,16 @@ const formSchema = z
     }
   )
   .refine(
-    ({ isEdit, password, confirmPassword }) => {
+    ({ isEdit, password, password_confirmation }) => {
       if (isEdit && !password) {
         return true
       }
 
-      return password === confirmPassword
+      return password === password_confirmation
     },
     {
       message: "Passwords don't match.",
-      path: ['confirmPassword'],
+      path: ['password_confirmation'],
     }
   )
 type UserForm = z.infer<typeof formSchema>
@@ -120,25 +127,61 @@ export function DataTableActionDialog({
       ? {
           ...currentRow,
           password: '',
-          confirmPassword: '',
+          password_confirmation: '',
           isEdit,
         }
       : {
           name: '',
           email: '',
-
           password: '',
-          confirmPassword: '',
+          password_confirmation: '',
           isEdit,
         },
   })
 
-  // @ts-expect-error @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const queryClient = useQueryClient()
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: UserForm) =>
+      isEdit
+        ? axios.put('/api/user/' + currentRow.id, values)
+        : axios.post('/api/user', values),
+    onSuccess: () => {
+      form.reset()
+      onOpenChange(false)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: dataTableQueryOptions.queryKey,
+        refetchType: 'all',
+      })
+    },
+    onError: ({ response }: AxiosError<LaravelValidationError>) => {
+      if (response?.status === 422) {
+        if (response?.data?.errors) {
+          for (const [key, value] of Object.entries(response.data.errors)) {
+            form.setError(key as keyof z.infer<typeof formSchema>, {
+              type: 'server',
+              message: value[0] || 'Invalid',
+            })
+          }
+
+          // if (Object.hasOwn(response.data.errors, 'error')) showErrorAlert()
+        }
+
+        if (response?.data?.message) {
+          toast.error('Error!', {
+            description: response?.data?.message || 'Something went wrong.',
+          })
+        }
+      } else {
+        toast.error('Error!', { description: 'Something went wrong' })
+      }
+    },
+  })
+
   const onSubmit = (values: UserForm) => {
-    form.reset()
-    // showSubmittedData(values)
-    onOpenChange(false)
+    form.clearErrors()
+    mutate(values)
   }
 
   const isPasswordTouched = !!form.formState.dirtyFields.password
@@ -168,6 +211,7 @@ export function DataTableActionDialog({
             >
               <FormField
                 control={form.control}
+                disabled={isPending}
                 name='name'
                 render={({ field }) => (
                   <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
@@ -185,6 +229,7 @@ export function DataTableActionDialog({
               />
               <FormField
                 control={form.control}
+                disabled={isPending}
                 name='email'
                 render={({ field }) => (
                   <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
@@ -202,6 +247,7 @@ export function DataTableActionDialog({
               />
               <FormField
                 control={form.control}
+                disabled={isPending}
                 name='password'
                 render={({ field }) => (
                   <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
@@ -221,7 +267,8 @@ export function DataTableActionDialog({
               />
               <FormField
                 control={form.control}
-                name='confirmPassword'
+                disabled={isPending}
+                name='password_confirmation'
                 render={({ field }) => (
                   <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
                     <FormLabel className='col-span-2 text-end'>
@@ -243,8 +290,14 @@ export function DataTableActionDialog({
           </Form>
         </div>
         <DialogFooter>
-          <Button type='submit' form='user-form'>
-            Save changes
+          <Button
+            className='min-w-[7rem]'
+            disabled={isPending}
+            type='submit'
+            form='user-form'
+          >
+            {isPending ? <Spinner /> : <Save />}
+            <span>{isEdit ? 'Update' : 'Save'}</span>
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -11,7 +11,9 @@ export const Route = createFileRoute('/_authenticated')({
           throw redirect({
             to: '/login',
             search: {
-              redirect: location.href,
+              ...(location.href.includes('login')
+                ? {}
+                : { redirect: location.href }),
             },
           })
         }
@@ -23,7 +25,9 @@ export const Route = createFileRoute('/_authenticated')({
         throw redirect({
           to: '/login',
           search: {
-            redirect: location.href,
+            ...(location.href.includes('login')
+              ? {}
+              : { redirect: location.href }),
           },
         })
       }

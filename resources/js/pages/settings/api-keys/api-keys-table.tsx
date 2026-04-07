@@ -29,7 +29,7 @@ const columns: ColumnDef<any>[] = [
     cell: ({ getValue }) => {
       const value = getValue()
 
-      return value ? new Date(value).toLocaleDateString() : '-'
+      return value ? new Date(value as string).toLocaleDateString() : '-'
     },
   },
   {
@@ -38,7 +38,7 @@ const columns: ColumnDef<any>[] = [
     cell: ({ getValue }) => {
       const value = getValue()
 
-      return value ? new Date(value).toLocaleDateString() : '-'
+      return value ? new Date(value as string).toLocaleDateString() : '-'
     },
   },
   {
@@ -47,7 +47,7 @@ const columns: ColumnDef<any>[] = [
     cell: ({ getValue }) => {
       const value = getValue()
 
-      return value ? new Date(value).toLocaleDateString() : '-'
+      return value ? new Date(value as string).toLocaleDateString() : '-'
     },
   },
 ]
@@ -55,7 +55,9 @@ const columns: ColumnDef<any>[] = [
 export function ApiKeysTable() {
   const { user } = useAuth()
 
-  const { data, isLoading } = useQuery(apiKeysTableQueryOptions(user?.id))
+  const { data, isLoading } = useQuery(
+    apiKeysTableQueryOptions(user?.id as string | number)
+  )
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
@@ -73,7 +75,7 @@ export function ApiKeysTable() {
       <div className='mb-4'>
         <p>Your API Keys</p>
       </div>
-      {(!isLoading || (data && data.length > 0)) && (
+      {(!isLoading || (data && (data as []).length > 0)) && (
         <DataTableTable table={table} />
       )}
     </div>

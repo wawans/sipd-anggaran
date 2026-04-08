@@ -21,16 +21,15 @@ export function SignOutDialog({ open, onOpenChange }: SignOutDialogProps) {
   const { mutate, isPending } = useMutation({
     mutationFn: () => logout(),
     onSettled: () => {
-      router.invalidate().finally(() => {
-        // Preserve current location for redirect after sign-in
-        // @ts-expect-error @typescript-eslint/no-unused-vars
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const currentPath = location.href
-        navigate({
-          to: '/login',
-          // search: { redirect: currentPath },
-          replace: true,
-        })
+      router.invalidate()
+      // Preserve current location for redirect after sign-in
+      // @ts-expect-error @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const currentPath = location.href
+      navigate({
+        to: '/login',
+        // search: { redirect: currentPath },
+        replace: true,
       })
     },
     onError: ({ response }: AxiosError<LaravelValidationError>) => {

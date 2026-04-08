@@ -5,7 +5,7 @@ namespace App\Models\Getters;
 use App\Support\Eloquent\Concerns\SingularTable;
 use Illuminate\Database\Eloquent\Model;
 
-class GetAnggaranSkpd extends Model
+class GetUrusanBidang extends Model
 {
     use SingularTable;
 
@@ -15,20 +15,14 @@ class GetAnggaranSkpd extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_bidang_urusan',
         'tahun',
         'id_daerah',
-        'id_skpd',
-        'id_unit',
-        'kode_skpd',
-        'nama_skpd',
-        'set_pagu_skpd',
-        'set_pagu_giat',
-        'pagu_murni',
-        'rinci_giat',
-        'total_giat',
-        'belanja_terbuka',
-        'rincian_terbuka',
-        'status_getter',
+        'id_urusan',
+        'id_fungsi',
+        'kode_bidang_urusan',
+        'nama_bidang_urusan',
+        'bidang_urusan_alias',
     ];
 
     /**
@@ -39,11 +33,7 @@ class GetAnggaranSkpd extends Model
     protected function casts(): array
     {
         return [
-            'set_pagu_skpd' => 'float',
-            'set_pagu_giat' => 'float',
-            'pagu_murni' => 'float',
-            'rinci_giat' => 'float',
-            'status_getter' => 'boolean',
+            //
         ];
     }
 }

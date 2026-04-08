@@ -2,11 +2,12 @@
 
 namespace App\Models\Getters;
 
+use App\Support\Eloquent\Concerns\SingularTable;
 use Illuminate\Database\Eloquent\Model;
 
 class GetAnggaranBelanjaSub extends Model
 {
-    protected $table = 'get_anggaran_belanja_sub';
+    use SingularTable;
 
     /**
      * The attributes that are mass assignable.

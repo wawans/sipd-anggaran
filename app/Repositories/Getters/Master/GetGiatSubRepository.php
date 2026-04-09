@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetGiatSub;
+use App\Models\Getters\Master\GetGiatSub;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetGiatSub $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetGiatSub query()
- * @method \App\Models\Getters\GetGiatSub update(array $attributes, \App\Models\Getters\GetGiatSub $getGiatSub)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetGiatSub query()
+ * @method \App\Models\Getters\Master\GetGiatSub update(array $attributes, \App\Models\Getters\Master\GetGiatSub $getGiatSub)
  */
 class GetGiatSubRepository extends Repository
 {

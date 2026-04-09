@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetAkun;
+use App\Models\Getters\Master\GetAkun;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetAkun $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetAkun query()
- * @method \App\Models\Getters\GetAkun update(array $attributes, \App\Models\Getters\GetAkun $getAkun)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetAkun query()
+ * @method \App\Models\Getters\Master\GetAkun update(array $attributes, \App\Models\Getters\Master\GetAkun $getAkun)
  */
 class GetAkunRepository extends Repository
 {

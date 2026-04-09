@@ -52,10 +52,10 @@ class AppServiceProvider extends ServiceProvider
 
     protected function configureMacros(): void
     {
-        Route::macro('bulkResource', function ($uri, $controller) {
-            Route::post($uri, [$controller, 'stores'])->name("$uri.stores");
-            Route::put($uri, [$controller, 'updates'])->name("$uri.updates");
-            Route::delete($uri, [$controller, 'destroys'])->name("$uri.destroys");
+        Route::macro('bulkResource', function ($uri, $controller, $path = 'bulk') {
+            Route::post("$uri/$path", [$controller, 'stores'])->name("$uri.stores");
+            Route::put("$uri/$path", [$controller, 'updates'])->name("$uri.updates");
+            Route::delete("$uri/$path", [$controller, 'destroys'])->name("$uri.destroys");
         });
 
         Route::macro('exportImport', function ($uri, $controller) {

@@ -1,6 +1,5 @@
 <?php
 
-use App\Exceptions\AlreadyAuthenticatedException;
 use App\Http\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -26,7 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->redirectUsersTo(function (Illuminate\Http\Request $request) {
             if ($request->expectsJson()) {
-                throw new AlreadyAuthenticatedException;
+                return response()->json(['message' => __('Already Authenticated')], 409);
             }
 
             return '/';

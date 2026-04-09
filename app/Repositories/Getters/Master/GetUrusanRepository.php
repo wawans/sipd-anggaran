@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetUrusan;
+use App\Models\Getters\Master\GetUrusan;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Cache;
  *
  * @property GetUrusan $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetUrusan query()
- * @method \App\Models\Getters\GetUrusan update(array $attributes, \App\Models\Getters\GetUrusan $getUrusan)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetUrusan query()
+ * @method \App\Models\Getters\Master\GetUrusan update(array $attributes, \App\Models\Getters\Master\GetUrusan $getUrusan)
  */
 class GetUrusanRepository extends Repository
 {

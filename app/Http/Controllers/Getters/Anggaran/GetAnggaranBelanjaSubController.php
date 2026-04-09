@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Controllers\Getters\Anggaran;
+
+use App\Http\Controllers\Concerns\WithExportImport;
+use App\Http\Controllers\Controller;
+use App\Jobs\Getters\Anggaran\GetAnggaranBelanjaSubJob;
+use App\Models\Getters\Anggaran\GetAnggaranBelanjaSub;
+use App\Repositories\Getters\Anggaran\GetAnggaranBelanjaSubRepository;
+use Illuminate\Http\Request;
+
+class GetAnggaranBelanjaSubController extends Controller
+{
+    use WithExportImport;
+
+    public function __construct(protected GetAnggaranBelanjaSubRepository $repository) {}
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        $result = GetAnggaranBelanjaSub::query()
+            ->when($request->has('status'), function ($query) use ($request) {
+                $query->where('status_getter', $request->input('status'));
+            })
+            ->orderBy('id')
+            ->get();
+
+        return response()->json(['status' => true, 'data' => $result]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate(['data' => ['required', 'array']]);
+
+        dispatch(new GetAnggaranBelanjaSubJob($validated['data']));
+
+        return response()->json(['status' => true]);
+    }
+
+    public function update(Request $request, GetAnggaranBelanjaSub $id)
+    {
+        $validated = $request->validate(['status_getter' => ['required', 'boolean']]);
+
+        $model = $this->repository->edit($validated, $id);
+
+        return response()->json(['status' => true, 'data' => $model]);
+    }
+
+    public function updates(Request $request)
+    {
+        $validated = $request->validate([
+            'status_getter' => ['required', 'boolean'],
+            'ids' => ['required', 'array'],
+        ]);
+
+        $this->repository->edits(collect($validated)->except('ids')->toArray(), $validated['ids']);
+
+        return response()->json(['status' => true]);
+    }
+}

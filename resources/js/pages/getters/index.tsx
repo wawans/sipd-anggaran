@@ -1,5 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { Suspense } from 'react'
+import { DataTableSkeleton } from '@/components/data-table/skeleton'
 import { Main } from '@/components/layout/main'
 import { Page } from '@/components/layout/page'
 import type { Model } from '@/types'
@@ -29,7 +30,7 @@ export default function IndexPage({
             </div>
             <DataTablePrimaryButtons />
           </div>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<DataTableSkeleton columns={columns} />}>
             <DataTableSuspense queryOptions={queryOptions} columns={columns} />
           </Suspense>
         </Main>

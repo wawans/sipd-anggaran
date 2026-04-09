@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Getters\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Getters\Master\GetSkpdSubJob;
-use App\Models\Getters\GetSkpdSub;
+use App\Models\Getters\Master\GetSkpdSub;
 use App\Repositories\Getters\Master\GetSkpdSubRepository;
 use App\Support\Response\ApiResponse;
 // use App\Repositories\GetSkpdSubRepository;

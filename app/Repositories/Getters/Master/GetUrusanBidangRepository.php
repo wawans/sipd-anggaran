@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetUrusanBidang;
+use App\Models\Getters\Master\GetUrusanBidang;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetUrusanBidang $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetUrusanBidang query()
- * @method \App\Models\Getters\GetUrusanBidang update(array $attributes, \App\Models\Getters\GetUrusanBidang $getUrusanBidang)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetUrusanBidang query()
+ * @method \App\Models\Getters\Master\GetUrusanBidang update(array $attributes, \App\Models\Getters\Master\GetUrusanBidang $getUrusanBidang)
  */
 class GetUrusanBidangRepository extends Repository
 {

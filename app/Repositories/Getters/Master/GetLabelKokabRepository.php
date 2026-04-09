@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetLabelKokab;
+use App\Models\Getters\Master\GetLabelKokab;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetLabelKokab $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetLabelKokab query()
- * @method \App\Models\Getters\GetLabelKokab update(array $attributes, \App\Models\Getters\GetLabelKokab $getLabelKokab)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetLabelKokab query()
+ * @method \App\Models\Getters\Master\GetLabelKokab update(array $attributes, \App\Models\Getters\Master\GetLabelKokab $getLabelKokab)
  */
 class GetLabelKokabRepository extends Repository
 {

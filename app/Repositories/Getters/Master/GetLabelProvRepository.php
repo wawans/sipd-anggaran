@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetLabelProv;
+use App\Models\Getters\Master\GetLabelProv;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetLabelProv $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetLabelProv query()
- * @method \App\Models\Getters\GetLabelProv update(array $attributes, \App\Models\Getters\GetLabelProv $getLabelProv)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetLabelProv query()
+ * @method \App\Models\Getters\Master\GetLabelProv update(array $attributes, \App\Models\Getters\Master\GetLabelProv $getLabelProv)
  */
 class GetLabelProvRepository extends Repository
 {

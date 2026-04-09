@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Getters\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Getters\Master\GetGiatSubJob;
-use App\Models\Getters\GetGiatSub;
+use App\Models\Getters\Master\GetGiatSub;
 use App\Repositories\Getters\Master\GetGiatSubRepository;
 use App\Support\Response\ApiResponse;
 // use App\Repositories\GetGiatSubRepository;

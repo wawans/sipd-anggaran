@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetProgram;
+use App\Models\Getters\Master\GetProgram;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetProgram $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetProgram query()
- * @method \App\Models\Getters\GetProgram update(array $attributes, \App\Models\Getters\GetProgram $getProgram)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetProgram query()
+ * @method \App\Models\Getters\Master\GetProgram update(array $attributes, \App\Models\Getters\Master\GetProgram $getProgram)
  */
 class GetProgramRepository extends Repository
 {

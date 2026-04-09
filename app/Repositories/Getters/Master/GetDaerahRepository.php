@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Getters\Master;
 
-use App\Models\Getters\GetDaerah;
+use App\Models\Getters\Master\GetDaerah;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property GetDaerah $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\GetDaerah query()
- * @method \App\Models\Getters\GetDaerah update(array $attributes, \App\Models\Getters\GetDaerah $getDaerah)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\GetDaerah query()
+ * @method \App\Models\Getters\Master\GetDaerah update(array $attributes, \App\Models\Getters\Master\GetDaerah $getDaerah)
  */
 class GetDaerahRepository extends Repository
 {

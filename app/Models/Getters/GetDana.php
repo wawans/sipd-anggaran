@@ -15,9 +15,11 @@ class GetDana extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_dana',
         'tahun',
         'id_daerah',
-        //
+        'kode_dana',
+        'nama_dana',
     ];
 
     /**

@@ -15,9 +15,11 @@ class GetSkpdSub extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_sub_skpd',
         'tahun',
         'id_daerah',
-        //
+        'kode_sub_skpd',
+        'nama_sub_skpd',
     ];
 
     /**

@@ -15,9 +15,15 @@ class GetAnggaranBelanjaSubDetilLokasi extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_detil_lokasi',
         'tahun',
         'id_daerah',
-        //
+        'id_unit',
+        'id_bl',
+        'id_sub_bl',
+        'id_kab_kota',
+        'id_camat',
+        'id_lurah',
     ];
 
     /**

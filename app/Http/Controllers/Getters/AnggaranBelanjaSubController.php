@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Getters;
 
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
-use App\Jobs\Getters\AnggaranBelanjaSubJob;
+use App\Jobs\Getters\Anggaran\AnggaranBelanjaSubJob;
 use App\Models\Getters\GetAnggaranBelanjaSub;
 use App\Repositories\Getters\GetAnggaranBelanjaSubRepository;
 use Illuminate\Http\Request;

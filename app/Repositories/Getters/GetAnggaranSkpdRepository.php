@@ -78,4 +78,9 @@ class GetAnggaranSkpdRepository extends Repository
     {
         return $this->query()->whereIn('id', $keys)->delete();
     }
+
+    public function updateOrCreate(array $data)
+    {
+        return $this->model->updateOrCreate($data);
+    }
 }

@@ -15,9 +15,10 @@ class GetLabelPusat extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_label_pusat',
         'tahun',
         'id_daerah',
-        //
+        'nama_label',
     ];
 
     /**

@@ -15,9 +15,15 @@ class GetAnggaranBelanjaSubLabel extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_label_bl',
         'tahun',
         'id_daerah',
-        //
+        'id_unit',
+        'id_bl',
+        'id_sub_bl',
+        'id_label_pusat',
+        'id_label_prov',
+        'id_label_kokab',
     ];
 
     /**

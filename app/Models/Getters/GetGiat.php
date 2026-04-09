@@ -15,9 +15,15 @@ class GetGiat extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_giat',
         'tahun',
         'id_daerah',
-        //
+        'id_urusan',
+        'id_bidang_urusan',
+        'id_program',
+        'kode_giat',
+        'nama_giat',
+        'no_giat',
     ];
 
     /**

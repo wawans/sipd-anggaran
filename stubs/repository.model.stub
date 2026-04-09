@@ -65,7 +65,7 @@ class {{ class }} extends Repository
     /**
      * Delete the model(s) from the database.
      *
-     * @param array $keys
+     * @param list<string> $keys
      * @return bool|null|void
      */
     public function destroys(array $keys)

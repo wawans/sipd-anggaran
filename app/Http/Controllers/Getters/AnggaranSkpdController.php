@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Getters;
 
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
-use App\Jobs\Getters\AnggaranSkpdJob;
+use App\Jobs\Getters\Anggaran\AnggaranSkpdJob;
 use App\Models\Getters\GetAnggaranSkpd;
 use App\Repositories\Getters\GetAnggaranSkpdRepository;
 use Illuminate\Http\Request;

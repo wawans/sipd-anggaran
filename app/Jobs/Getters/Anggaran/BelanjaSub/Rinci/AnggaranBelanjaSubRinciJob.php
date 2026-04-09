@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Jobs\Getters;
+namespace App\Jobs\Getters\Anggaran\BelanjaSub\Rinci;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class AnggaranBelanjaSubDanaJob implements ShouldQueue
+class AnggaranBelanjaSubRinciJob implements ShouldQueue
 {
     use Queueable;
 
@@ -25,7 +25,7 @@ class AnggaranBelanjaSubDanaJob implements ShouldQueue
         $rows = collect($this->data);
 
         foreach ($rows->chunk(100) as $row) {
-            dispatch(new AnggaranBelanjaSubDanaChunkJob($row));
+            dispatch(new AnggaranBelanjaSubRinciChunkJob($row));
         }
     }
 }

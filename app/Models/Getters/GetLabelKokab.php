@@ -15,9 +15,10 @@ class GetLabelKokab extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_label_kokab',
         'tahun',
         'id_daerah',
-        //
+        'nama_label',
     ];
 
     /**

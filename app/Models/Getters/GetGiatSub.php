@@ -15,9 +15,20 @@ class GetGiatSub extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_sub_giat',
         'tahun',
         'id_daerah',
-        //
+        'id_urusan',
+        'id_bidang_urusan',
+        'id_program',
+        'id_giat',
+        'kode_sub_giat',
+        'nama_sub_giat',
+        'no_sub_giat',
+        'indikator',
+        'kinerja',
+        'satuan',
+        'jenis_sub_giat',
     ];
 
     /**

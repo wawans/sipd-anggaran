@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\Getters;
+namespace App\Jobs\Getters\Anggaran\BelanjaSub\Rinci;
 
 use App\Models\Getters\GetAnggaranBelanjaSubRinci;
 use Illuminate\Contracts\Queue\ShouldQueue;

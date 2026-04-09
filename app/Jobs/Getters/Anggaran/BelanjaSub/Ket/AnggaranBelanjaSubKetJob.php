@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\Getters;
+namespace App\Jobs\Getters\Anggaran\BelanjaSub\Ket;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;

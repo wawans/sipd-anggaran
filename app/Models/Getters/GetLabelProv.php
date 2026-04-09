@@ -15,9 +15,10 @@ class GetLabelProv extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id_label_prov',
         'tahun',
         'id_daerah',
-        //
+        'nama_label',
     ];
 
     /**

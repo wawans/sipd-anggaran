@@ -3,17 +3,40 @@
 namespace {{ namespace }};
 
 use {{ namespacedModel }};
+use App\Http\Controllers\Concerns\WithExportImport;
 use {{ rootNamespace }}Http\Controllers\Controller;
 use {{ namespacedRequests }}
+use App\Repositories\{{ model }}Repository;
+use App\Support\Response\ApiResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class {{ class }} extends Controller
+class {{ class }} extends Controller implements HasMiddleware
 {
+    use WithExportImport;
+
+    // public function __construct(protected {{ model }}Repository $repository) {}
+
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            // new Middleware('can:-INDEX'),
+            // new Middleware('can:-CREATE', only: ['create', 'store']),
+            // new Middleware('can:-UPDATE', only: ['edit', 'update']),
+            // new Middleware('can:-DELETE', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // $model = $this->repository->tableWithoutPagination()->table(request());
+        // return ApiResponse::make($model);
     }
 
     /**
@@ -21,7 +44,8 @@ class {{ class }} extends Controller
      */
     public function store({{ storeRequest }} $request)
     {
-        //
+        // $model = $this->repository->store($request->validated());
+        // return ApiResponse::data($model);
     }
 
     /**
@@ -29,7 +53,8 @@ class {{ class }} extends Controller
      */
     public function show({{ model }} ${{ modelVariable }})
     {
-        //
+        // $model = $this->repository->toArray(${{ modelVariable }});
+        // return ApiResponse::data($model);
     }
 
     /**
@@ -37,7 +62,8 @@ class {{ class }} extends Controller
      */
     public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
     {
-        //
+        // $model = $this->repository->edit($request->validated(), ${{ modelVariable }});
+        // return ApiResponse::data($model);
     }
 
     /**
@@ -45,6 +71,17 @@ class {{ class }} extends Controller
      */
     public function destroy({{ model }} ${{ modelVariable }})
     {
-        //
+        // $this->repository->destroy(${{ modelVariable }});
+        // return ApiResponse::data();
+    }
+
+    /**
+     * Remove resource(s) from storage.
+     */
+    public function destroys(Request $request)
+    {
+        // $validated = $request->validate(['ids' => 'array']);
+        // $this->repository->destroys($validated['ids']);
+        // return ApiResponse::data();
     }
 }

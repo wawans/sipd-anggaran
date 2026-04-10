@@ -14,6 +14,7 @@ import {
   GalleryVerticalEnd,
   Database,
   KeyRound,
+  ShoppingCart,
 } from 'lucide-react'
 import type { SidebarData } from '../types'
 
@@ -60,8 +61,42 @@ export const sidebarData: SidebarData = {
       title: 'Database',
       items: [
         {
-          title: 'Penganggaran',
+          title: 'Referensi',
           icon: Database,
+          items: [
+            {
+              title: 'Get Bidang Urusan',
+              url: '/getter/master/urusan-bidang',
+            },
+            {
+              title: 'Get Program',
+              url: '/getter/master/program',
+            },
+            {
+              title: 'Get Kegiatan',
+              url: '/getter/master/giat',
+            },
+            {
+              title: 'Get Sub Kegiatan',
+              url: '/getter/master/giat-sub',
+            },
+            {
+              title: 'Get Akun',
+              url: '/getter/master/akun',
+            },
+            {
+              title: 'Get Sumber Dana',
+              url: '/getter/master/dana',
+            },
+            {
+              title: 'Get SKPD',
+              url: '/getter/master/skpd',
+            },
+          ],
+        },
+        {
+          title: 'Penganggaran',
+          icon: ShoppingCart,
           items: [
             {
               title: 'Get SKPD',
@@ -89,6 +124,14 @@ export const sidebarData: SidebarData = {
                 {
                   title: 'Sub Dana',
                   url: '/getter/anggaran/belanja-sub-dana',
+                },
+                {
+                  title: 'Sub Label',
+                  url: '/getter/anggaran/belanja-sub-label',
+                },
+                {
+                  title: 'Sub Output',
+                  url: '/getter/anggaran/belanja-sub-output',
                 },
               ],
             },

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('tahun')->nullable()->index();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
             $table->string('kode_urusan')->nullable();
-            $table->string('nama_urusan')->nullable();
+            $table->text('nama_urusan')->nullable();
             $table->timestamps();
         });
     }

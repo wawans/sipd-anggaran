@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('tahun')->nullable()->index();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
             $table->string('kode_akun')->nullable();
-            $table->string('nama_akun')->nullable();
+            $table->text('nama_akun')->nullable();
             $table->unsignedInteger('is_pendapatan')->nullable();
             $table->unsignedInteger('is_bl')->nullable();
             $table->unsignedInteger('is_pembiayaan')->nullable();

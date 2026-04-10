@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_unit')->nullable()->index();
             $table->string('kode_unit')->nullable();
             $table->string('kode_skpd')->nullable();
-            $table->string('nama_skpd')->nullable();
+            $table->text('nama_skpd')->nullable();
             $table->string('kode_opd')->nullable();
 
             $table->string('nama_kepala')->nullable();

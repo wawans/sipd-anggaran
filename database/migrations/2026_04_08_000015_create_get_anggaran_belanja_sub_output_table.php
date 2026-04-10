@@ -20,11 +20,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_bl')->nullable()->index();
             $table->unsignedBigInteger('id_sub_bl')->nullable()->index();
 
-            $table->string('tolak_ukur')->nullable();
+            $table->text('tolak_ukur')->nullable();
             $table->string('target')->nullable();
             $table->string('satuan')->nullable();
             $table->string('target_teks')->nullable();
-            $table->string('tolok_ukur_sub')->nullable();
+            $table->text('tolok_ukur_sub')->nullable();
             $table->string('target_sub')->nullable();
             $table->string('satuan_sub')->nullable();
             $table->string('target_sub_teks')->nullable();

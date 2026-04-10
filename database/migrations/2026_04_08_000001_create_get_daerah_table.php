@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
             $table->string('kode_daerah')->nullable();
-            $table->string('nama_daerah')->nullable();
+            $table->text('nama_daerah')->nullable();
             $table->timestamps();
         });
     }

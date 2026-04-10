@@ -4,6 +4,8 @@ use App\Http\Controllers\Account\ApiTokenAccountController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubDanaController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubKetController;
+use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubLabelController;
+use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubOutputController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubRinciController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubSubController;
 use App\Http\Controllers\Getters\Anggaran\GetAnggaranSkpdController;
@@ -63,17 +65,23 @@ Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(func
         Route::get('belanja/sub/rinci/export', [GetAnggaranBelanjaSubRinciController::class, 'export'])->name('belanja.sub.rinci.export');
         Route::get('belanja/sub/ket/export', [GetAnggaranBelanjaSubKetController::class, 'export'])->name('belanja.sub.ket.export');
         Route::get('belanja/sub/dana/export', [GetAnggaranBelanjaSubDanaController::class, 'export'])->name('belanja.sub.dana.export');
+        Route::get('belanja/sub/label/export', [GetAnggaranBelanjaSubLabelController::class, 'export'])->name('belanja.sub.label.export');
+        Route::get('belanja/sub/output/export', [GetAnggaranBelanjaSubOutputController::class, 'export'])->name('belanja.sub.output.export');
 
         Route::get('belanja/sub/sub/truncate', [GetAnggaranBelanjaSubSubController::class, 'truncate'])->name('belanja.sub.sub.truncate');
         Route::get('belanja/sub/rinci/truncate', [GetAnggaranBelanjaSubRinciController::class, 'truncate'])->name('belanja.sub.rinci.truncate');
         Route::get('belanja/sub/ket/truncate', [GetAnggaranBelanjaSubKetController::class, 'truncate'])->name('belanja.sub.ket.truncate');
         Route::get('belanja/sub/dana/truncate', [GetAnggaranBelanjaSubDanaController::class, 'truncate'])->name('belanja.sub.dana.truncate');
+        Route::get('belanja/sub/label/truncate', [GetAnggaranBelanjaSubLabelController::class, 'truncate'])->name('belanja.sub.label.truncate');
+        Route::get('belanja/sub/output/truncate', [GetAnggaranBelanjaSubOutputController::class, 'truncate'])->name('belanja.sub.output.truncate');
 
         Route::apiResource('skpd', GetAnggaranSkpdController::class)->parameter('skpd', 'id')->names('skpd');
         Route::apiResource('belanja/sub/sub', GetAnggaranBelanjaSubSubController::class)->parameter('sub', 'id')->names('belanja.sub.sub');
         Route::apiResource('belanja/sub/rinci', GetAnggaranBelanjaSubRinciController::class)->parameter('rinci', 'id')->names('belanja.sub.rinci');
         Route::apiResource('belanja/sub/ket', GetAnggaranBelanjaSubKetController::class)->parameter('ket', 'id')->names('belanja.sub.ket');
         Route::apiResource('belanja/sub/dana', GetAnggaranBelanjaSubDanaController::class)->parameter('dana', 'id')->names('belanja.sub.dana');
+        Route::apiResource('belanja/sub/label', GetAnggaranBelanjaSubLabelController::class)->parameter('label', 'getAnggaranBelanjaSubLabel')->names('belanja.sub.label');
+        Route::apiResource('belanja/sub/output', GetAnggaranBelanjaSubOutputController::class)->parameter('output', 'getAnggaranBelanjaSubOutput')->names('belanja.sub.output');
         Route::apiResource('belanja/sub', GetAnggaranBelanjaSubController::class)->parameter('sub', 'id')->names('belanja.sub');
     });
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_label_prov')->nullable()->index();
             $table->unsignedInteger('tahun')->nullable()->index();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
-            $table->string('nama_label')->nullable();
+            $table->text('nama_label')->nullable();
             $table->timestamps();
         });
     }

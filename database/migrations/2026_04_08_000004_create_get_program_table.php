@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_urusan')->nullable()->index();
             $table->unsignedBigInteger('id_bidang_urusan')->nullable()->index();
             $table->string('kode_program')->nullable();
-            $table->string('nama_program')->nullable();
+            $table->text('nama_program')->nullable();
             $table->string('no_program')->nullable();
             $table->timestamps();
         });

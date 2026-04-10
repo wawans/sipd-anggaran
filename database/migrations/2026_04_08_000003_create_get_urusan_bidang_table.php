@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_urusan')->nullable()->index();
             $table->unsignedBigInteger('id_fungsi')->nullable()->index();
             $table->string('kode_bidang_urusan')->nullable();
-            $table->string('nama_bidang_urusan')->nullable();
-            $table->string('bidang_urusan_alias')->nullable();
+            $table->text('nama_bidang_urusan')->nullable();
+            $table->text('bidang_urusan_alias')->nullable();
             $table->timestamps();
         });
     }

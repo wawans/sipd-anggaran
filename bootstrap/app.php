@@ -31,6 +31,14 @@ return Application::configure(basePath: dirname(__DIR__))
             return '/';
         });
 
+        $middleware->redirectGuestsTo(function (Illuminate\Http\Request $request) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => __('Unauthenticated')], 401);
+            }
+
+            return '/login';
+        });
+
         $middleware->web(append: [
             AddLinkHeadersForPreloadedAssets::class,
         ]);

@@ -52,16 +52,16 @@ class AppServiceProvider extends ServiceProvider
 
     protected function configureMacros(): void
     {
-        Route::macro('bulkResource', function ($uri, $controller, $path = 'bulk') {
-            Route::post("$uri/$path", [$controller, 'stores'])->name("$uri.stores");
-            Route::put("$uri/$path", [$controller, 'updates'])->name("$uri.updates");
-            Route::delete("$uri/$path", [$controller, 'destroys'])->name("$uri.destroys");
+        Route::macro('bulkResource', function ($uri, $controller, $name = null, $path = 'bulk') {
+            Route::post("$uri/$path", [$controller, 'stores'])->name(($name ?? $uri).'.stores');
+            Route::put("$uri/$path", [$controller, 'updates'])->name(($name ?? $uri).'.updates');
+            Route::delete("$uri/$path", [$controller, 'destroys'])->name(($name ?? $uri).'.destroys');
         });
 
-        Route::macro('exportImport', function ($uri, $controller) {
-            Route::post("$uri/import", [$controller, 'import'])->name("$uri.import");
-            Route::get("$uri/export/template", [$controller, 'template'])->name("$uri.export.template");
-            Route::get("$uri/export", [$controller, 'export'])->name("$uri.export");
+        Route::macro('exportImport', function ($uri, $controller, $name = null) {
+            Route::post("$uri/import", [$controller, 'import'])->name(($name ?? $uri).'.import');
+            Route::get("$uri/export/template", [$controller, 'template'])->name(($name ?? $uri).'.export.template');
+            Route::get("$uri/export", [$controller, 'export'])->name(($name ?? $uri).'.export');
         });
     }
 }

@@ -29,9 +29,18 @@ import { Route as AuthenticatedSettingsApiKeysRouteImport } from './routes/_auth
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedWorkerAnggaranBelanjaSubRinciRouteImport } from './routes/_authenticated/worker/anggaran/belanja-sub-rinci'
 import { Route as AuthenticatedWorkerAnggaranBelanjaSubRouteImport } from './routes/_authenticated/worker/anggaran/belanja-sub'
+import { Route as AuthenticatedGetterMasterUrusanBidangRouteImport } from './routes/_authenticated/getter/master/urusan-bidang'
+import { Route as AuthenticatedGetterMasterSkpdRouteImport } from './routes/_authenticated/getter/master/skpd'
+import { Route as AuthenticatedGetterMasterProgramRouteImport } from './routes/_authenticated/getter/master/program'
+import { Route as AuthenticatedGetterMasterGiatSubRouteImport } from './routes/_authenticated/getter/master/giat-sub'
+import { Route as AuthenticatedGetterMasterGiatRouteImport } from './routes/_authenticated/getter/master/giat'
+import { Route as AuthenticatedGetterMasterDanaRouteImport } from './routes/_authenticated/getter/master/dana'
+import { Route as AuthenticatedGetterMasterAkunRouteImport } from './routes/_authenticated/getter/master/akun'
 import { Route as AuthenticatedGetterAnggaranSkpdRouteImport } from './routes/_authenticated/getter/anggaran/skpd'
 import { Route as AuthenticatedGetterAnggaranBelanjaSubSubRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-sub'
 import { Route as AuthenticatedGetterAnggaranBelanjaSubRinciRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-rinci'
+import { Route as AuthenticatedGetterAnggaranBelanjaSubOutputRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-output'
+import { Route as AuthenticatedGetterAnggaranBelanjaSubLabelRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-label'
 import { Route as AuthenticatedGetterAnggaranBelanjaSubKetRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-ket'
 import { Route as AuthenticatedGetterAnggaranBelanjaSubDanaRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub-dana'
 import { Route as AuthenticatedGetterAnggaranBelanjaSubRouteImport } from './routes/_authenticated/getter/anggaran/belanja-sub'
@@ -144,6 +153,48 @@ const AuthenticatedWorkerAnggaranBelanjaSubRoute =
     path: '/worker/anggaran/belanja-sub',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedGetterMasterUrusanBidangRoute =
+  AuthenticatedGetterMasterUrusanBidangRouteImport.update({
+    id: '/getter/master/urusan-bidang',
+    path: '/getter/master/urusan-bidang',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterSkpdRoute =
+  AuthenticatedGetterMasterSkpdRouteImport.update({
+    id: '/getter/master/skpd',
+    path: '/getter/master/skpd',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterProgramRoute =
+  AuthenticatedGetterMasterProgramRouteImport.update({
+    id: '/getter/master/program',
+    path: '/getter/master/program',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterGiatSubRoute =
+  AuthenticatedGetterMasterGiatSubRouteImport.update({
+    id: '/getter/master/giat-sub',
+    path: '/getter/master/giat-sub',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterGiatRoute =
+  AuthenticatedGetterMasterGiatRouteImport.update({
+    id: '/getter/master/giat',
+    path: '/getter/master/giat',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterDanaRoute =
+  AuthenticatedGetterMasterDanaRouteImport.update({
+    id: '/getter/master/dana',
+    path: '/getter/master/dana',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterMasterAkunRoute =
+  AuthenticatedGetterMasterAkunRouteImport.update({
+    id: '/getter/master/akun',
+    path: '/getter/master/akun',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedGetterAnggaranSkpdRoute =
   AuthenticatedGetterAnggaranSkpdRouteImport.update({
     id: '/getter/anggaran/skpd',
@@ -160,6 +211,18 @@ const AuthenticatedGetterAnggaranBelanjaSubRinciRoute =
   AuthenticatedGetterAnggaranBelanjaSubRinciRouteImport.update({
     id: '/getter/anggaran/belanja-sub-rinci',
     path: '/getter/anggaran/belanja-sub-rinci',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterAnggaranBelanjaSubOutputRoute =
+  AuthenticatedGetterAnggaranBelanjaSubOutputRouteImport.update({
+    id: '/getter/anggaran/belanja-sub-output',
+    path: '/getter/anggaran/belanja-sub-output',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGetterAnggaranBelanjaSubLabelRoute =
+  AuthenticatedGetterAnggaranBelanjaSubLabelRouteImport.update({
+    id: '/getter/anggaran/belanja-sub-label',
+    path: '/getter/anggaran/belanja-sub-label',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedGetterAnggaranBelanjaSubKetRoute =
@@ -202,9 +265,18 @@ export interface FileRoutesByFullPath {
   '/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
+  '/getter/anggaran/belanja-sub-label': typeof AuthenticatedGetterAnggaranBelanjaSubLabelRoute
+  '/getter/anggaran/belanja-sub-output': typeof AuthenticatedGetterAnggaranBelanjaSubOutputRoute
   '/getter/anggaran/belanja-sub-rinci': typeof AuthenticatedGetterAnggaranBelanjaSubRinciRoute
   '/getter/anggaran/belanja-sub-sub': typeof AuthenticatedGetterAnggaranBelanjaSubSubRoute
   '/getter/anggaran/skpd': typeof AuthenticatedGetterAnggaranSkpdRoute
+  '/getter/master/akun': typeof AuthenticatedGetterMasterAkunRoute
+  '/getter/master/dana': typeof AuthenticatedGetterMasterDanaRoute
+  '/getter/master/giat': typeof AuthenticatedGetterMasterGiatRoute
+  '/getter/master/giat-sub': typeof AuthenticatedGetterMasterGiatSubRoute
+  '/getter/master/program': typeof AuthenticatedGetterMasterProgramRoute
+  '/getter/master/skpd': typeof AuthenticatedGetterMasterSkpdRoute
+  '/getter/master/urusan-bidang': typeof AuthenticatedGetterMasterUrusanBidangRoute
   '/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
@@ -228,9 +300,18 @@ export interface FileRoutesByTo {
   '/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
+  '/getter/anggaran/belanja-sub-label': typeof AuthenticatedGetterAnggaranBelanjaSubLabelRoute
+  '/getter/anggaran/belanja-sub-output': typeof AuthenticatedGetterAnggaranBelanjaSubOutputRoute
   '/getter/anggaran/belanja-sub-rinci': typeof AuthenticatedGetterAnggaranBelanjaSubRinciRoute
   '/getter/anggaran/belanja-sub-sub': typeof AuthenticatedGetterAnggaranBelanjaSubSubRoute
   '/getter/anggaran/skpd': typeof AuthenticatedGetterAnggaranSkpdRoute
+  '/getter/master/akun': typeof AuthenticatedGetterMasterAkunRoute
+  '/getter/master/dana': typeof AuthenticatedGetterMasterDanaRoute
+  '/getter/master/giat': typeof AuthenticatedGetterMasterGiatRoute
+  '/getter/master/giat-sub': typeof AuthenticatedGetterMasterGiatSubRoute
+  '/getter/master/program': typeof AuthenticatedGetterMasterProgramRoute
+  '/getter/master/skpd': typeof AuthenticatedGetterMasterSkpdRoute
+  '/getter/master/urusan-bidang': typeof AuthenticatedGetterMasterUrusanBidangRoute
   '/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
@@ -257,9 +338,18 @@ export interface FileRoutesById {
   '/_authenticated/getter/anggaran/belanja-sub': typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   '/_authenticated/getter/anggaran/belanja-sub-dana': typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   '/_authenticated/getter/anggaran/belanja-sub-ket': typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
+  '/_authenticated/getter/anggaran/belanja-sub-label': typeof AuthenticatedGetterAnggaranBelanjaSubLabelRoute
+  '/_authenticated/getter/anggaran/belanja-sub-output': typeof AuthenticatedGetterAnggaranBelanjaSubOutputRoute
   '/_authenticated/getter/anggaran/belanja-sub-rinci': typeof AuthenticatedGetterAnggaranBelanjaSubRinciRoute
   '/_authenticated/getter/anggaran/belanja-sub-sub': typeof AuthenticatedGetterAnggaranBelanjaSubSubRoute
   '/_authenticated/getter/anggaran/skpd': typeof AuthenticatedGetterAnggaranSkpdRoute
+  '/_authenticated/getter/master/akun': typeof AuthenticatedGetterMasterAkunRoute
+  '/_authenticated/getter/master/dana': typeof AuthenticatedGetterMasterDanaRoute
+  '/_authenticated/getter/master/giat': typeof AuthenticatedGetterMasterGiatRoute
+  '/_authenticated/getter/master/giat-sub': typeof AuthenticatedGetterMasterGiatSubRoute
+  '/_authenticated/getter/master/program': typeof AuthenticatedGetterMasterProgramRoute
+  '/_authenticated/getter/master/skpd': typeof AuthenticatedGetterMasterSkpdRoute
+  '/_authenticated/getter/master/urusan-bidang': typeof AuthenticatedGetterMasterUrusanBidangRoute
   '/_authenticated/worker/anggaran/belanja-sub': typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   '/_authenticated/worker/anggaran/belanja-sub-rinci': typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
@@ -286,9 +376,18 @@ export interface FileRouteTypes {
     | '/getter/anggaran/belanja-sub'
     | '/getter/anggaran/belanja-sub-dana'
     | '/getter/anggaran/belanja-sub-ket'
+    | '/getter/anggaran/belanja-sub-label'
+    | '/getter/anggaran/belanja-sub-output'
     | '/getter/anggaran/belanja-sub-rinci'
     | '/getter/anggaran/belanja-sub-sub'
     | '/getter/anggaran/skpd'
+    | '/getter/master/akun'
+    | '/getter/master/dana'
+    | '/getter/master/giat'
+    | '/getter/master/giat-sub'
+    | '/getter/master/program'
+    | '/getter/master/skpd'
+    | '/getter/master/urusan-bidang'
     | '/worker/anggaran/belanja-sub'
     | '/worker/anggaran/belanja-sub-rinci'
   fileRoutesByTo: FileRoutesByTo
@@ -312,9 +411,18 @@ export interface FileRouteTypes {
     | '/getter/anggaran/belanja-sub'
     | '/getter/anggaran/belanja-sub-dana'
     | '/getter/anggaran/belanja-sub-ket'
+    | '/getter/anggaran/belanja-sub-label'
+    | '/getter/anggaran/belanja-sub-output'
     | '/getter/anggaran/belanja-sub-rinci'
     | '/getter/anggaran/belanja-sub-sub'
     | '/getter/anggaran/skpd'
+    | '/getter/master/akun'
+    | '/getter/master/dana'
+    | '/getter/master/giat'
+    | '/getter/master/giat-sub'
+    | '/getter/master/program'
+    | '/getter/master/skpd'
+    | '/getter/master/urusan-bidang'
     | '/worker/anggaran/belanja-sub'
     | '/worker/anggaran/belanja-sub-rinci'
   id:
@@ -340,9 +448,18 @@ export interface FileRouteTypes {
     | '/_authenticated/getter/anggaran/belanja-sub'
     | '/_authenticated/getter/anggaran/belanja-sub-dana'
     | '/_authenticated/getter/anggaran/belanja-sub-ket'
+    | '/_authenticated/getter/anggaran/belanja-sub-label'
+    | '/_authenticated/getter/anggaran/belanja-sub-output'
     | '/_authenticated/getter/anggaran/belanja-sub-rinci'
     | '/_authenticated/getter/anggaran/belanja-sub-sub'
     | '/_authenticated/getter/anggaran/skpd'
+    | '/_authenticated/getter/master/akun'
+    | '/_authenticated/getter/master/dana'
+    | '/_authenticated/getter/master/giat'
+    | '/_authenticated/getter/master/giat-sub'
+    | '/_authenticated/getter/master/program'
+    | '/_authenticated/getter/master/skpd'
+    | '/_authenticated/getter/master/urusan-bidang'
     | '/_authenticated/worker/anggaran/belanja-sub'
     | '/_authenticated/worker/anggaran/belanja-sub-rinci'
   fileRoutesById: FileRoutesById
@@ -500,6 +617,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/getter/master/urusan-bidang': {
+      id: '/_authenticated/getter/master/urusan-bidang'
+      path: '/getter/master/urusan-bidang'
+      fullPath: '/getter/master/urusan-bidang'
+      preLoaderRoute: typeof AuthenticatedGetterMasterUrusanBidangRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/skpd': {
+      id: '/_authenticated/getter/master/skpd'
+      path: '/getter/master/skpd'
+      fullPath: '/getter/master/skpd'
+      preLoaderRoute: typeof AuthenticatedGetterMasterSkpdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/program': {
+      id: '/_authenticated/getter/master/program'
+      path: '/getter/master/program'
+      fullPath: '/getter/master/program'
+      preLoaderRoute: typeof AuthenticatedGetterMasterProgramRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/giat-sub': {
+      id: '/_authenticated/getter/master/giat-sub'
+      path: '/getter/master/giat-sub'
+      fullPath: '/getter/master/giat-sub'
+      preLoaderRoute: typeof AuthenticatedGetterMasterGiatSubRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/giat': {
+      id: '/_authenticated/getter/master/giat'
+      path: '/getter/master/giat'
+      fullPath: '/getter/master/giat'
+      preLoaderRoute: typeof AuthenticatedGetterMasterGiatRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/dana': {
+      id: '/_authenticated/getter/master/dana'
+      path: '/getter/master/dana'
+      fullPath: '/getter/master/dana'
+      preLoaderRoute: typeof AuthenticatedGetterMasterDanaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/master/akun': {
+      id: '/_authenticated/getter/master/akun'
+      path: '/getter/master/akun'
+      fullPath: '/getter/master/akun'
+      preLoaderRoute: typeof AuthenticatedGetterMasterAkunRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/getter/anggaran/skpd': {
       id: '/_authenticated/getter/anggaran/skpd'
       path: '/getter/anggaran/skpd'
@@ -519,6 +685,20 @@ declare module '@tanstack/react-router' {
       path: '/getter/anggaran/belanja-sub-rinci'
       fullPath: '/getter/anggaran/belanja-sub-rinci'
       preLoaderRoute: typeof AuthenticatedGetterAnggaranBelanjaSubRinciRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/anggaran/belanja-sub-output': {
+      id: '/_authenticated/getter/anggaran/belanja-sub-output'
+      path: '/getter/anggaran/belanja-sub-output'
+      fullPath: '/getter/anggaran/belanja-sub-output'
+      preLoaderRoute: typeof AuthenticatedGetterAnggaranBelanjaSubOutputRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/getter/anggaran/belanja-sub-label': {
+      id: '/_authenticated/getter/anggaran/belanja-sub-label'
+      path: '/getter/anggaran/belanja-sub-label'
+      fullPath: '/getter/anggaran/belanja-sub-label'
+      preLoaderRoute: typeof AuthenticatedGetterAnggaranBelanjaSubLabelRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/getter/anggaran/belanja-sub-ket': {
@@ -578,9 +758,18 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedGetterAnggaranBelanjaSubRoute: typeof AuthenticatedGetterAnggaranBelanjaSubRoute
   AuthenticatedGetterAnggaranBelanjaSubDanaRoute: typeof AuthenticatedGetterAnggaranBelanjaSubDanaRoute
   AuthenticatedGetterAnggaranBelanjaSubKetRoute: typeof AuthenticatedGetterAnggaranBelanjaSubKetRoute
+  AuthenticatedGetterAnggaranBelanjaSubLabelRoute: typeof AuthenticatedGetterAnggaranBelanjaSubLabelRoute
+  AuthenticatedGetterAnggaranBelanjaSubOutputRoute: typeof AuthenticatedGetterAnggaranBelanjaSubOutputRoute
   AuthenticatedGetterAnggaranBelanjaSubRinciRoute: typeof AuthenticatedGetterAnggaranBelanjaSubRinciRoute
   AuthenticatedGetterAnggaranBelanjaSubSubRoute: typeof AuthenticatedGetterAnggaranBelanjaSubSubRoute
   AuthenticatedGetterAnggaranSkpdRoute: typeof AuthenticatedGetterAnggaranSkpdRoute
+  AuthenticatedGetterMasterAkunRoute: typeof AuthenticatedGetterMasterAkunRoute
+  AuthenticatedGetterMasterDanaRoute: typeof AuthenticatedGetterMasterDanaRoute
+  AuthenticatedGetterMasterGiatRoute: typeof AuthenticatedGetterMasterGiatRoute
+  AuthenticatedGetterMasterGiatSubRoute: typeof AuthenticatedGetterMasterGiatSubRoute
+  AuthenticatedGetterMasterProgramRoute: typeof AuthenticatedGetterMasterProgramRoute
+  AuthenticatedGetterMasterSkpdRoute: typeof AuthenticatedGetterMasterSkpdRoute
+  AuthenticatedGetterMasterUrusanBidangRoute: typeof AuthenticatedGetterMasterUrusanBidangRoute
   AuthenticatedWorkerAnggaranBelanjaSubRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRoute
   AuthenticatedWorkerAnggaranBelanjaSubRinciRoute: typeof AuthenticatedWorkerAnggaranBelanjaSubRinciRoute
 }
@@ -596,11 +785,23 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
     AuthenticatedGetterAnggaranBelanjaSubDanaRoute,
   AuthenticatedGetterAnggaranBelanjaSubKetRoute:
     AuthenticatedGetterAnggaranBelanjaSubKetRoute,
+  AuthenticatedGetterAnggaranBelanjaSubLabelRoute:
+    AuthenticatedGetterAnggaranBelanjaSubLabelRoute,
+  AuthenticatedGetterAnggaranBelanjaSubOutputRoute:
+    AuthenticatedGetterAnggaranBelanjaSubOutputRoute,
   AuthenticatedGetterAnggaranBelanjaSubRinciRoute:
     AuthenticatedGetterAnggaranBelanjaSubRinciRoute,
   AuthenticatedGetterAnggaranBelanjaSubSubRoute:
     AuthenticatedGetterAnggaranBelanjaSubSubRoute,
   AuthenticatedGetterAnggaranSkpdRoute: AuthenticatedGetterAnggaranSkpdRoute,
+  AuthenticatedGetterMasterAkunRoute: AuthenticatedGetterMasterAkunRoute,
+  AuthenticatedGetterMasterDanaRoute: AuthenticatedGetterMasterDanaRoute,
+  AuthenticatedGetterMasterGiatRoute: AuthenticatedGetterMasterGiatRoute,
+  AuthenticatedGetterMasterGiatSubRoute: AuthenticatedGetterMasterGiatSubRoute,
+  AuthenticatedGetterMasterProgramRoute: AuthenticatedGetterMasterProgramRoute,
+  AuthenticatedGetterMasterSkpdRoute: AuthenticatedGetterMasterSkpdRoute,
+  AuthenticatedGetterMasterUrusanBidangRoute:
+    AuthenticatedGetterMasterUrusanBidangRoute,
   AuthenticatedWorkerAnggaranBelanjaSubRoute:
     AuthenticatedWorkerAnggaranBelanjaSubRoute,
   AuthenticatedWorkerAnggaranBelanjaSubRinciRoute:

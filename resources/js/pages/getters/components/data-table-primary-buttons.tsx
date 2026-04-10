@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
+import type { AxiosError } from 'axios'
 import { FileSpreadsheet, Trash, AlertTriangle } from 'lucide-react'
 import { useCallback, useState } from 'react'
 import { toast } from 'sonner'
@@ -79,6 +80,10 @@ export function DataTablePrimaryButtons() {
           }),
       {
         loading: 'Exporting...',
+        error: ({ response }: AxiosError<any>) =>
+          'Error! ' +
+            ((response as { message?: string })?.message ||
+              response?.statusText) || 'Something went wrong.',
       }
     )
   }, [url])

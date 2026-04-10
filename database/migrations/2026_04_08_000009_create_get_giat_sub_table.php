@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_program')->nullable()->index();
             $table->unsignedBigInteger('id_giat')->nullable()->index();
             $table->string('kode_sub_giat')->nullable();
-            $table->string('nama_sub_giat')->nullable();
+            $table->text('nama_sub_giat')->nullable();
             $table->string('no_sub_giat')->nullable();
 
             $table->text('indikator')->nullable();

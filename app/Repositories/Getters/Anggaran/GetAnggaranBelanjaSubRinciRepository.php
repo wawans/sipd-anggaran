@@ -7,6 +7,8 @@ use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
 use App\Repositories\Repository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 /**
@@ -24,6 +26,11 @@ class GetAnggaranBelanjaSubRinciRepository extends Repository
     use WithTable;
 
     /**
+     * Export using generator.
+     */
+    public bool $withGenerator = true;
+
+    /**
      * Create a new repository instance.
      */
     public function __construct(protected GetAnggaranBelanjaSubRinci $model) {}
@@ -35,6 +42,13 @@ class GetAnggaranBelanjaSubRinciRepository extends Repository
             'tahun',
             'id_daerah',
         ];
+    }
+
+    public function export(Collection|Request|array|null $request)
+    {
+        foreach ($this->model::cursor() as $item) {
+            yield $item;
+        }
     }
 
     /**

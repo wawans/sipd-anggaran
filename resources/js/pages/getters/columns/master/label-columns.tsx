@@ -53,42 +53,10 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'kode_dana',
-    label: 'Kode dana',
+    accessorKey: 'nama_label',
+    label: 'Nama Label',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Kode dana' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'nama_dana',
-    label: 'Nama dana',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Nama dana' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'sumber_dana',
-    label: 'Sumber dana',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Sumber dana' />
+      <DataTableColumnHeader column={column} title='Nama Label' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>

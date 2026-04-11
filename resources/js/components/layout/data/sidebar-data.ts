@@ -65,6 +65,10 @@ export const sidebarData: SidebarData = {
           icon: Database,
           items: [
             {
+              title: 'Get Urusan',
+              url: '/getter/master/urusan',
+            },
+            {
               title: 'Get Bidang Urusan',
               url: '/getter/master/urusan-bidang',
             },
@@ -91,6 +95,23 @@ export const sidebarData: SidebarData = {
             {
               title: 'Get SKPD',
               url: '/getter/master/skpd',
+            },
+            {
+              title: 'Get Label',
+              items: [
+                {
+                  title: 'Label Pusat',
+                  url: '/getter/master/label-pusat',
+                },
+                {
+                  title: 'Label Provinsi',
+                  url: '/getter/master/label-prov',
+                },
+                {
+                  title: 'Label Kota/Kab',
+                  url: '/getter/master/label-kokab',
+                },
+              ],
             },
           ],
         },

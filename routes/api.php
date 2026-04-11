@@ -86,57 +86,70 @@ Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(func
     });
 
     Route::prefix('master')->name('master.')->group(function () {
-        Route::apiResource('akun', GetAkunController::class)->parameter('akun', 'getAkun')->names('akun');
-        Route::bulkResource('akun', GetAkunController::class);
+        Route::get('akun/truncate', [GetAkunController::class, 'truncate'])->name('akun.truncate');
         Route::exportImport('akun', GetAkunController::class);
+        Route::bulkResource('akun', GetAkunController::class);
+        Route::apiResource('akun', GetAkunController::class)->parameter('akun', 'getAkun')->names('akun');
 
-        Route::apiResource('daerah', GetDaerahController::class)->parameter('daerah', 'getDaerah')->names('daerah');
-        Route::bulkResource('daerah', GetDaerahController::class);
+        Route::get('daerah/truncate', [GetDaerahController::class, 'truncate'])->name('daerah.truncate');
         Route::exportImport('daerah', GetDaerahController::class);
+        Route::bulkResource('daerah', GetDaerahController::class);
+        Route::apiResource('daerah', GetDaerahController::class)->parameter('daerah', 'getDaerah')->names('daerah');
 
-        Route::apiResource('dana', GetDanaController::class)->parameter('dana', 'getDana')->names('dana');
-        Route::bulkResource('dana', GetDanaController::class);
+        Route::get('dana/truncate', [GetDanaController::class, 'truncate'])->name('dana.truncate');
         Route::exportImport('dana', GetDanaController::class);
+        Route::bulkResource('dana', GetDanaController::class);
+        Route::apiResource('dana', GetDanaController::class)->parameter('dana', 'getDana')->names('dana');
 
-        Route::apiResource('giat', GetGiatController::class)->parameter('giat', 'getGiat')->names('giat');
-        Route::bulkResource('giat', GetGiatController::class);
+        Route::get('giat/truncate', [GetGiatController::class, 'truncate'])->name('giat.truncate');
         Route::exportImport('giat', GetGiatController::class);
+        Route::bulkResource('giat', GetGiatController::class);
+        Route::apiResource('giat', GetGiatController::class)->parameter('giat', 'getGiat')->names('giat');
 
-        Route::apiResource('giatSub', GetGiatSubController::class)->parameter('giatSub', 'getGiatSub')->names('giatSub');
-        Route::bulkResource('giatSub', GetGiatSubController::class);
+        Route::get('giatSub/truncate', [GetGiatSubController::class, 'truncate'])->name('giatSub.truncate');
         Route::exportImport('giatSub', GetGiatSubController::class);
+        Route::bulkResource('giatSub', GetGiatSubController::class);
+        Route::apiResource('giatSub', GetGiatSubController::class)->parameter('giatSub', 'getGiatSub')->names('giatSub');
 
-        Route::apiResource('labelKokab', GetLabelKokabController::class)->parameter('labelKokab', 'getLabelKokab')->names('labelKokab');
-        Route::bulkResource('labelKokab', GetLabelKokabController::class);
+        Route::get('labelKokab/truncate', [GetLabelKokabController::class, 'truncate'])->name('labelKokab.truncate');
         Route::exportImport('labelKokab', GetLabelKokabController::class);
+        Route::bulkResource('labelKokab', GetLabelKokabController::class);
+        Route::apiResource('labelKokab', GetLabelKokabController::class)->parameter('labelKokab', 'getLabelKokab')->names('labelKokab');
 
-        Route::apiResource('labelProv', GetLabelProvController::class)->parameter('labelProv', 'getLabelProv')->names('labelProv');
-        Route::bulkResource('labelProv', GetLabelProvController::class);
+        Route::get('labelProv/truncate', [GetLabelProvController::class, 'truncate'])->name('labelProv.truncate');
         Route::exportImport('labelProv', GetLabelProvController::class);
+        Route::bulkResource('labelProv', GetLabelProvController::class);
+        Route::apiResource('labelProv', GetLabelProvController::class)->parameter('labelProv', 'getLabelProv')->names('labelProv');
 
-        Route::apiResource('labelPusat', GetLabelPusatController::class)->parameter('labelPusat', 'getLabelPusat')->names('labelPusat');
-        Route::bulkResource('labelPusat', GetLabelPusatController::class);
+        Route::get('labelPusat/truncate', [GetLabelPusatController::class, 'truncate'])->name('labelPusat.truncate');
         Route::exportImport('labelPusat', GetLabelPusatController::class);
+        Route::bulkResource('labelPusat', GetLabelPusatController::class);
+        Route::apiResource('labelPusat', GetLabelPusatController::class)->parameter('labelPusat', 'getLabelPusat')->names('labelPusat');
 
-        Route::apiResource('program', GetProgramController::class)->parameter('program', 'getProgram')->names('program');
-        Route::bulkResource('program', GetProgramController::class);
+        Route::get('program/truncate', [GetProgramController::class, 'truncate'])->name('program.truncate');
         Route::exportImport('program', GetProgramController::class);
+        Route::bulkResource('program', GetProgramController::class);
+        Route::apiResource('program', GetProgramController::class)->parameter('program', 'getProgram')->names('program');
 
-        Route::apiResource('skpd', GetSkpdController::class)->parameter('skpd', 'getSkpd')->names('skpd');
-        Route::bulkResource('skpd', GetSkpdController::class);
+        Route::get('skpd/truncate', [GetSkpdController::class, 'truncate'])->name('skpd.truncate');
         Route::exportImport('skpd', GetSkpdController::class);
+        Route::bulkResource('skpd', GetSkpdController::class);
+        Route::apiResource('skpd', GetSkpdController::class)->parameter('skpd', 'getSkpd')->names('skpd');
 
-        Route::apiResource('skpdSub', GetSkpdSubController::class)->parameter('skpdSub', 'getSkpdSub')->names('skpdSub');
-        Route::bulkResource('skpdSub', GetSkpdSubController::class);
+        Route::get('skpdSub/truncate', [GetSkpdSubController::class, 'truncate'])->name('skpdSub.truncate');
         Route::exportImport('skpdSub', GetSkpdSubController::class);
+        Route::bulkResource('skpdSub', GetSkpdSubController::class);
+        Route::apiResource('skpdSub', GetSkpdSubController::class)->parameter('skpdSub', 'getSkpdSub')->names('skpdSub');
 
-        Route::apiResource('urusan', GetUrusanController::class)->parameter('urusan', 'getUrusan')->names('urusan');
-        Route::bulkResource('urusan', GetUrusanController::class);
+        Route::get('urusan/truncate', [GetUrusanController::class, 'truncate'])->name('urusan.truncate');
         Route::exportImport('urusan', GetUrusanController::class);
+        Route::bulkResource('urusan', GetUrusanController::class);
+        Route::apiResource('urusan', GetUrusanController::class)->parameter('urusan', 'getUrusan')->names('urusan');
 
-        Route::apiResource('urusanBidang', GetUrusanBidangController::class)->parameter('urusanBidang', 'getUrusanBidang')->names('urusanBidang');
-        Route::bulkResource('urusanBidang', GetUrusanBidangController::class);
+        Route::get('urusanBidang/truncate', [GetUrusanBidangController::class, 'truncate'])->name('urusanBidang.truncate');
         Route::exportImport('urusanBidang', GetUrusanBidangController::class);
+        Route::bulkResource('urusanBidang', GetUrusanBidangController::class);
+        Route::apiResource('urusanBidang', GetUrusanBidangController::class)->parameter('urusanBidang', 'getUrusanBidang')->names('urusanBidang');
 
     });
 });

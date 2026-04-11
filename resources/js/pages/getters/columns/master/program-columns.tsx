@@ -53,6 +53,46 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
+    accessorKey: 'nama_urusan',
+    label: 'Nama Urusan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Urusan' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_urusan as string}
+        </span>
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'nama_bidang_urusan',
+    label: 'Nama Bidang Urusan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Bidang Urusan' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_bidang_urusan as string}
+        </span>
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
     accessorKey: 'kode_program',
     label: 'Kode program',
     header: ({ column }) => (

@@ -20,6 +20,7 @@ class GetDana extends Model
         'id_daerah',
         'kode_dana',
         'nama_dana',
+        'sumber_dana',
     ];
 
     /**

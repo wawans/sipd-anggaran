@@ -84,4 +84,68 @@ export const columns: ColumnDef<Model>[] = [
       tdClassName: 'ps-2',
     },
   },
+  {
+    accessorKey: 'indikator',
+    label: 'Indikator',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Indikator' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'kinerja',
+    label: 'Kinerja',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Kinerja' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'satuan',
+    label: 'Satuan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Satuan' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'jenis_sub_giat',
+    label: 'Jenis Sub Giat',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Jenis Sub Giat' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
 ]

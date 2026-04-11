@@ -9,6 +9,7 @@ import { toast } from 'sonner'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
+import { Spinner } from '@/components/ui/spinner'
 import axios from '@/lib/api'
 import { useDataTable } from './data-table-provider'
 
@@ -54,29 +55,33 @@ export function DataTablePrimaryButtons() {
             responseType: 'blob',
           })
           .then((response) => {
-            // const blob = new Blob([response.data], {type: response.data.type});
-            // const url = window.URL.createObjectURL(blob);
-            const url = window.URL.createObjectURL(response.data)
-            const link = document.createElement('a')
-            link.href = url
-            const contentDisposition = response.headers['content-disposition']
-            let fileName = 'file'
+            try {
+              // const blob = new Blob([response.data], {type: response.data.type});
+              // const url = window.URL.createObjectURL(blob);
+              const url = window.URL.createObjectURL(response.data)
+              const link = document.createElement('a')
+              link.href = url
+              const contentDisposition = response.headers['content-disposition']
+              let fileName = 'file'
 
-            if (contentDisposition) {
-              const fileNameMatch = contentDisposition.match(/filename="(.+)"/)
+              if (contentDisposition) {
+                const fileNameMatch =
+                  contentDisposition.match(/filename="(.+)"/)
 
-              if (fileNameMatch.length === 2) {
-                fileName = fileNameMatch[1]
+                if (fileNameMatch.length === 2) {
+                  fileName = fileNameMatch[1]
+                }
               }
-            }
 
-            link.setAttribute('download', fileName)
-            document.body.appendChild(link)
-            link.click()
-            link.remove()
-            window.URL.revokeObjectURL(url)
+              link.setAttribute('download', fileName)
+              document.body.appendChild(link)
+              link.click()
+              link.remove()
+              window.URL.revokeObjectURL(url)
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            } catch (e) { /* empty */ }
 
-            return response
+            return 'OK'
           }),
       {
         loading: 'Exporting...',
@@ -95,6 +100,10 @@ export function DataTablePrimaryButtons() {
       }),
       {
         loading: 'Truncating...',
+        error: ({ response }: AxiosError<any>) =>
+          'Error! ' +
+            ((response as { message?: string })?.message ||
+              response?.statusText) || 'Something went wrong.',
       }
     )
   }
@@ -126,6 +135,7 @@ export function DataTablePrimaryButtons() {
         }}
         handleConfirm={onTruncate}
         disabled={isPending}
+        isLoading={isPending}
         title={
           <span className='text-destructive'>
             <AlertTriangle
@@ -151,7 +161,7 @@ export function DataTablePrimaryButtons() {
             </Alert>
           </div>
         }
-        confirmText='Truncate'
+        confirmText={isPending ? <Spinner /> : 'Truncate'}
         destructive
       />
     </div>

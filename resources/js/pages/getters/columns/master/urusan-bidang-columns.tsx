@@ -53,6 +53,26 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
+    accessorKey: 'nama_urusan',
+    label: 'Nama Urusan',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Urusan' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.kode_urusan as string}
+        </span>
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
     accessorKey: 'kode_bidang_urusan',
     label: 'Kode Bidang Urusan',
     header: ({ column }) => (
@@ -73,6 +93,22 @@ export const columns: ColumnDef<Model>[] = [
     label: 'Nama Bidang Urusan',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Nama Bidang Urusan' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'bidang_urusan_alias',
+    label: 'Bidang Urusan Alias',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Bidang Urusan Alias' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>

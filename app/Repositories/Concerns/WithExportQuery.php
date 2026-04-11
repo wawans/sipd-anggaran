@@ -9,6 +9,25 @@ use Illuminate\Support\Str;
 
 trait WithExportQuery
 {
+    /**
+     * Export using generator.
+     */
+    public bool $withGenerator = false;
+
+    public function exportWithGenerator($value = true)
+    {
+        return tap($this, function () use ($value) {
+            $this->withGenerator = $value;
+        });
+    }
+
+    public function exportWithoutGenerator($value = false)
+    {
+        return tap($this, function () use ($value) {
+            $this->withGenerator = $value;
+        });
+    }
+
     public function exportQuery(Collection|Request $request)
     {
         $sortBy = $request->get($this->sortByName, $this->sortBy ?? null);
@@ -41,8 +60,19 @@ trait WithExportQuery
             });
     }
 
+    public function exportGenerator(Collection|Request $request)
+    {
+        foreach ($this->model::cursor() as $row) {
+            yield $row;
+        }
+    }
+
     public function export(Collection|Request|array|null $request)
     {
-        return $this->exportQuery($request ?: collect())->get();
+        if (! $this->withGenerator) {
+            return $this->exportQuery($request ?: collect())->get();
+        }
+
+        $this->exportGenerator($request);
     }
 }

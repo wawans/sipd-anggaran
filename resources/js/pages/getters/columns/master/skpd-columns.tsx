@@ -54,9 +54,9 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'kode_skpd',
-    label: 'Kode skpd',
+    label: 'Kode SKPD',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Kode skpd' />
+      <DataTableColumnHeader column={column} title='Kode SKPD' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
@@ -70,13 +70,33 @@ export const columns: ColumnDef<Model>[] = [
   },
   {
     accessorKey: 'nama_skpd',
-    label: 'Nama skpd',
+    label: 'Nama SKPD',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Nama skpd' />
+      <DataTableColumnHeader column={column} title='Nama SKPD' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
         {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'nama_kepala',
+    label: 'Nama Kepala',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Kepala' />
+    ),
+    cell: ({ getValue, row: { original } }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+        <br />
+        <span className='text-xs text-muted-foreground'>
+          {original?.nip_kepala as string}
+        </span>
       </div>
     ),
     meta: {

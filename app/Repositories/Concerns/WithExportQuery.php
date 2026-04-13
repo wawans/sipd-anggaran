@@ -16,10 +16,8 @@ trait WithExportQuery
 {
     /**
      * Export using generator.
-     *
-     * @var bool
      */
-    // abstract public bool $withGenerator = false;
+    public bool $withGenerator = false;
 
     public function exportWithGenerator($value = true)
     {
@@ -76,15 +74,10 @@ trait WithExportQuery
 
     public function export(Collection|Request|array|null $request)
     {
-        if (! $this->useGenerator()) {
+        if (! $this->withGenerator) {
             return $this->exportQuery($request ?: collect())->get();
         }
 
         $this->exportGenerator($request);
-    }
-
-    public function useGenerator(): bool
-    {
-        return property_exists($this, 'withGenerator') ? $this->withGenerator : false;
     }
 }

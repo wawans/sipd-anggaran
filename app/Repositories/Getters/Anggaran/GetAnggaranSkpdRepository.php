@@ -23,11 +23,6 @@ class GetAnggaranSkpdRepository extends Repository
     use WithTable;
 
     /**
-     * Export using generator.
-     */
-    public bool $withGenerator = true;
-
-    /**
      * Create a new repository instance.
      */
     public function __construct(protected GetAnggaranSkpd $model) {}
@@ -94,10 +89,5 @@ class GetAnggaranSkpdRepository extends Repository
     public function destroys(array $keys)
     {
         return $this->query()->whereIn('id', $keys)->delete();
-    }
-
-    public function updateOrCreate(array $data)
-    {
-        return $this->model->updateOrCreate($data);
     }
 }

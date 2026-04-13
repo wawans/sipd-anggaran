@@ -26,11 +26,6 @@ class GetAnggaranBelanjaSubRinciRepository extends Repository
     use WithTable;
 
     /**
-     * Export using generator.
-     */
-    public bool $withGenerator = true;
-
-    /**
      * Create a new repository instance.
      */
     public function __construct(protected GetAnggaranBelanjaSubRinci $model) {}

@@ -7,12 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
+/**
+ * WithExportQuery
+ *
+ * @property bool $withGenerator
+ */
 trait WithExportQuery
 {
     /**
      * Export using generator.
+     *
+     * @var bool
      */
-    public bool $withGenerator = false;
+    // abstract public bool $withGenerator = false;
 
     public function exportWithGenerator($value = true)
     {
@@ -69,10 +76,15 @@ trait WithExportQuery
 
     public function export(Collection|Request|array|null $request)
     {
-        if (! $this->withGenerator) {
+        if (! $this->useGenerator()) {
             return $this->exportQuery($request ?: collect())->get();
         }
 
         $this->exportGenerator($request);
+    }
+
+    public function useGenerator(): bool
+    {
+        return property_exists($this, 'withGenerator') ? $this->withGenerator : false;
     }
 }

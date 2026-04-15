@@ -24,7 +24,7 @@ class GetUrusanBidangJob implements ShouldQueue
 
         if ($rows->count() > 100) {
             foreach ($rows->chunk(100) as $row) {
-                dispatch(new self((array) $row));
+                dispatch(new self($row->toArray()));
             }
         } else {
             foreach ($rows as $row) {

@@ -35,7 +35,7 @@ trait GetterUpdateOrCreate
 
         $model = $this->model->updateOrCreate($values, $update);
 
-        Cache::set($this->model->getTable().'#'.$key, $model, now()->addDay());
+        Cache::set($this->model->getTable().'#'.$key, $model, now()->addHour());
 
         return $model;
     }

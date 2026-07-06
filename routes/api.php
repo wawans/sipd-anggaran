@@ -1,27 +1,27 @@
 <?php
 
 use App\Http\Controllers\Account\ApiTokenAccountController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubDanaController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubKetController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubLabelController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubOutputController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubRinciController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranBelanjaSubSubController;
-use App\Http\Controllers\Getters\Anggaran\GetAnggaranSkpdController;
-use App\Http\Controllers\Getters\Master\GetAkunController;
-use App\Http\Controllers\Getters\Master\GetDaerahController;
-use App\Http\Controllers\Getters\Master\GetDanaController;
-use App\Http\Controllers\Getters\Master\GetGiatController;
-use App\Http\Controllers\Getters\Master\GetGiatSubController;
-use App\Http\Controllers\Getters\Master\GetLabelKokabController;
-use App\Http\Controllers\Getters\Master\GetLabelProvController;
-use App\Http\Controllers\Getters\Master\GetLabelPusatController;
-use App\Http\Controllers\Getters\Master\GetProgramController;
-use App\Http\Controllers\Getters\Master\GetSkpdController;
-use App\Http\Controllers\Getters\Master\GetSkpdSubController;
-use App\Http\Controllers\Getters\Master\GetUrusanBidangController;
-use App\Http\Controllers\Getters\Master\GetUrusanController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubDanaController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubKetController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubLabelController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubOutputController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubRinciController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranBelanjaSubSubController;
+use App\Http\Controllers\Getters\Anggaran\AnggaranSkpdController;
+use App\Http\Controllers\Getters\Master\AkunController;
+use App\Http\Controllers\Getters\Master\DaerahController;
+use App\Http\Controllers\Getters\Master\DanaController;
+use App\Http\Controllers\Getters\Master\GiatController;
+use App\Http\Controllers\Getters\Master\GiatSubController;
+use App\Http\Controllers\Getters\Master\LabelKokabController;
+use App\Http\Controllers\Getters\Master\LabelProvController;
+use App\Http\Controllers\Getters\Master\LabelPusatController;
+use App\Http\Controllers\Getters\Master\ProgramController;
+use App\Http\Controllers\Getters\Master\SkpdController;
+use App\Http\Controllers\Getters\Master\SkpdSubController;
+use App\Http\Controllers\Getters\Master\UrusanBidangController;
+use App\Http\Controllers\Getters\Master\UrusanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(function () {
     Route::prefix('anggaran')->name('anggaran.')->group(function () {
-        Route::prefix('skpd')->name('skpd.')->controller(GetAnggaranSkpdController::class)->group(function () {
+        Route::prefix('skpd')->name('skpd.')->controller(AnggaranSkpdController::class)->group(function () {
             Route::put('/', 'updates')->name('updates');
             Route::delete('/', 'destroys')->name('destroys');
 
@@ -53,7 +53,7 @@ Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(func
             Route::get('/truncate', 'truncate')->name('truncate');
         });
 
-        Route::prefix('belanja/sub')->name('belanja.sub.')->controller(GetAnggaranBelanjaSubController::class)->group(function () {
+        Route::prefix('belanja/sub')->name('belanja.sub.')->controller(AnggaranBelanjaSubController::class)->group(function () {
             Route::put('/', 'updates')->name('updates');
             Route::delete('/', 'destroys')->name('destroys');
 
@@ -61,95 +61,95 @@ Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(func
             Route::get('/truncate', 'truncate')->name('truncate');
         });
 
-        Route::get('belanja/sub/sub/export', [GetAnggaranBelanjaSubSubController::class, 'export'])->name('belanja.sub.sub.export');
-        Route::get('belanja/sub/rinci/export', [GetAnggaranBelanjaSubRinciController::class, 'export'])->name('belanja.sub.rinci.export');
-        Route::get('belanja/sub/ket/export', [GetAnggaranBelanjaSubKetController::class, 'export'])->name('belanja.sub.ket.export');
-        Route::get('belanja/sub/dana/export', [GetAnggaranBelanjaSubDanaController::class, 'export'])->name('belanja.sub.dana.export');
-        Route::get('belanja/sub/label/export', [GetAnggaranBelanjaSubLabelController::class, 'export'])->name('belanja.sub.label.export');
-        Route::get('belanja/sub/output/export', [GetAnggaranBelanjaSubOutputController::class, 'export'])->name('belanja.sub.output.export');
+        Route::get('belanja/sub/sub/export', [AnggaranBelanjaSubSubController::class, 'export'])->name('belanja.sub.sub.export');
+        Route::get('belanja/sub/rinci/export', [AnggaranBelanjaSubRinciController::class, 'export'])->name('belanja.sub.rinci.export');
+        Route::get('belanja/sub/ket/export', [AnggaranBelanjaSubKetController::class, 'export'])->name('belanja.sub.ket.export');
+        Route::get('belanja/sub/dana/export', [AnggaranBelanjaSubDanaController::class, 'export'])->name('belanja.sub.dana.export');
+        Route::get('belanja/sub/label/export', [AnggaranBelanjaSubLabelController::class, 'export'])->name('belanja.sub.label.export');
+        Route::get('belanja/sub/output/export', [AnggaranBelanjaSubOutputController::class, 'export'])->name('belanja.sub.output.export');
 
-        Route::get('belanja/sub/sub/truncate', [GetAnggaranBelanjaSubSubController::class, 'truncate'])->name('belanja.sub.sub.truncate');
-        Route::get('belanja/sub/rinci/truncate', [GetAnggaranBelanjaSubRinciController::class, 'truncate'])->name('belanja.sub.rinci.truncate');
-        Route::get('belanja/sub/ket/truncate', [GetAnggaranBelanjaSubKetController::class, 'truncate'])->name('belanja.sub.ket.truncate');
-        Route::get('belanja/sub/dana/truncate', [GetAnggaranBelanjaSubDanaController::class, 'truncate'])->name('belanja.sub.dana.truncate');
-        Route::get('belanja/sub/label/truncate', [GetAnggaranBelanjaSubLabelController::class, 'truncate'])->name('belanja.sub.label.truncate');
-        Route::get('belanja/sub/output/truncate', [GetAnggaranBelanjaSubOutputController::class, 'truncate'])->name('belanja.sub.output.truncate');
+        Route::get('belanja/sub/sub/truncate', [AnggaranBelanjaSubSubController::class, 'truncate'])->name('belanja.sub.sub.truncate');
+        Route::get('belanja/sub/rinci/truncate', [AnggaranBelanjaSubRinciController::class, 'truncate'])->name('belanja.sub.rinci.truncate');
+        Route::get('belanja/sub/ket/truncate', [AnggaranBelanjaSubKetController::class, 'truncate'])->name('belanja.sub.ket.truncate');
+        Route::get('belanja/sub/dana/truncate', [AnggaranBelanjaSubDanaController::class, 'truncate'])->name('belanja.sub.dana.truncate');
+        Route::get('belanja/sub/label/truncate', [AnggaranBelanjaSubLabelController::class, 'truncate'])->name('belanja.sub.label.truncate');
+        Route::get('belanja/sub/output/truncate', [AnggaranBelanjaSubOutputController::class, 'truncate'])->name('belanja.sub.output.truncate');
 
-        Route::apiResource('skpd', GetAnggaranSkpdController::class)->parameter('skpd', 'id')->names('skpd');
-        Route::apiResource('belanja/sub/sub', GetAnggaranBelanjaSubSubController::class)->parameter('sub', 'id')->names('belanja.sub.sub');
-        Route::apiResource('belanja/sub/rinci', GetAnggaranBelanjaSubRinciController::class)->parameter('rinci', 'id')->names('belanja.sub.rinci');
-        Route::apiResource('belanja/sub/ket', GetAnggaranBelanjaSubKetController::class)->parameter('ket', 'id')->names('belanja.sub.ket');
-        Route::apiResource('belanja/sub/dana', GetAnggaranBelanjaSubDanaController::class)->parameter('dana', 'id')->names('belanja.sub.dana');
-        Route::apiResource('belanja/sub/label', GetAnggaranBelanjaSubLabelController::class)->parameter('label', 'getAnggaranBelanjaSubLabel')->names('belanja.sub.label');
-        Route::apiResource('belanja/sub/output', GetAnggaranBelanjaSubOutputController::class)->parameter('output', 'getAnggaranBelanjaSubOutput')->names('belanja.sub.output');
-        Route::apiResource('belanja/sub', GetAnggaranBelanjaSubController::class)->parameter('sub', 'id')->names('belanja.sub');
+        Route::apiResource('skpd', AnggaranSkpdController::class)->parameter('skpd', 'id')->names('skpd');
+        Route::apiResource('belanja/sub/sub', AnggaranBelanjaSubSubController::class)->parameter('sub', 'id')->names('belanja.sub.sub');
+        Route::apiResource('belanja/sub/rinci', AnggaranBelanjaSubRinciController::class)->parameter('rinci', 'id')->names('belanja.sub.rinci');
+        Route::apiResource('belanja/sub/ket', AnggaranBelanjaSubKetController::class)->parameter('ket', 'id')->names('belanja.sub.ket');
+        Route::apiResource('belanja/sub/dana', AnggaranBelanjaSubDanaController::class)->parameter('dana', 'id')->names('belanja.sub.dana');
+        Route::apiResource('belanja/sub/label', AnggaranBelanjaSubLabelController::class)->parameter('label', 'anggaranBelanjaSubLabel')->names('belanja.sub.label');
+        Route::apiResource('belanja/sub/output', AnggaranBelanjaSubOutputController::class)->parameter('output', 'anggaranBelanjaSubOutput')->names('belanja.sub.output');
+        Route::apiResource('belanja/sub', AnggaranBelanjaSubController::class)->parameter('sub', 'id')->names('belanja.sub');
     });
 
     Route::prefix('master')->name('master.')->group(function () {
-        Route::get('akun/truncate', [GetAkunController::class, 'truncate'])->name('akun.truncate');
-        Route::exportImport('akun', GetAkunController::class);
-        Route::bulkResource('akun', GetAkunController::class);
-        Route::apiResource('akun', GetAkunController::class)->parameter('akun', 'getAkun')->names('akun');
+        Route::get('akun/truncate', [AkunController::class, 'truncate'])->name('akun.truncate');
+        Route::exportImport('akun', AkunController::class);
+        Route::bulkResource('akun', AkunController::class);
+        Route::apiResource('akun', AkunController::class)->parameter('akun', 'akun')->names('akun');
 
-        Route::get('daerah/truncate', [GetDaerahController::class, 'truncate'])->name('daerah.truncate');
-        Route::exportImport('daerah', GetDaerahController::class);
-        Route::bulkResource('daerah', GetDaerahController::class);
-        Route::apiResource('daerah', GetDaerahController::class)->parameter('daerah', 'getDaerah')->names('daerah');
+        Route::get('daerah/truncate', [DaerahController::class, 'truncate'])->name('daerah.truncate');
+        Route::exportImport('daerah', DaerahController::class);
+        Route::bulkResource('daerah', DaerahController::class);
+        Route::apiResource('daerah', DaerahController::class)->parameter('daerah', 'daerah')->names('daerah');
 
-        Route::get('dana/truncate', [GetDanaController::class, 'truncate'])->name('dana.truncate');
-        Route::exportImport('dana', GetDanaController::class);
-        Route::bulkResource('dana', GetDanaController::class);
-        Route::apiResource('dana', GetDanaController::class)->parameter('dana', 'getDana')->names('dana');
+        Route::get('dana/truncate', [DanaController::class, 'truncate'])->name('dana.truncate');
+        Route::exportImport('dana', DanaController::class);
+        Route::bulkResource('dana', DanaController::class);
+        Route::apiResource('dana', DanaController::class)->parameter('dana', 'dana')->names('dana');
 
-        Route::get('giat/truncate', [GetGiatController::class, 'truncate'])->name('giat.truncate');
-        Route::exportImport('giat', GetGiatController::class);
-        Route::bulkResource('giat', GetGiatController::class);
-        Route::apiResource('giat', GetGiatController::class)->parameter('giat', 'getGiat')->names('giat');
+        Route::get('giat/truncate', [GiatController::class, 'truncate'])->name('giat.truncate');
+        Route::exportImport('giat', GiatController::class);
+        Route::bulkResource('giat', GiatController::class);
+        Route::apiResource('giat', GiatController::class)->parameter('giat', 'giat')->names('giat');
 
-        Route::get('giatSub/truncate', [GetGiatSubController::class, 'truncate'])->name('giatSub.truncate');
-        Route::exportImport('giatSub', GetGiatSubController::class);
-        Route::bulkResource('giatSub', GetGiatSubController::class);
-        Route::apiResource('giatSub', GetGiatSubController::class)->parameter('giatSub', 'getGiatSub')->names('giatSub');
+        Route::get('giatSub/truncate', [GiatSubController::class, 'truncate'])->name('giatSub.truncate');
+        Route::exportImport('giatSub', GiatSubController::class);
+        Route::bulkResource('giatSub', GiatSubController::class);
+        Route::apiResource('giatSub', GiatSubController::class)->parameter('giatSub', 'giatSub')->names('giatSub');
 
-        Route::get('labelKokab/truncate', [GetLabelKokabController::class, 'truncate'])->name('labelKokab.truncate');
-        Route::exportImport('labelKokab', GetLabelKokabController::class);
-        Route::bulkResource('labelKokab', GetLabelKokabController::class);
-        Route::apiResource('labelKokab', GetLabelKokabController::class)->parameter('labelKokab', 'getLabelKokab')->names('labelKokab');
+        Route::get('labelKokab/truncate', [LabelKokabController::class, 'truncate'])->name('labelKokab.truncate');
+        Route::exportImport('labelKokab', LabelKokabController::class);
+        Route::bulkResource('labelKokab', LabelKokabController::class);
+        Route::apiResource('labelKokab', LabelKokabController::class)->parameter('labelKokab', 'labelKokab')->names('labelKokab');
 
-        Route::get('labelProv/truncate', [GetLabelProvController::class, 'truncate'])->name('labelProv.truncate');
-        Route::exportImport('labelProv', GetLabelProvController::class);
-        Route::bulkResource('labelProv', GetLabelProvController::class);
-        Route::apiResource('labelProv', GetLabelProvController::class)->parameter('labelProv', 'getLabelProv')->names('labelProv');
+        Route::get('labelProv/truncate', [LabelProvController::class, 'truncate'])->name('labelProv.truncate');
+        Route::exportImport('labelProv', LabelProvController::class);
+        Route::bulkResource('labelProv', LabelProvController::class);
+        Route::apiResource('labelProv', LabelProvController::class)->parameter('labelProv', 'labelProv')->names('labelProv');
 
-        Route::get('labelPusat/truncate', [GetLabelPusatController::class, 'truncate'])->name('labelPusat.truncate');
-        Route::exportImport('labelPusat', GetLabelPusatController::class);
-        Route::bulkResource('labelPusat', GetLabelPusatController::class);
-        Route::apiResource('labelPusat', GetLabelPusatController::class)->parameter('labelPusat', 'getLabelPusat')->names('labelPusat');
+        Route::get('labelPusat/truncate', [LabelPusatController::class, 'truncate'])->name('labelPusat.truncate');
+        Route::exportImport('labelPusat', LabelPusatController::class);
+        Route::bulkResource('labelPusat', LabelPusatController::class);
+        Route::apiResource('labelPusat', LabelPusatController::class)->parameter('labelPusat', 'labelPusat')->names('labelPusat');
 
-        Route::get('program/truncate', [GetProgramController::class, 'truncate'])->name('program.truncate');
-        Route::exportImport('program', GetProgramController::class);
-        Route::bulkResource('program', GetProgramController::class);
-        Route::apiResource('program', GetProgramController::class)->parameter('program', 'getProgram')->names('program');
+        Route::get('program/truncate', [ProgramController::class, 'truncate'])->name('program.truncate');
+        Route::exportImport('program', ProgramController::class);
+        Route::bulkResource('program', ProgramController::class);
+        Route::apiResource('program', ProgramController::class)->parameter('program', 'program')->names('program');
 
-        Route::get('skpd/truncate', [GetSkpdController::class, 'truncate'])->name('skpd.truncate');
-        Route::exportImport('skpd', GetSkpdController::class);
-        Route::bulkResource('skpd', GetSkpdController::class);
-        Route::apiResource('skpd', GetSkpdController::class)->parameter('skpd', 'getSkpd')->names('skpd');
+        Route::get('skpd/truncate', [SkpdController::class, 'truncate'])->name('skpd.truncate');
+        Route::exportImport('skpd', SkpdController::class);
+        Route::bulkResource('skpd', SkpdController::class);
+        Route::apiResource('skpd', SkpdController::class)->parameter('skpd', 'skpd')->names('skpd');
 
-        Route::get('skpdSub/truncate', [GetSkpdSubController::class, 'truncate'])->name('skpdSub.truncate');
-        Route::exportImport('skpdSub', GetSkpdSubController::class);
-        Route::bulkResource('skpdSub', GetSkpdSubController::class);
-        Route::apiResource('skpdSub', GetSkpdSubController::class)->parameter('skpdSub', 'getSkpdSub')->names('skpdSub');
+        Route::get('skpdSub/truncate', [SkpdSubController::class, 'truncate'])->name('skpdSub.truncate');
+        Route::exportImport('skpdSub', SkpdSubController::class);
+        Route::bulkResource('skpdSub', SkpdSubController::class);
+        Route::apiResource('skpdSub', SkpdSubController::class)->parameter('skpdSub', 'skpdSub')->names('skpdSub');
 
-        Route::get('urusan/truncate', [GetUrusanController::class, 'truncate'])->name('urusan.truncate');
-        Route::exportImport('urusan', GetUrusanController::class);
-        Route::bulkResource('urusan', GetUrusanController::class);
-        Route::apiResource('urusan', GetUrusanController::class)->parameter('urusan', 'getUrusan')->names('urusan');
+        Route::get('urusan/truncate', [UrusanController::class, 'truncate'])->name('urusan.truncate');
+        Route::exportImport('urusan', UrusanController::class);
+        Route::bulkResource('urusan', UrusanController::class);
+        Route::apiResource('urusan', UrusanController::class)->parameter('urusan', 'urusan')->names('urusan');
 
-        Route::get('urusanBidang/truncate', [GetUrusanBidangController::class, 'truncate'])->name('urusanBidang.truncate');
-        Route::exportImport('urusanBidang', GetUrusanBidangController::class);
-        Route::bulkResource('urusanBidang', GetUrusanBidangController::class);
-        Route::apiResource('urusanBidang', GetUrusanBidangController::class)->parameter('urusanBidang', 'getUrusanBidang')->names('urusanBidang');
+        Route::get('urusanBidang/truncate', [UrusanBidangController::class, 'truncate'])->name('urusanBidang.truncate');
+        Route::exportImport('urusanBidang', UrusanBidangController::class);
+        Route::bulkResource('urusanBidang', UrusanBidangController::class);
+        Route::apiResource('urusanBidang', UrusanBidangController::class)->parameter('urusanBidang', 'urusanBidang')->names('urusanBidang');
 
     });
 });

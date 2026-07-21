@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Master;
 
-use App\Repositories\Getters\Master\LabelPusatRepository;
+use App\Repositories\Master\LabelPusatRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Master;
 
-use App\Repositories\Getters\Master\ProgramRepository;
+use App\Repositories\Master\ProgramRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

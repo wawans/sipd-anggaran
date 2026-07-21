@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Master;
 
-use App\Repositories\Getters\Master\DanaRepository;
+use App\Repositories\Master\DanaRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

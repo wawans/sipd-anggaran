@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Master;
 
-use App\Repositories\Getters\Master\SkpdSubRepository;
+use App\Repositories\Master\SkpdSubRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

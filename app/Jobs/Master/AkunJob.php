@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Master;
 
-use App\Repositories\Getters\Master\AkunRepository;
+use App\Repositories\Master\AkunRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

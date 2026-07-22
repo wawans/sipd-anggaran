@@ -1,11 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { columns } from '@/pages/getters/columns/master/giat-columns'
+import { columns } from '@/pages/getters/columns/anggaran-belanja-sub-ket-columns'
 import { dataTableQueryOptions } from '@/pages/getters/components/data-table-provider'
 import Page from '@/pages/getters/index'
 
-const URL: string = '/api/getter/master/giat'
+const URL: string = '/api/anggaran/belanja/sub/ket'
 
-export const Route = createFileRoute('/_authenticated/getter/master/giat')({
+export const Route = createFileRoute(
+  '/_authenticated/anggaran/belanja-sub-ket'
+)({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
     queryClient.prefetchQuery(dataTableQueryOptions(URL))
@@ -23,7 +25,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='Kegiatan'
+      entity='Rinci Sub Giat - Sub Ket'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

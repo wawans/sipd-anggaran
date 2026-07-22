@@ -65,51 +65,51 @@ export const sidebarData: SidebarData = {
           icon: Database,
           items: [
             {
-              title: 'Get Urusan',
-              url: '/getter/master/urusan',
+              title: 'Urusan',
+              url: '/master/urusan',
             },
             {
-              title: 'Get Bidang Urusan',
-              url: '/getter/master/urusan-bidang',
+              title: 'Bidang Urusan',
+              url: '/master/urusan-bidang',
             },
             {
-              title: 'Get Program',
-              url: '/getter/master/program',
+              title: 'Program',
+              url: '/master/program',
             },
             {
-              title: 'Get Kegiatan',
-              url: '/getter/master/giat',
+              title: 'Kegiatan',
+              url: '/master/giat',
             },
             {
-              title: 'Get Sub Kegiatan',
-              url: '/getter/master/giat-sub',
+              title: 'Sub Kegiatan',
+              url: '/master/giat-sub',
             },
             {
-              title: 'Get Akun',
-              url: '/getter/master/akun',
+              title: 'Akun',
+              url: '/master/akun',
             },
             {
-              title: 'Get Sumber Dana',
-              url: '/getter/master/dana',
+              title: 'Sumber Dana',
+              url: '/master/dana',
             },
             {
-              title: 'Get SKPD',
-              url: '/getter/master/skpd',
+              title: 'SKPD',
+              url: '/master/skpd',
             },
             {
-              title: 'Get Label',
+              title: 'Label',
               items: [
                 {
                   title: 'Label Pusat',
-                  url: '/getter/master/label-pusat',
+                  url: '/master/label-pusat',
                 },
                 {
                   title: 'Label Provinsi',
-                  url: '/getter/master/label-prov',
+                  url: '/master/label-prov',
                 },
                 {
                   title: 'Label Kota/Kab',
-                  url: '/getter/master/label-kokab',
+                  url: '/master/label-kokab',
                 },
               ],
             },
@@ -120,39 +120,39 @@ export const sidebarData: SidebarData = {
           icon: ShoppingCart,
           items: [
             {
-              title: 'Get SKPD',
-              url: '/getter/anggaran/skpd',
+              title: 'SKPD',
+              url: '/anggaran/skpd',
             },
             {
-              title: 'Get Sub Giat',
-              url: '/getter/anggaran/belanja-sub',
+              title: 'Sub Kegiatan',
+              url: '/anggaran/belanja-sub',
             },
             {
-              title: 'Get Rinci Sub Giat',
+              title: 'Rinci Sub Kegiatan',
               items: [
                 {
                   title: 'Sub Rinci',
-                  url: '/getter/anggaran/belanja-sub-rinci',
+                  url: '/anggaran/belanja-sub-rinci',
                 },
                 {
                   title: 'Sub Sub',
-                  url: '/getter/anggaran/belanja-sub-sub',
+                  url: '/anggaran/belanja-sub-sub',
                 },
                 {
                   title: 'Sub Ket',
-                  url: '/getter/anggaran/belanja-sub-ket',
+                  url: '/anggaran/belanja-sub-ket',
                 },
                 {
                   title: 'Sub Dana',
-                  url: '/getter/anggaran/belanja-sub-dana',
+                  url: '/anggaran/belanja-sub-dana',
                 },
                 {
                   title: 'Sub Label',
-                  url: '/getter/anggaran/belanja-sub-label',
+                  url: '/anggaran/belanja-sub-label',
                 },
                 {
                   title: 'Sub Output',
-                  url: '/getter/anggaran/belanja-sub-output',
+                  url: '/anggaran/belanja-sub-output',
                 },
               ],
             },
@@ -168,15 +168,15 @@ export const sidebarData: SidebarData = {
           icon: ListTodo,
           items: [
             {
-              title: 'Get SKPD',
+              title: 'SKPD',
               url: '/worker/anggaran/skpd',
             },
             {
-              title: 'Get Sub Giat',
+              title: 'Sub Kegiatan',
               url: '/worker/anggaran/belanja-sub',
             },
             {
-              title: 'Get Rinci Sub Giat',
+              title: 'Rinci Sub Kegiatan',
               url: '/worker/anggaran/belanja-sub-rinci',
             },
           ],

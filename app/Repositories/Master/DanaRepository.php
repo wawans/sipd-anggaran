@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Master;
 
-use App\Models\Getters\Master\Dana;
+use App\Models\Master\Dana;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property Dana $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\Dana query()
- * @method \App\Models\Getters\Master\Dana update(array $attributes, \App\Models\Getters\Master\Dana $dana)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Master\Dana query()
+ * @method \App\Models\Master\Dana update(array $attributes, \App\Models\Master\Dana $dana)
  */
 class DanaRepository extends Repository
 {

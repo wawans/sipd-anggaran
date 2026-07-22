@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Master\LabelProvJob;
-use App\Models\Getters\Master\LabelProv;
+use App\Models\Master\LabelProv;
 use App\Repositories\Master\LabelProvRepository;
 use App\Support\Response\ApiResponse;
 use Illuminate\Http\Request;

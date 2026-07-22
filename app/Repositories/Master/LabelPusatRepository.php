@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Master;
 
-use App\Models\Getters\Master\LabelPusat;
+use App\Models\Master\LabelPusat;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property LabelPusat $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\LabelPusat query()
- * @method \App\Models\Getters\Master\LabelPusat update(array $attributes, \App\Models\Getters\Master\LabelPusat $labelPusat)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Master\LabelPusat query()
+ * @method \App\Models\Master\LabelPusat update(array $attributes, \App\Models\Master\LabelPusat $labelPusat)
  */
 class LabelPusatRepository extends Repository
 {

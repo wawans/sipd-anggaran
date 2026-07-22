@@ -1,12 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { columns } from '@/pages/getters/columns/anggaran-belanja-sub-ket-columns'
+import { columns } from '@/pages/getters/columns/anggaran-belanja-sub-rinci-columns'
 import { dataTableQueryOptions } from '@/pages/getters/components/data-table-provider'
 import Page from '@/pages/getters/index'
 
-const URL: string = '/api/getter/anggaran/belanja/sub/ket'
+const URL: string = '/api/anggaran/belanja/sub/rinci'
 
 export const Route = createFileRoute(
-  '/_authenticated/getter/anggaran/belanja-sub-ket'
+  '/_authenticated/anggaran/belanja-sub-rinci'
 )({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
@@ -25,7 +25,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='Rinci Sub Giat - Sub Ket'
+      entity='Rinci Sub Giat - Sub Rinci'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { columns } from '@/pages/getters/columns/master/dana-columns'
+import { columns } from '@/pages/getters/columns/master/label-columns'
 import { dataTableQueryOptions } from '@/pages/getters/components/data-table-provider'
 import Page from '@/pages/getters/index'
 
-const URL: string = '/api/getter/master/dana'
+const URL: string = '/api/master/labelKokab'
 
-export const Route = createFileRoute('/_authenticated/getter/master/dana')({
+export const Route = createFileRoute('/_authenticated/master/label-kokab')({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
     queryClient.prefetchQuery(dataTableQueryOptions(URL))
@@ -23,7 +23,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='Sumber Dana'
+      entity='Label Kota/Kab'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

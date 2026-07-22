@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Master\LabelPusatJob;
-use App\Models\Getters\Master\LabelPusat;
+use App\Models\Master\LabelPusat;
 use App\Repositories\Master\LabelPusatRepository;
 use App\Support\Response\ApiResponse;
 use Illuminate\Http\Request;

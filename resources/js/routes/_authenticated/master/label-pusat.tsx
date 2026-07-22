@@ -3,11 +3,9 @@ import { columns } from '@/pages/getters/columns/master/label-columns'
 import { dataTableQueryOptions } from '@/pages/getters/components/data-table-provider'
 import Page from '@/pages/getters/index'
 
-const URL: string = '/api/getter/master/labelKokab'
+const URL: string = '/api/master/labelPusat'
 
-export const Route = createFileRoute(
-  '/_authenticated/getter/master/label-kokab'
-)({
+export const Route = createFileRoute('/_authenticated/master/label-pusat')({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
     queryClient.prefetchQuery(dataTableQueryOptions(URL))
@@ -25,7 +23,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='Label Kota/Kab'
+      entity='Label Pusat'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

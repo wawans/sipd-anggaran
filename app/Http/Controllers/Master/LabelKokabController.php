@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Master\LabelKokabJob;
-use App\Models\Getters\Master\LabelKokab;
+use App\Models\Master\LabelKokab;
 use App\Repositories\Master\LabelKokabRepository;
 use App\Support\Response\ApiResponse;
 use Illuminate\Http\Request;

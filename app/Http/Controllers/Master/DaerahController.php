@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Master\DaerahJob;
-use App\Models\Getters\Master\Daerah;
+use App\Models\Master\Daerah;
 use App\Repositories\Master\DaerahRepository;
 use App\Support\Response\ApiResponse;
 use Illuminate\Http\Request;

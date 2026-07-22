@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { columns } from '@/pages/getters/columns/master/akun-columns'
+import { columns } from '@/pages/getters/columns/anggaran-skpd-columns'
 import { dataTableQueryOptions } from '@/pages/getters/components/data-table-provider'
 import Page from '@/pages/getters/index'
 
-const URL: string = '/api/getter/master/akun'
+const URL: string = '/api/anggaran/skpd'
 
-export const Route = createFileRoute('/_authenticated/getter/master/akun')({
+export const Route = createFileRoute('/_authenticated/anggaran/skpd')({
   component: RouteComponent,
   loader: ({ context: { queryClient } }) => {
     queryClient.prefetchQuery(dataTableQueryOptions(URL))
@@ -23,7 +23,7 @@ function RouteComponent() {
 
   return (
     <Page
-      entity='Akun'
+      entity='SKPD'
       columns={columns}
       queryOptions={data.queryOptions}
       url={data.url}

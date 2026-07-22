@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Master;
 
-use App\Models\Getters\Master\SkpdSub;
+use App\Models\Master\SkpdSub;
 use App\Repositories\Concerns\GetterUpdateOrCreate;
 use App\Repositories\Concerns\WithExportQuery;
 use App\Repositories\Concerns\WithTable;
@@ -13,8 +13,8 @@ use App\Repositories\Repository;
  *
  * @property SkpdSub $model
  *
- * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Getters\Master\SkpdSub query()
- * @method \App\Models\Getters\Master\SkpdSub update(array $attributes, \App\Models\Getters\Master\SkpdSub $skpdSub)
+ * @method \Illuminate\Database\Eloquent\Builder|\App\Models\Master\SkpdSub query()
+ * @method \App\Models\Master\SkpdSub update(array $attributes, \App\Models\Master\SkpdSub $skpdSub)
  */
 class SkpdSubRepository extends Repository
 {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Concerns\WithExportImport;
 use App\Http\Controllers\Controller;
 use App\Jobs\Master\DanaJob;
-use App\Models\Getters\Master\Dana;
+use App\Models\Master\Dana;
 use App\Repositories\Master\DanaRepository;
 use App\Support\Response\ApiResponse;
 use Illuminate\Http\Request;

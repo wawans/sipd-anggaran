@@ -43,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('user', UserController::class)->names('user');
 });
 
-Route::middleware('auth:sanctum')->prefix('getter')->name('getter.')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('anggaran')->name('anggaran.')->group(function () {
         Route::prefix('skpd')->name('skpd.')->controller(AnggaranSkpdController::class)->group(function () {
             Route::put('/', 'updates')->name('updates');

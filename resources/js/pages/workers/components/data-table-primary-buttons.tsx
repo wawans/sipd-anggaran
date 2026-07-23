@@ -41,7 +41,9 @@ export function DataTablePrimaryButtons() {
             link.remove()
             window.URL.revokeObjectURL(url)
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          } catch (e) { /* empty */ }
+          } catch (e) {
+            /* empty */
+          }
 
           return 'OK'
         },

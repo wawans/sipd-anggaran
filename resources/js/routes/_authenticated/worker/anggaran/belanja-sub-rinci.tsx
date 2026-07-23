@@ -10,7 +10,7 @@ const searchSchema = z.object({
   pageSize: z.number().optional().catch(10),
 })
 
-const URL: string = '/api/getter/anggaran/belanja/sub'
+const URL: string = '/api/anggaran/belanja/sub'
 
 const allQueryOptions = queryOptions({
   queryKey: ['workers', { url: URL }],

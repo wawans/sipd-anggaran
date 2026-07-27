@@ -18,6 +18,7 @@ class AnggaranBelanjaSubDetilLokasi extends Model
         'id_detil_lokasi',
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_unit',
         'id_bl',
         'id_sub_bl',

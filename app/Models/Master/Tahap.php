@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Anggaran;
+namespace App\Models\Master;
 
 use App\Support\Eloquent\Concerns\SingularTable;
 use Illuminate\Database\Eloquent\Model;
 
-class AnggaranBelanjaSubOutput extends Model
+class Tahap extends Model
 {
     use SingularTable;
 
@@ -15,26 +15,11 @@ class AnggaranBelanjaSubOutput extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'id_output_bl',
+        'id_tahap',
         'tahun',
         'id_daerah',
-        'id_jadwal',
-        'id_unit',
-        'id_bl',
-        'id_sub_bl',
-        'tolak_ukur',
-        'target',
-        'satuan',
-        'target_teks',
-        'tolok_ukur_sub',
-        'target_sub',
-        'satuan_sub',
-        'target_sub_teks',
-        'id_skpd',
-        'id_sub_skpd',
-        'id_program',
-        'id_giat',
-        'id_sub_giat',
+        'kode_tahap',
+        'nama_tahap',
     ];
 
     /**

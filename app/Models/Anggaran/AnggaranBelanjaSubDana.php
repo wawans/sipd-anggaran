@@ -18,6 +18,7 @@ class AnggaranBelanjaSubDana extends Model
         'id_dana_sub_bl',
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_unit',
         'id_bl',
         'id_sub_bl',
@@ -44,7 +45,6 @@ class AnggaranBelanjaSubDana extends Model
         'kode_program',
         'kode_giat',
         'kode_sub_giat',
-        'id_jadwal',
         'is_locked',
 
     ];

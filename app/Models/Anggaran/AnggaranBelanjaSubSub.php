@@ -20,6 +20,7 @@ class AnggaranBelanjaSubSub extends Model
         'id_sub_bl',
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_unit',
         'subs_bl_teks',
         'is_paket',

@@ -29,11 +29,13 @@ import { Route as AuthenticatedSettingsApiKeysRouteImport } from './routes/_auth
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedMasterUrusanBidangRouteImport } from './routes/_authenticated/master/urusan-bidang'
 import { Route as AuthenticatedMasterUrusanRouteImport } from './routes/_authenticated/master/urusan'
+import { Route as AuthenticatedMasterTahapRouteImport } from './routes/_authenticated/master/tahap'
 import { Route as AuthenticatedMasterSkpdRouteImport } from './routes/_authenticated/master/skpd'
 import { Route as AuthenticatedMasterProgramRouteImport } from './routes/_authenticated/master/program'
 import { Route as AuthenticatedMasterLabelPusatRouteImport } from './routes/_authenticated/master/label-pusat'
 import { Route as AuthenticatedMasterLabelProvRouteImport } from './routes/_authenticated/master/label-prov'
 import { Route as AuthenticatedMasterLabelKokabRouteImport } from './routes/_authenticated/master/label-kokab'
+import { Route as AuthenticatedMasterJadwalRouteImport } from './routes/_authenticated/master/jadwal'
 import { Route as AuthenticatedMasterGiatSubRouteImport } from './routes/_authenticated/master/giat-sub'
 import { Route as AuthenticatedMasterGiatRouteImport } from './routes/_authenticated/master/giat'
 import { Route as AuthenticatedMasterDanaRouteImport } from './routes/_authenticated/master/dana'
@@ -157,6 +159,12 @@ const AuthenticatedMasterUrusanRoute =
     path: '/master/urusan',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedMasterTahapRoute =
+  AuthenticatedMasterTahapRouteImport.update({
+    id: '/master/tahap',
+    path: '/master/tahap',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedMasterSkpdRoute = AuthenticatedMasterSkpdRouteImport.update({
   id: '/master/skpd',
   path: '/master/skpd',
@@ -184,6 +192,12 @@ const AuthenticatedMasterLabelKokabRoute =
   AuthenticatedMasterLabelKokabRouteImport.update({
     id: '/master/label-kokab',
     path: '/master/label-kokab',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMasterJadwalRoute =
+  AuthenticatedMasterJadwalRouteImport.update({
+    id: '/master/jadwal',
+    path: '/master/jadwal',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedMasterGiatSubRoute =
@@ -291,11 +305,13 @@ export interface FileRoutesByFullPath {
   '/master/dana': typeof AuthenticatedMasterDanaRoute
   '/master/giat': typeof AuthenticatedMasterGiatRoute
   '/master/giat-sub': typeof AuthenticatedMasterGiatSubRoute
+  '/master/jadwal': typeof AuthenticatedMasterJadwalRoute
   '/master/label-kokab': typeof AuthenticatedMasterLabelKokabRoute
   '/master/label-prov': typeof AuthenticatedMasterLabelProvRoute
   '/master/label-pusat': typeof AuthenticatedMasterLabelPusatRoute
   '/master/program': typeof AuthenticatedMasterProgramRoute
   '/master/skpd': typeof AuthenticatedMasterSkpdRoute
+  '/master/tahap': typeof AuthenticatedMasterTahapRoute
   '/master/urusan': typeof AuthenticatedMasterUrusanRoute
   '/master/urusan-bidang': typeof AuthenticatedMasterUrusanBidangRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -330,11 +346,13 @@ export interface FileRoutesByTo {
   '/master/dana': typeof AuthenticatedMasterDanaRoute
   '/master/giat': typeof AuthenticatedMasterGiatRoute
   '/master/giat-sub': typeof AuthenticatedMasterGiatSubRoute
+  '/master/jadwal': typeof AuthenticatedMasterJadwalRoute
   '/master/label-kokab': typeof AuthenticatedMasterLabelKokabRoute
   '/master/label-prov': typeof AuthenticatedMasterLabelProvRoute
   '/master/label-pusat': typeof AuthenticatedMasterLabelPusatRoute
   '/master/program': typeof AuthenticatedMasterProgramRoute
   '/master/skpd': typeof AuthenticatedMasterSkpdRoute
+  '/master/tahap': typeof AuthenticatedMasterTahapRoute
   '/master/urusan': typeof AuthenticatedMasterUrusanRoute
   '/master/urusan-bidang': typeof AuthenticatedMasterUrusanBidangRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -372,11 +390,13 @@ export interface FileRoutesById {
   '/_authenticated/master/dana': typeof AuthenticatedMasterDanaRoute
   '/_authenticated/master/giat': typeof AuthenticatedMasterGiatRoute
   '/_authenticated/master/giat-sub': typeof AuthenticatedMasterGiatSubRoute
+  '/_authenticated/master/jadwal': typeof AuthenticatedMasterJadwalRoute
   '/_authenticated/master/label-kokab': typeof AuthenticatedMasterLabelKokabRoute
   '/_authenticated/master/label-prov': typeof AuthenticatedMasterLabelProvRoute
   '/_authenticated/master/label-pusat': typeof AuthenticatedMasterLabelPusatRoute
   '/_authenticated/master/program': typeof AuthenticatedMasterProgramRoute
   '/_authenticated/master/skpd': typeof AuthenticatedMasterSkpdRoute
+  '/_authenticated/master/tahap': typeof AuthenticatedMasterTahapRoute
   '/_authenticated/master/urusan': typeof AuthenticatedMasterUrusanRoute
   '/_authenticated/master/urusan-bidang': typeof AuthenticatedMasterUrusanBidangRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -414,11 +434,13 @@ export interface FileRouteTypes {
     | '/master/dana'
     | '/master/giat'
     | '/master/giat-sub'
+    | '/master/jadwal'
     | '/master/label-kokab'
     | '/master/label-prov'
     | '/master/label-pusat'
     | '/master/program'
     | '/master/skpd'
+    | '/master/tahap'
     | '/master/urusan'
     | '/master/urusan-bidang'
     | '/settings/account'
@@ -453,11 +475,13 @@ export interface FileRouteTypes {
     | '/master/dana'
     | '/master/giat'
     | '/master/giat-sub'
+    | '/master/jadwal'
     | '/master/label-kokab'
     | '/master/label-prov'
     | '/master/label-pusat'
     | '/master/program'
     | '/master/skpd'
+    | '/master/tahap'
     | '/master/urusan'
     | '/master/urusan-bidang'
     | '/settings/account'
@@ -494,11 +518,13 @@ export interface FileRouteTypes {
     | '/_authenticated/master/dana'
     | '/_authenticated/master/giat'
     | '/_authenticated/master/giat-sub'
+    | '/_authenticated/master/jadwal'
     | '/_authenticated/master/label-kokab'
     | '/_authenticated/master/label-prov'
     | '/_authenticated/master/label-pusat'
     | '/_authenticated/master/program'
     | '/_authenticated/master/skpd'
+    | '/_authenticated/master/tahap'
     | '/_authenticated/master/urusan'
     | '/_authenticated/master/urusan-bidang'
     | '/_authenticated/settings/account'
@@ -665,6 +691,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMasterUrusanRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/master/tahap': {
+      id: '/_authenticated/master/tahap'
+      path: '/master/tahap'
+      fullPath: '/master/tahap'
+      preLoaderRoute: typeof AuthenticatedMasterTahapRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/master/skpd': {
       id: '/_authenticated/master/skpd'
       path: '/master/skpd'
@@ -698,6 +731,13 @@ declare module '@tanstack/react-router' {
       path: '/master/label-kokab'
       fullPath: '/master/label-kokab'
       preLoaderRoute: typeof AuthenticatedMasterLabelKokabRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/master/jadwal': {
+      id: '/_authenticated/master/jadwal'
+      path: '/master/jadwal'
+      fullPath: '/master/jadwal'
+      preLoaderRoute: typeof AuthenticatedMasterJadwalRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/master/giat-sub': {
@@ -842,11 +882,13 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedMasterDanaRoute: typeof AuthenticatedMasterDanaRoute
   AuthenticatedMasterGiatRoute: typeof AuthenticatedMasterGiatRoute
   AuthenticatedMasterGiatSubRoute: typeof AuthenticatedMasterGiatSubRoute
+  AuthenticatedMasterJadwalRoute: typeof AuthenticatedMasterJadwalRoute
   AuthenticatedMasterLabelKokabRoute: typeof AuthenticatedMasterLabelKokabRoute
   AuthenticatedMasterLabelProvRoute: typeof AuthenticatedMasterLabelProvRoute
   AuthenticatedMasterLabelPusatRoute: typeof AuthenticatedMasterLabelPusatRoute
   AuthenticatedMasterProgramRoute: typeof AuthenticatedMasterProgramRoute
   AuthenticatedMasterSkpdRoute: typeof AuthenticatedMasterSkpdRoute
+  AuthenticatedMasterTahapRoute: typeof AuthenticatedMasterTahapRoute
   AuthenticatedMasterUrusanRoute: typeof AuthenticatedMasterUrusanRoute
   AuthenticatedMasterUrusanBidangRoute: typeof AuthenticatedMasterUrusanBidangRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
@@ -876,11 +918,13 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedMasterDanaRoute: AuthenticatedMasterDanaRoute,
   AuthenticatedMasterGiatRoute: AuthenticatedMasterGiatRoute,
   AuthenticatedMasterGiatSubRoute: AuthenticatedMasterGiatSubRoute,
+  AuthenticatedMasterJadwalRoute: AuthenticatedMasterJadwalRoute,
   AuthenticatedMasterLabelKokabRoute: AuthenticatedMasterLabelKokabRoute,
   AuthenticatedMasterLabelProvRoute: AuthenticatedMasterLabelProvRoute,
   AuthenticatedMasterLabelPusatRoute: AuthenticatedMasterLabelPusatRoute,
   AuthenticatedMasterProgramRoute: AuthenticatedMasterProgramRoute,
   AuthenticatedMasterSkpdRoute: AuthenticatedMasterSkpdRoute,
+  AuthenticatedMasterTahapRoute: AuthenticatedMasterTahapRoute,
   AuthenticatedMasterUrusanRoute: AuthenticatedMasterUrusanRoute,
   AuthenticatedMasterUrusanBidangRoute: AuthenticatedMasterUrusanBidangRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,

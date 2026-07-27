@@ -113,6 +113,14 @@ export const sidebarData: SidebarData = {
                 },
               ],
             },
+            {
+              title: 'Jadwal',
+              url: '/master/jadwal',
+            },
+            {
+              title: 'Tahapan',
+              url: '/master/tahap',
+            },
           ],
         },
         {

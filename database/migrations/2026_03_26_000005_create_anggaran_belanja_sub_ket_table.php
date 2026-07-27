@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_sub_bl')->nullable()->index();
             $table->unsignedInteger('tahun')->nullable()->index();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
+            $table->unsignedBigInteger('id_jadwal')->nullable()->index();
             $table->unsignedBigInteger('id_unit')->nullable()->index();
             $table->unsignedBigInteger('id_skpd')->nullable()->index();
             $table->unsignedBigInteger('id_sub_skpd')->nullable()->index();
@@ -41,7 +42,6 @@ return new class extends Migration
             $table->string('kode_program')->nullable();
             $table->string('kode_giat')->nullable();
             $table->string('kode_sub_giat')->nullable();
-            $table->unsignedBigInteger('id_jadwal')->nullable()->index();
             $table->timestamps();
         });
     }

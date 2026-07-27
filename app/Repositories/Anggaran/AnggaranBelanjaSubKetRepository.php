@@ -33,6 +33,7 @@ class AnggaranBelanjaSubKetRepository extends Repository
             'id_ket_sub_bl',
             'tahun',
             'id_daerah',
+            'id_jadwal',
         ];
     }
 

@@ -33,6 +33,7 @@ class AnggaranBelanjaSubSubRepository extends Repository
             'id_subs_sub_bl',
             'tahun',
             'id_daerah',
+            'id_jadwal',
         ];
     }
 

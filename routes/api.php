@@ -14,12 +14,14 @@ use App\Http\Controllers\Master\DaerahController;
 use App\Http\Controllers\Master\DanaController;
 use App\Http\Controllers\Master\GiatController;
 use App\Http\Controllers\Master\GiatSubController;
+use App\Http\Controllers\Master\JadwalController;
 use App\Http\Controllers\Master\LabelKokabController;
 use App\Http\Controllers\Master\LabelProvController;
 use App\Http\Controllers\Master\LabelPusatController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\Master\SkpdController;
 use App\Http\Controllers\Master\SkpdSubController;
+use App\Http\Controllers\Master\TahapController;
 use App\Http\Controllers\Master\UrusanBidangController;
 use App\Http\Controllers\Master\UrusanController;
 use App\Http\Controllers\UserController;
@@ -151,5 +153,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::bulkResource('urusanBidang', UrusanBidangController::class);
         Route::apiResource('urusanBidang', UrusanBidangController::class)->parameter('urusanBidang', 'urusanBidang')->names('urusanBidang');
 
+        Route::apiResource('tahap', TahapController::class);
+        Route::apiResource('jadwal', JadwalController::class);
     });
 });

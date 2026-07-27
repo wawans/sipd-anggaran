@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_sub_bl')->nullable()->index();
             $table->unsignedInteger('tahun')->nullable()->index();
             $table->unsignedBigInteger('id_daerah')->nullable()->index();
+            $table->unsignedBigInteger('id_jadwal')->nullable()->index();
             $table->unsignedBigInteger('id_unit')->nullable()->index();
             $table->text('subs_bl_teks')->nullable();
             $table->string('is_paket')->nullable();

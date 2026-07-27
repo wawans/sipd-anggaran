@@ -1,7 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
-
 import type { Model } from '@/types'
 
 export const columns: ColumnDef<Model>[] = [
@@ -30,18 +29,36 @@ export const columns: ColumnDef<Model>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'id',
+    accessorKey: 'id_tahap',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='ID' />
     ),
-    cell: ({ row }) => <div className='w-[80px]'>{row.getValue('id')}</div>,
-    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+    cell: ({ row }) => (
+      <div className='w-[80px]'>{row.getValue('id_tahap')}</div>
+    ),
+    meta: { className: 'ps-0 w-[80px]', tdClassName: 'ps-2' },
   },
   {
-    accessorKey: 'id_jadwal',
-    label: 'ID Jadwal',
+    accessorKey: 'tahun',
+    label: 'Tahun',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='ID Jadwal' />
+      <DataTableColumnHeader column={column} title='Tahun' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0 w-[80px]',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'nama_tahap',
+    label: 'Nama Tahap',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nama Tahap' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
@@ -52,52 +69,5 @@ export const columns: ColumnDef<Model>[] = [
       className: 'ps-0',
       tdClassName: 'ps-2',
     },
-  },
-  {
-    accessorKey: 'kode_skpd',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Kode SKPD' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'nama_skpd',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Nama SKPD' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-    },
-  },
-  {
-    accessorKey: 'total_giat',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Total' />
-    ),
-    cell: ({ getValue }) => (
-      <div className='wrap-break-word whitespace-normal'>
-        {getValue() as string}
-      </div>
-    ),
-    meta: {
-      className: 'ps-0',
-      tdClassName: 'ps-2',
-      filterColumn: 'numberRange',
-    },
-    filterFn: 'inNumberRange',
   },
 ]

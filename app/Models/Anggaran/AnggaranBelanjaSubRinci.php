@@ -21,6 +21,7 @@ class AnggaranBelanjaSubRinci extends Model
         'id_sub_bl',
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_standar_harga',
         'kode_standar_harga',
         'nama_standar_harga',

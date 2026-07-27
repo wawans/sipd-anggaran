@@ -36,6 +36,7 @@ class AnggaranBelanjaSubRinciRepository extends Repository
             'id_rinci_sub_bl',
             'tahun',
             'id_daerah',
+            'id_jadwal',
         ];
     }
 

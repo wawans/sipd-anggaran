@@ -17,6 +17,7 @@ class AnggaranSkpd extends Model
     protected $fillable = [
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_skpd',
         'id_unit',
         'kode_skpd',

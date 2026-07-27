@@ -20,6 +20,7 @@ class AnggaranBelanjaSubKet extends Model
         'id_sub_bl',
         'tahun',
         'id_daerah',
+        'id_jadwal',
         'id_unit',
         'id_skpd',
         'id_sub_skpd',
@@ -43,8 +44,6 @@ class AnggaranBelanjaSubKet extends Model
         'kode_program',
         'kode_giat',
         'kode_sub_giat',
-        'id_jadwal',
-
     ];
 
     /**

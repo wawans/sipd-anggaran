@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_sub_bl')->nullable()->index();
-            $table->unsignedBigInteger('id_daerah')->nullable()->index();
             $table->unsignedBigInteger('tahun')->nullable()->index();
+            $table->unsignedBigInteger('id_daerah')->nullable()->index();
+            $table->unsignedBigInteger('id_jadwal')->nullable()->index();
             $table->unsignedBigInteger('id_unit')->nullable()->index();
             $table->unsignedBigInteger('id_skpd')->nullable()->index();
 

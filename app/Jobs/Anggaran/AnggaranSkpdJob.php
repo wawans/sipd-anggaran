@@ -27,6 +27,7 @@ class AnggaranSkpdJob implements ShouldQueue
             AnggaranSkpd::updateOrCreate([
                 'tahun' => data_get($row, 'tahun'),
                 'id_daerah' => data_get($row, 'id_daerah'),
+                'id_jadwal' => data_get($row, 'id_jadwal'),
                 'id_skpd' => data_get($row, 'id_skpd'),
                 'id_unit' => data_get($row, 'id_unit'),
             ], [

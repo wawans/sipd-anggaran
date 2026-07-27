@@ -16,8 +16,9 @@ class AnggaranBelanjaSub extends Model
      */
     protected $fillable = [
         'id_sub_bl',
-        'id_daerah',
         'tahun',
+        'id_daerah',
+        'id_jadwal',
         'id_unit',
         'id_skpd',
         'kode_skpd',

@@ -32,6 +32,7 @@ class AnggaranSkpdRepository extends Repository
         return [
             'tahun',
             'id_daerah',
+            'id_jadwal',
             'id_skpd',
             'id_unit',
         ];

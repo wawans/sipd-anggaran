@@ -1,7 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Checkbox } from '@/components/ui/checkbox'
-
 import type { Model } from '@/types'
 
 export const columns: ColumnDef<Model>[] = [
@@ -30,18 +29,36 @@ export const columns: ColumnDef<Model>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'id',
+    accessorKey: 'id_jadwal',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='ID' />
     ),
-    cell: ({ row }) => <div className='w-[80px]'>{row.getValue('id')}</div>,
-    meta: { className: 'ps-0', tdClassName: 'ps-2' },
+    cell: ({ row }) => (
+      <div className='w-[80px]'>{row.getValue('id_jadwal')}</div>
+    ),
+    meta: { className: 'ps-0 w-[80px]', tdClassName: 'ps-2' },
   },
   {
-    accessorKey: 'id_jadwal',
-    label: 'ID Jadwal',
+    accessorKey: 'tahun',
+    label: 'Tahun',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='ID Jadwal' />
+      <DataTableColumnHeader column={column} title='Tahun' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0 w-[80px]',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'id_tahap',
+    label: 'ID Tahap',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='ID Tahap' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
@@ -54,18 +71,14 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'nama_sub_skpd',
-    label: 'Nama Sub SKPD',
+    accessorKey: 'nama_sub_tahap',
+    label: 'Nama Jadwal',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Nama SKPD' />
+      <DataTableColumnHeader column={column} title='Nama Jadwal' />
     ),
-    cell: ({ getValue, row: { original } }) => (
+    cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
         {getValue() as string}
-        <br />
-        <span className='text-xs text-muted-foreground'>
-          {original?.kode_sub_skpd as string}
-        </span>
       </div>
     ),
     meta: {
@@ -74,18 +87,14 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'nama_sub_giat',
-    label: 'Nama Sub Giat',
+    accessorKey: 'waktu_mulai',
+    label: 'Mulai',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Nama Sub Kegiatan' />
+      <DataTableColumnHeader column={column} title='Mulai' />
     ),
-    cell: ({ getValue, row: { original } }) => (
+    cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>
         {getValue() as string}
-        <br />
-        <span className='text-xs text-muted-foreground'>
-          {original?.kode_sub_giat as string}
-        </span>
       </div>
     ),
     meta: {
@@ -94,10 +103,10 @@ export const columns: ColumnDef<Model>[] = [
     },
   },
   {
-    accessorKey: 'subs_bl_teks',
-    label: 'Belanja',
+    accessorKey: 'waktu_selesai',
+    label: 'Selesai',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Belanja' />
+      <DataTableColumnHeader column={column} title='Selesai' />
     ),
     cell: ({ getValue }) => (
       <div className='wrap-break-word whitespace-normal'>

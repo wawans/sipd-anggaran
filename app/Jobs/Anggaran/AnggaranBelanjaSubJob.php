@@ -27,6 +27,7 @@ class AnggaranBelanjaSubJob implements ShouldQueue
             AnggaranBelanjaSub::updateOrCreate([
                 'tahun' => data_get($row, 'tahun'),
                 'id_daerah' => data_get($row, 'id_daerah'),
+                'id_jadwal' => data_get($row, 'id_jadwal'),
                 'id_sub_bl' => data_get($row, 'id_sub_bl'),
             ], [
                 'id_unit' => data_get($row, 'id_unit'),

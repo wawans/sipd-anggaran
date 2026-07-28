@@ -2,12 +2,14 @@
 
 namespace App\Jobs\Anggaran;
 
+use App\Jobs\Concerns\JadwalAktif;
 use App\Repositories\Anggaran\AnggaranBelanjaSubKetRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
 class AnggaranBelanjaSubKetJob implements ShouldQueue
 {
+    use JadwalAktif;
     use Queueable;
 
     /**
@@ -30,8 +32,11 @@ class AnggaranBelanjaSubKetJob implements ShouldQueue
                 dispatch(new self($row->toArray()));
             }
         } else {
+            $datum = $rows->first();
+            $jadwal = $this->getJadwalAktif(data_get($datum, 'tahun', now()->year));
+
             foreach ($rows as $row) {
-                $repository->updateOrCreate($row);
+                $repository->updateOrCreate(array_merge($row, ['id_jadwal' => $jadwal->id_jadwal]));
             }
         }
     }

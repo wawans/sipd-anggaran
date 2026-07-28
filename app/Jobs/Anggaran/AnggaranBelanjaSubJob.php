@@ -2,12 +2,15 @@
 
 namespace App\Jobs\Anggaran;
 
+use App\Jobs\Concerns\JadwalAktif;
 use App\Models\Anggaran\AnggaranBelanjaSub;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Arr;
 
 class AnggaranBelanjaSubJob implements ShouldQueue
 {
+    use JadwalAktif;
     use Queueable;
 
     /**
@@ -23,11 +26,14 @@ class AnggaranBelanjaSubJob implements ShouldQueue
      */
     public function handle(): void
     {
+        $datum = Arr::first($this->data);
+        $jadwal = $this->getJadwalAktif(data_get($datum, 'tahun', now()->year));
+
         foreach ($this->data as $row) {
             AnggaranBelanjaSub::updateOrCreate([
                 'tahun' => data_get($row, 'tahun'),
                 'id_daerah' => data_get($row, 'id_daerah'),
-                'id_jadwal' => data_get($row, 'id_jadwal'),
+                'id_jadwal' => $jadwal->id_jadwal,
                 'id_sub_bl' => data_get($row, 'id_sub_bl'),
             ], [
                 'id_unit' => data_get($row, 'id_unit'),

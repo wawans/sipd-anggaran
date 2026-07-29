@@ -24,6 +24,9 @@ class AnggaranSkpdController extends Controller
             ->when($request->has('status'), function ($query) use ($request) {
                 $query->where('status_getter', $request->input('status'));
             })
+            ->when($request->has('tahun'), function ($query) use ($request) {
+                $query->where('tahun', $request->input('tahun', now()->year));
+            })
             ->orderBy('id')
             ->get();
 

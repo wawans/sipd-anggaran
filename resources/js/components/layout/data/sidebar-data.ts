@@ -175,10 +175,10 @@ export const sidebarData: SidebarData = {
           title: 'Penganggaran',
           icon: ListTodo,
           items: [
-            {
-              title: 'SKPD',
-              url: '/worker/anggaran/skpd',
-            },
+            // {
+            //   title: 'SKPD',
+            //   url: '/worker/anggaran/skpd',
+            // },
             {
               title: 'Sub Kegiatan',
               url: '/worker/anggaran/belanja-sub',

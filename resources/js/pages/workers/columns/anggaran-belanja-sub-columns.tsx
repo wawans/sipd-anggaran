@@ -40,6 +40,38 @@ export const columns: ColumnDef<Model>[] = [
     meta: { className: 'ps-0', tdClassName: 'ps-2' },
   },
   {
+    accessorKey: 'tahun',
+    label: 'Tahun',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Tahun' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
+    accessorKey: 'id_jadwal',
+    label: 'ID Jadwal',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='ID Jadwal' />
+    ),
+    cell: ({ getValue }) => (
+      <div className='wrap-break-word whitespace-normal'>
+        {getValue() as string}
+      </div>
+    ),
+    meta: {
+      className: 'ps-0',
+      tdClassName: 'ps-2',
+    },
+  },
+  {
     accessorKey: 'kode_skpd',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Kode SKPD' />

@@ -31,10 +31,9 @@ trait WithExportImport
 
     public function export(Request $request)
     {
-        // $data = $this->repository->exportWithGenerator()->export($request);
         $name = strtolower($this->repository->getModel()->getTable());
 
-        return (new FastExcel($this->repository->exportGenerator($request)))->download("export_$name.xlsx");
+        return (new FastExcel($this->repository->export($request)))->download("export_$name.xlsx");
     }
 
     public function template()

@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = $this->repository->tableWithoutPagination()->table(request()->mergeIfMissing([
+        $result = $this->repository->table(request()->mergeIfMissing([
             'sortBy' => 'updated_at',
             'sortDirection' => 'desc',
             'perPage' => 100,

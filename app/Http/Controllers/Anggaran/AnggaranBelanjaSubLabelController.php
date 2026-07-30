@@ -37,7 +37,7 @@ class AnggaranBelanjaSubLabelController extends Controller implements HasMiddlew
      */
     public function index()
     {
-        $model = $this->repository->tableWithoutPagination()->table(request());
+        $model = $this->repository->table(request());
 
         return ApiResponse::make($model);
     }

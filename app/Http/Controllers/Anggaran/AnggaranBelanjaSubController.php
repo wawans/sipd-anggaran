@@ -8,9 +8,11 @@ use App\Jobs\Anggaran\AnggaranBelanjaSubJob;
 use App\Models\Anggaran\AnggaranBelanjaSub;
 use App\Repositories\Anggaran\AnggaranBelanjaSubRepository;
 use Illuminate\Http\Request;
+use App\Jobs\Concerns\JadwalAktif;
 
 class AnggaranBelanjaSubController extends Controller
 {
+    use JadwalAktif;
     use WithExportImport;
 
     public function __construct(protected AnggaranBelanjaSubRepository $repository) {}
@@ -26,6 +28,17 @@ class AnggaranBelanjaSubController extends Controller
             })
             ->when($request->has('tahun'), function ($query) use ($request) {
                 $query->where('tahun', $request->input('tahun', now()->year));
+            })
+            ->when($request->has('id_jadwal') && is_numeric($request->input('id_jadwal')), function ($query) use ($request) {
+                $query->where('id_jadwal', $request->input('id_jadwal'));
+            })
+            ->when(
+                $request->has('id_jadwal') 
+                && !is_numeric($request->input('id_jadwal'))
+                && !blank($request->input('tahun'))                
+                , function ($query) use ($request) {
+                    $jadwal = $this->getJadwalAktif($request->input('tahun', now()->year));
+                    $query->where('id_jadwal', $jadwal->id_jadwal);
             })
             ->orderBy('id')
             ->get();
